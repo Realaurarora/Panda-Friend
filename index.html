@@ -80,7 +80,9 @@ label{display:block;font-size:13px;margin:10px 0 5px}
 .house-window:before{content:"";position:absolute;top:50%;width:100%;border-top:4px solid white}
 .sun{position:absolute;right:45px;top:28px;font-size:40px}
 .rug{position:absolute;bottom:17px;width:70%;height:40px;border-radius:50%;background:#f5d6e5}
-.panda{
+.panda{width:110px;
+height:130px;
+object-fit:contain}
  position:relative;z-index:2;font-size:105px;
  animation:floaty 3s ease-in-out infinite;
  cursor:pointer;filter:drop-shadow(0 6px 3px #9c829333);
@@ -173,7 +175,7 @@ footer{text-align:center;padding:25px;color:#b49baa;font-size:12px}
   <div class="speech" id="speech">Hello! I'm so happy you're here! 💗</div>
   <div class="room-items"><span>🪴</span><span>🧸</span><span>🛋️</span></div>
   <div class="rug"></div>
-  <div class="panda walk" id="homePanda" onclick="pandaTalk()">🐼</div>
+  <img class="panda walk" id="homePanda" src="panda.png" alt="My panda" onclick="pandaTalk()">
  </div>
  <div class="grid" style="margin-top:15px">
   <div class="card">
