@@ -1,53 +1,88 @@
+
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-  <title>Panda Friend 🐼</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-
-    body {
-
-      background: #fff0f6;
-
-      color: #a65d7a;
-
-      font-family: Arial, sans-serif;
-
-      text-align: center;
-
-      padding: 40px;
-
-    }
-
-    h1 {
-
-      font-size: 40px;
-
-    }
-
-    .panda {
-
-      font-size: 100px;
-
-    }
-
-  </style>
-
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panda Friend 🐼</title>
+<style>
+:root{--pink:#ffd9e9;--rose:#ff9fc8;--cream:#fff8ed;--brown:#6b4d45;--green:#d9f0d7;--lav:#e9e0ff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,sans-serif;color:var(--brown);background:linear-gradient(140deg,#fff3f8,#fff8ed 55%,#eff8ff);min-height:100vh}
+header{padding:20px 16px;text-align:center;background:#fff9;backdrop-filter:blur(8px);border-bottom:2px solid #ffe4ef}
+h1{margin:0;font-size:clamp(28px,5vw,44px);color:#d96c9f}header p{margin:5px 0 0}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0 18px}
+button,.tab{border:0;border-radius:16px;padding:11px 15px;background:#ffe1ee;color:#8d4e6a;font-weight:700;cursor:pointer;box-shadow:0 3px 0 #f3bfd5;transition:.15s}
+button:hover,.tab:hover{transform:translateY(-1px);filter:brightness(.98)}button:active{transform:translateY(2px);box-shadow:none}
+.tab.active{background:#e8dcff;color:#6a5794;box-shadow:0 3px 0 #cdbcf3}
+.panel{background:#ffffffd9;border:2px solid #ffe4ef;border-radius:24px;padding:18px;box-shadow:0 8px 25px #e8c6d533}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}.center{text-align:center}
+.panda{font-size:100px;line-height:1.35;filter:drop-shadow(0 5px 0 #e7d7d0)}.smallpanda{font-size:60px}
+h2{color:#d96c9f;margin:0 0 10px}h3{margin:12px 0 8px;color:#b86d91}
+label{display:block;font-weight:700;margin:10px 0 5px}input,select{padding:10px;border:2px solid #f4d6e4;border-radius:12px;background:#fff;width:100%;color:var(--brown);font:inherit}
+.actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}.stat{display:inline-block;background:#fff0f6;border-radius:12px;padding:7px 11px;margin:4px;font-weight:700}
+.room{min-height:240px;border-radius:20px;background:linear-gradient(#dff4ff 0 48%,#d8efce 48%);position:relative;overflow:hidden;padding:12px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px}
+.room:before{content:"☁️      ☁️";position:absolute;top:10px;left:15%;font-size:25px;opacity:.7}.decor{font-size:42px;z-index:1}.roompanda{font-size:74px;z-index:1}.roomlabel{position:absolute;bottom:8px;background:#ffffffb8;padding:5px 12px;border-radius:12px;font-weight:700}
+.griditems{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px}.item{background:#fff5fa;border:2px solid #ffe0ee;border-radius:15px;padding:10px;text-align:center;cursor:pointer}.item .emoji{font-size:30px;display:block}.item.selected{border-color:#d9bfff;background:#f4efff}
+.note{font-size:13px;opacity:.8;margin-top:10px}.hidden{display:none}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#765469;color:white;padding:12px 18px;border-radius:16px;display:none;z-index:10;box-shadow:0 5px 20px #0002}
+@media(max-width:650px){.layout{grid-template-columns:1fr}.panda{font-size:85px}.wrap{padding:10px}.panel{padding:14px}}
+</style>
 </head>
-
 <body>
-
-  <h1>Welcome to Panda Friend! 🐼</h1>
-
-  <div class="panda">🐼🎀</div>
-
-  <p>Your cozy little world is coming soon!</p>
-
+<header><h1>🐼 Panda Friend 🌸</h1><p>Your cozy little world is better together!</p></header>
+<div class="wrap">
+<div class="tabs">
+<button class="tab active" data-tab="create">🎀 My Panda</button><button class="tab" data-tab="home">🏡 Cozy Home</button><button class="tab" data-tab="activities">🍓 Activities</button><button class="tab" data-tab="friend">💌 Friend</button>
+</div>
+<section id="create" class="panel">
+<div class="layout">
+<div class="center"><div class="panda" id="pandaPreview">🐼</div><div class="stat">🌸 <span id="pandaNamePreview">Mochi</span></div><div class="stat">✨ Level <span id="level">1</span></div></div>
+<div><h2>Create your panda</h2>
+<label for="name">Panda name</label><input id="name" maxlength="16" value="Mochi">
+<label for="accessory">Accessory</label><select id="accessory"><option value="🎀">Pink bow</option><option value="🌸">Flower crown</option><option value="🧢">Tiny cap</option><option value="🧣">Cozy scarf</option><option value="💖">Heart sparkle</option><option value="🍓">Strawberry hat</option></select>
+<label for="mood">Personality</label><select id="mood"><option>Sweet & cuddly</option><option>Playful</option><option>Sleepy</option><option>Adventurous</option></select>
+<div class="actions"><button id="savePanda">✨ Save my panda</button></div>
+</div></div>
+</section>
+<section id="home" class="panel hidden">
+<h2>🏡 Our Cozy Home</h2><p>Pick decorations to make your panda's home feel extra lovely.</p>
+<div class="room" id="room"><span class="decor">🪴</span><span class="roompanda">🐼</span><span class="decor">🛋️</span><span class="roomlabel">Mochi's cozy cottage</span></div>
+<h3>Choose a decoration</h3><div class="griditems" id="decorItems"></div><p class="note">Decorations are saved in this demo while the page stays open.</p>
+</section>
+<section id="activities" class="panel hidden">
+<h2>🍓 Cozy activities</h2><p>Do little activities to earn friendship stars!</p>
+<div class="griditems">
+<div class="item" onclick="activity('Gardening','🌷 You planted a tiny flower! +2 stars',2)"><span class="emoji">🌷</span><b>Gardening</b><small>Plant flowers</small></div>
+<div class="item" onclick="activity('Cooking','🍓 You made strawberry mochi! +3 stars',3)"><span class="emoji">🍓</span><b>Cooking</b><small>Make a treat</small></div>
+<div class="item" onclick="activity('Fishing','🐟 You caught a little fish! +2 stars',2)"><span class="emoji">🎣</span><b>Fishing</b><small>Go fishing</small></div>
+<div class="item" onclick="activity('Mini-game','🎮 You won the cozy mini-game! +4 stars',4)"><span class="emoji">🎮</span><b>Mini-game</b><small>Play a round</small></div>
+<div class="item" onclick="activity('Nap time','☁️ Your panda had a peaceful nap. +1 star',1)"><span class="emoji">💤</span><b>Nap time</b><small>Rest & relax</small></div>
+</div><div class="center" style="margin-top:16px"><span class="stat">⭐ Stars: <span id="stars">0</span></span><span class="stat">💗 Friendship: <span id="friendship">0</span></span></div>
+</section>
+<section id="friend" class="panel hidden">
+<h2>💌 Play with a friend</h2>
+<div class="layout"><div class="center"><div class="panda">🐼 💞 🐼</div><p>Two pandas, one cozy world!</p></div><div>
+<label for="friendName">Friend's panda name</label><input id="friendName" maxlength="16" placeholder="e.g. Boba">
+<label for="roomCode">Room code</label><input id="roomCode" value="PANDA-LOVE" readonly>
+<div class="actions"><button id="invite">💌 Copy invite code</button><button id="visit">🐼 Add friend panda</button></div>
+<p class="note">This first version is a local playable prototype. The room code and friend panda are a preview; real-time online multiplayer will need a server connection in a later build.</p>
+</div></div>
+</section>
+</div><div class="toast" id="toast"></div>
+<script>
+let stars=0,friendship=0,level=1,accessory="🎀",decorations=["🪴","🛋️"],pandaName="Mochi",friendAdded=false;
+const $=id=>document.getElementById(id);
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));$(b.dataset.tab).classList.remove("hidden")}));
+function toast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2300)}
+function preview(){pandaName=$("name").value.trim()||"Mochi";accessory=$("accessory").value;$("pandaNamePreview").textContent=pandaName;$("pandaPreview").textContent="🐼"+accessory}
+$("name").addEventListener("input",preview);$("accessory").addEventListener("change",preview);
+$("savePanda").onclick=()=>{preview();toast("Your panda "+pandaName+" is saved! 🐼")};
+function activity(label,msg,amount){stars+=amount;friendship+=amount;level=Math.floor(stars/10)+1;$("stars").textContent=stars;$("friendship").textContent=friendship;$("level").textContent=level;toast(msg)}
+const deco=[["🛏️","Cozy bed"],["🧸","Teddy bear"],["🌷","Flower pot"],["🍵","Tea table"],["🪟","Sunny window"],["🎀","Pink rug"],["🪷","Pond"],["🏮","Lantern"],["🍰","Cake stand"],["📚","Books"]];
+$("decorItems").innerHTML=deco.map(([e,n])=>`<div class="item" data-emoji="${e}"><span class="emoji">${e}</span><b>${n}</b></div>`).join("");
+$("decorItems").querySelectorAll(".item").forEach(item=>item.onclick=()=>{const e=item.dataset.emoji;decorations.push(e);const span=document.createElement("span");span.className="decor";span.textContent=e;$("room").appendChild(span);toast(niceName(item)+" added to your home! 🏡")});
+function niceName(item){return item.querySelector("b").textContent}
+$("invite").onclick=()=>{const code=$("roomCode").value; if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(code).then(()=>toast("Invite code copied! Send it to your friend 💌")).catch(()=>toast("Your invite code is "+code))}else toast("Your invite code is "+code)};
+$("visit").onclick=()=>{if(friendAdded){toast("Your friend's panda is already visiting! 🐼");return}let n=$("friendName").value.trim()||"Boba";friendAdded=true;const p=document.createElement("span");p.className="roompanda";p.textContent="🐼";p.title=n;$("room").appendChild(p);friendship+=5;$("friendship").textContent=friendship;toast(n+" came to visit! +5 friendship 💗")};
+preview();
+</script>
 </body>
-
 </html>
