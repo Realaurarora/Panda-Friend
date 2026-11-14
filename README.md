@@ -1,1 +1,1 @@
-# Panda-Friend
+# Panda Friends
