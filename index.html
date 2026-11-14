@@ -82,6 +82,11 @@ input,select{width:100%;padding:11px;border:2px solid #f2d4e1;border-radius:13px
 <h2>Make your panda yours!</h2>
 <label for="name">Panda name</label>
 <input id="name" maxlength="16" value="Mochi">
+<label for="gender">Panda gender</label>
+<select id="gender">
+<option value="Girl">🎀 Girl</option>
+<option value="Boy">💙 Boy</option>
+</select>
 <label for="accessory">Head accessory</label>
 <select id="accessory">
 <option value="🎀">Pink bow</option>
@@ -164,7 +169,7 @@ input,select{width:100%;padding:11px;border:2px solid #f2d4e1;border-radius:13px
 
 <script>
 const $=id=>document.getElementById(id);
-const defaults={name:'Mochi',accessory:'🎀',mood:'Sweet & cuddly',stars:0,friendship:0,decorations:['🪴','🛋️'],friendAdded:false};
+const defaults={name:'Mochi',gender:'Girl',accessory:'🎀',mood:'Sweet & cuddly',stars:0,friendship:0,decorations:['🪴','🛋️'],friendAdded:false};
 let saved={...defaults};
 try{saved={...defaults,...JSON.parse(localStorage.getItem('pandaFriendSave')||'{}')}}catch(e){}
 let stars=Number(saved.stars)||0;
@@ -173,7 +178,7 @@ let decorations=Array.isArray(saved.decorations)?saved.decorations.slice():defau
 let friendAdded=!!saved.friendAdded;
 
 function persist(){
-saved={name:$('name').value.trim()||'Mochi',accessory:$('accessory').value,mood:$('mood').value,stars,friendship,decorations,friendAdded};
+saved={name:$('name').value.trim()||'Mochi',gender:$('gender').value,accessory:$('accessory').value,mood:$('mood').value,stars,friendship,decorations,friendAdded};
 try{localStorage.setItem('pandaFriendSave',JSON.stringify(saved))}catch(e){}
 }
 function toast(msg){
@@ -190,6 +195,8 @@ $('roomLabel').textContent=name+"'s cozy cottage";
 persist();
 }
 $('name').value=saved.name;
+$('gender').value=saved.gender;
+$('gender').addEventListener('change',persist);  
 $('accessory').value=saved.accessory;
 $('mood').value=saved.mood;
 $('name').addEventListener('input',preview);
