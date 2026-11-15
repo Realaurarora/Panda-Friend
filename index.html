@@ -2970,13 +2970,11 @@ if(configured){
     );
 
   }catch(e){
-    friendlyError(e);
-    status("⚠️ Could not connect to Firebase.");
-  }
+  friendlyError(e);
+  status("⚠️ Could not connect to Firebase.");
 }
-
-
 }else{
+  
   status(
     "🛠️ Online mode needs your Firebase project config before it can connect."
   );
