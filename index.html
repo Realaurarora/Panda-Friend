@@ -1,4 +1,4 @@
-
+f
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2955,9 +2955,27 @@ window.onlineBlockFriend=async()=>{
   }
 };
 
+
 if(configured){
   try{
     const app=initializeApp(firebaseConfig);
+
+    auth=getAuth(app);
+    db=getFirestore(app);
+
+    onAuthStateChanged(
+      auth,
+      setAccount,
+      friendlyError
+    );
+
+  }catch(e){
+    friendlyError(e);
+    status("⚠️ Could not connect to Firebase.");
+  }
+}
+
+
 
     auth=getAuth(app);
     db=getFirestore(app);
