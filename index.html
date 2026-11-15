@@ -2976,20 +2976,6 @@ if(configured){
 }
 
 
-
-    auth=getAuth(app);
-    db=getFirestore(app);
-
-    onAuthStateChanged(
-      auth,
-      setAccount,
-      friendlyError
-    );
-
-  }catch(e){
-    friendlyError(e);
-    status("⚠️ Could not connect to Firebase.");
-  }
 }else{
   status(
     "🛠️ Online mode needs your Firebase project config before it can connect."
