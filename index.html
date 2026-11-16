@@ -193,15 +193,29 @@ label{font-size:12px;font-weight:800}
 
 /* MAIN BEDROOM */
 
-.room-wrap{position:relative}
 .room{
   position:relative;
   width:100%;
   height:clamp(400px,64dvh,600px);
   overflow:hidden;
   isolation:isolate;
-  background:linear-gradient(#f7e8e6 0 66%,#dec6b9 66% 100%);
-  transition:background .35s;
+
+  background-image:url("Pandapinkroom.png");
+  background-size:100% 100%;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  transition:background-image .35s;
+}
+
+/* Pink dreamy bedroom */
+.room.moonlight-pink{
+  background-image:url("Pandapinkroom.png");
+}
+
+/* Blue dreamy bedroom */
+.room.moonlight-blue{
+  background-image:url("Pandablueroom.png");
 }
 .room.wall-lilac{
   background:linear-gradient(#eee5f8 0 66%,#d9c7bf 66% 100%);
@@ -914,6 +928,74 @@ label{font-size:12px;font-weight:800}
     transition:none!important;
   }
 }
+
+/* 🌙 Hide old furniture so our new bedroom shows */
+.room .wall-pattern,
+.room .window,
+.room .window-curtain,
+.room .wall-art,
+.room .shelf,
+.room .rug,
+.room .bed,
+.room .lamp,
+.room .plant {
+  display: none;
+}
+
+/* 🐼 Keep our panda in front */
+.panda-character {
+  z-index: 5;
+}
+
+/* 🎀 Keep the buttons visible */
+.room-top,
+.room-bottom {
+  z-index: 10;
+}
+
+/* 🌙 DREAMY MOONLIGHT ANIMATIONS */
+
+.room::before {
+  content:"✦  ✧  ✦";
+  position:absolute;
+  top:22%;
+  left:15%;
+  width:70%;
+  text-align:center;
+  color:#fff9d8;
+  font-size:22px;
+  text-shadow:0 0 12px #fff5b0;
+  z-index:2;
+  pointer-events:none;
+  animation:moonSparkle 4s ease-in-out infinite;
+}
+
+.room::after {
+  content:"✧       ✦       ✧";
+  position:absolute;
+  top:52%;
+  left:5%;
+  width:90%;
+  height:auto;
+  text-align:center;
+  color:#fffbe8;
+  font-size:17px;
+  z-index:2;
+  pointer-events:none;
+  animation:moonSparkle 5s ease-in-out infinite reverse;
+}
+
+@keyframes moonSparkle {
+  0%,100% {
+    opacity:.25;
+    transform:translateY(0);
+  }
+  50% {
+    opacity:1;
+    transform:translateY(-9px);
+  }
+}
+
 </style>
 </head>
 
@@ -1030,7 +1112,11 @@ label{font-size:12px;font-weight:800}
       <h3>✏️ About me</h3>
       <label for="nameInput">My name</label>
       <input id="nameInput" maxlength="18" placeholder="Your panda's name">
-
+     <label for="genderInput">My panda's gender</label>
+<select id="genderInput">
+  <option value="girl">🎀 Girl</option>
+  <option value="boy">🩵 Boy</option>
+</select>
       <label for="birthdayInput">My birthday</label>
       <input type="date" id="birthdayInput">
 
@@ -1141,6 +1227,7 @@ const SAVE_KEY = "pandaFriendsCosyV1";
 
 const defaults = {
   name:"Mochi",
+  gender:"girl",
   birthday:"",
   bio:"I love cosy naps and strawberries!",
   mood:"cosy",
@@ -1342,7 +1429,9 @@ function refresh(){
     star:"⭐"
   }[state.accessory] || "";
 
-  $("room").className = "room wall-" + state.wall;
+  $("room").className =
+  "room moonlight-" +
+  (state.gender === "boy" ? "blue" : "pink");
   $("wallArt").textContent = state.art;
 }
 
@@ -1445,6 +1534,8 @@ function saveProfile(){
   state.birthday = $("birthdayInput").value;
   state.bio = $("bioInput").value.trim().slice(0,80);
 
+  state.gender = $("genderInput").value;
+  
   save();
   renderProfile();
   showToast("Panda profile saved! ♡");
@@ -1481,9 +1572,10 @@ function renderProfile(){
   $("nameInput").value = state.name;
   $("birthdayInput").value = state.birthday;
   $("bioInput").value = state.bio;
+$("genderInput").value = state.gender;
 
   $("moodOptions").innerHTML = moods.map(m=>`
-    <button
+
       class="mood-option ${state.mood === m.id ? "selected" : ""}"
       onclick="setMood('${m.id}')">
       <span>${m.emoji}</span>
