@@ -3,955 +3,1194 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Panda Friends 🌸</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f8e8ee">
+<title>Panda Friends ♡</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
+
 :root{
-  --pink:#f8c9dd;
-  --pink2:#fff0f6;
-  --purple:#e9ddff;
-  --ink:#71576a;
-  --muted:#a18b9c;
-  --line:#f1dce7;
+  --ink:#705b66;
+  --muted:#aa929d;
+  --pink:#efb7c9;
+  --cream:#fffaf7;
+  --line:#f0e3e6;
+  --shadow:0 12px 35px #84667a17;
 }
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:"Trebuchet MS",Arial,sans-serif;
-  color:var(--ink);
-  background:linear-gradient(135deg,#fff6fa,#f7f0ff);
-}
+html,body{margin:0;min-height:100%;font-family:Quicksand,Arial,sans-serif;color:var(--ink)}
 button,input,select{font:inherit}
-button{cursor:pointer}
-header{
-  padding:22px;
-  text-align:center;
-  background:linear-gradient(110deg,#ffe4ef,#eee4ff);
-  border-bottom:2px solid white;
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+body{
+  background:radial-gradient(circle at 15% 20%,#ffe8f1,transparent 35%),
+             radial-gradient(circle at 85% 75%,#e8dcff,transparent 40%),#f9f1f4;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100dvh;
 }
-h1{margin:0;font-size:32px}
-h2{margin-top:0}
-h3{margin:0 0 9px}
-p{line-height:1.6}
-.subtitle{font-size:13px;color:var(--muted)}
-.stats{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:14px;
-}
-.pill{
-  background:white;
-  border-radius:30px;
-  padding:9px 15px;
-  box-shadow:0 3px 12px #b77b9917;
-}
-nav{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:8px;
-  padding:15px;
-  background:#fffafd;
-  border-bottom:1px solid var(--line);
-}
-nav button{
-  border:0;
-  border-radius:20px;
-  padding:11px 15px;
-  background:#fff0f6;
-  color:var(--ink);
-  font-weight:bold;
-}
-nav button.active{
-  background:#e9c9ec;
-  color:#664d72;
-}
-main{
-  max-width:1050px;
-  margin:auto;
-  padding:24px 15px 60px;
-}
-.page{display:none}
-.page.active{display:block}
-.card{
-  background:#fff;
-  padding:20px;
-  border-radius:23px;
-  border:1px solid var(--line);
-  box-shadow:0 7px 22px #b77b9912;
-  margin-bottom:15px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:14px;
-}
-.btn{
-  background:#f5bad3;
-  border:0;
-  border-radius:15px;
-  padding:11px 17px;
-  color:#684e62;
-  font-weight:bold;
-  margin:4px 3px 4px 0;
-}
-.btn:hover{filter:brightness(.97)}
-.btn.soft{background:#f5e9ff}
-.btn.green{background:#d7efd9}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-input,select{
-  display:block;
-  width:100%;
-  padding:12px;
-  border:1px solid var(--line);
-  border-radius:12px;
-  background:#fffafd;
-  color:var(--ink);
-  margin:8px 0 14px;
-}
-label{font-size:13px;font-weight:bold}
-.small{font-size:12px;color:var(--muted)}
-.scene{
+.phone{
   position:relative;
-  min-height:290px;
-  border-radius:25px;
+  width:min(100%,430px);
+  height:min(900px,96dvh);
+  background:var(--cream);
   overflow:hidden;
-  background:linear-gradient(#e5f3ff 0 65%,#e6d5ed 65%);
-  border:5px solid white;
-  box-shadow:0 5px 20px #b77b9920;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
+  display:flex;flex-direction:column;
+  border-radius:37px;
+  border:7px solid #fff;
+  box-shadow:0 24px 90px #71546835,0 0 0 1px #dfcbd4;
 }
-.scene.garden{
-  background:linear-gradient(#dcf3ff 0 60%,#cbe9c5 60%);
+.app-header{
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 18px 12px;
+  background:#fffaf9;
+  z-index:3;
 }
-.scene.bedroom{
-  background:linear-gradient(#f6e9ff 0 65%,#ebd8e6 65%);
+.brand{font-weight:800;font-size:21px;letter-spacing:-1px}
+.brand small{display:block;font-size:10px;font-weight:600;letter-spacing:2px;color:#bd97a8}
+.header-actions{display:flex;gap:8px;align-items:center}
+.currency{
+  background:#fff1d9;border:1px solid #f5e2c4;
+  padding:9px 12px;border-radius:20px;
+  font-size:13px;font-weight:800;
 }
-.panda{
-  font-size:100px;
-  animation:bob 2.5s ease-in-out infinite;
+.round-btn{
+  width:36px;height:36px;border:0;border-radius:50%;
+  background:#f8eaf0;color:#806576;font-size:18px;
+}
+.content{
+  flex:1;min-height:0;overflow:auto;
+  scrollbar-width:none;
+  background:#fffaf9;
+}
+.content::-webkit-scrollbar{display:none}
+.screen{display:none;min-height:100%}
+.screen.active{display:block}
+.bottom-nav{
+  flex-shrink:0;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:#fff;
+  border-top:1px solid #f3e6eb;
+  padding:10px 5px max(10px,env(safe-area-inset-bottom));
+  z-index:5;
+}
+.tab{
+  border:0;background:none;color:#b8a4ae;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  font-size:10px;font-weight:800;
+}
+.tab .tab-icon{font-size:24px}
+.tab.active{color:#c983a0}
+.tab.active .tab-icon{transform:translateY(-2px)}
+.section-pad{padding:18px}
+.section-title{font-size:23px;letter-spacing:-.8px;margin:0 0 5px}
+.section-sub{font-size:12px;color:var(--muted);margin:0 0 18px}
+.card{
+  background:white;border:1px solid var(--line);
+  border-radius:22px;padding:17px;
+  box-shadow:0 5px 16px #98788c0a;
+  margin-bottom:13px;
+}
+.card h3{font-size:15px;margin:0 0 9px}
+.small{font-size:12px;color:var(--muted);line-height:1.6}
+.btn{
+  border:0;border-radius:16px;
+  padding:12px 16px;font-weight:800;
+  background:#f2bfd0;color:#775b69;
+}
+.btn.secondary{background:#f7eef3}
+.btn.cream{background:#fff4df}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.full{width:100%}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+input,select{
+  width:100%;border:1px solid #eadde2;
+  background:#fffbfc;color:var(--ink);
+  padding:12px;border-radius:13px;outline:none;
+  margin:6px 0 12px;
+}
+label{font-size:12px;font-weight:800}
+.divider{height:1px;background:#f1e7ea;margin:16px 0}
+.tag{
+  display:inline-block;background:#fff0f5;
+  border-radius:20px;padding:5px 10px;
+  font-size:10px;font-weight:800;color:#b47b94;
+}
+
+/* MAIN ROOM */
+.room-wrap{position:relative}
+.room{
+  position:relative;
+  width:100%;
+  height:clamp(400px,64dvh,600px);
+  overflow:hidden;
+  isolation:isolate;
+  background:linear-gradient(#f7e8e6 0 66%,#dec6b9 66% 100%);
+  transition:background .35s;
+}
+.room.wall-lilac{background:linear-gradient(#eee5f8 0 66%,#d9c7bf 66% 100%)}
+.room.wall-sage{background:linear-gradient(#e4ede2 0 66%,#d8c7b7 66% 100%)}
+.room.wall-cream{background:linear-gradient(#f7eddd 0 66%,#dfc8b7 66% 100%)}
+.room:before{
+  content:"";position:absolute;top:66%;left:0;width:100%;height:2px;
+  background:#c7ac9e;z-index:0;
+}
+.room:after{
+  content:"";position:absolute;bottom:0;left:0;width:100%;height:33%;
+  background:repeating-linear-gradient(90deg,transparent 0 64px,#b8998822 65px 67px);
+  pointer-events:none;z-index:0;
+}
+.wall-pattern{
+  position:absolute;inset:0 0 34%;
+  background-image:radial-gradient(#fff9 1.4px,transparent 1.4px);
+  background-size:26px 26px;
+  pointer-events:none;
+}
+.window{
+  position:absolute;left:8%;top:10%;width:38%;height:32%;
+  background:linear-gradient(#c5dbea,#e8f4ee);
+  border:10px solid #fff9f2;border-radius:75px 75px 12px 12px;
+  box-shadow:0 5px 0 #bfa9a4,0 9px 25px #9d7f8620;
+  overflow:hidden;
+}
+.window:after{
+  content:"";position:absolute;left:48%;top:0;height:100%;width:6px;background:#fff9f2;
+}
+.window:before{
+  content:"☁️";position:absolute;top:30%;left:8%;font-size:30px;
+}
+.window-curtain{
+  position:absolute;top:9%;left:5%;width:44%;height:29%;
+  border-left:18px solid #f7d6dd99;
+  border-right:18px solid #f7d6dd99;
+  border-radius:0 0 20px 20px;
+  pointer-events:none;
+}
+.wall-art{
+  position:absolute;top:14%;right:10%;width:27%;height:20%;
+  background:#fff9f3;border:7px solid #e4c3b6;
+  border-radius:10px;display:grid;place-items:center;
+  font-size:39px;box-shadow:0 4px 10px #81616a15;
+}
+.shelf{
+  position:absolute;right:8%;top:43%;width:30%;height:10px;
+  background:#d0ab99;border-radius:10px;
+  box-shadow:0 5px 0 #ba9688;
+}
+.shelf:before{content:"🪴 🕯️";position:absolute;bottom:6px;left:5px;font-size:27px;white-space:nowrap}
+.rug{
+  position:absolute;bottom:9%;left:9%;width:82%;height:21%;
+  background:#f4dfdc;border:7px solid #fff3e9;
+  border-radius:50%;box-shadow:0 8px 0 #af8f8b20;
+}
+.bed{
+  position:absolute;right:2%;bottom:20%;width:57%;height:25%;
+  border-radius:26px 26px 15px 15px;
+  background:#e6b9c9;border:9px solid #cda0ad;
+  box-shadow:0 13px 0 #b99196,0 20px 16px #7e5b5c26;
+}
+.bed:before{
+  content:"";position:absolute;inset:10px 8px 22%;
+  background:#fff2f4;border-radius:20px;
+}
+.bed:after{
+  content:"☁️";position:absolute;top:12%;right:14%;font-size:34px;
+}
+.lamp{
+  position:absolute;left:7%;bottom:30%;
+  font-size:52px;filter:drop-shadow(0 8px 5px #8b6c6b25);
+}
+.plant{
+  position:absolute;right:3%;bottom:34%;
+  font-size:49px;filter:drop-shadow(0 7px 4px #8b6c6b25);
+}
+.room-item{position:absolute;z-index:2;cursor:pointer}
+.room-item:active{transform:scale(.94)}
+.panda-character{
+  position:absolute;left:19%;bottom:15%;z-index:3;
+  width:125px;height:145px;
   cursor:pointer;
-  user-select:none;
+  filter:drop-shadow(0 12px 8px #725b6430);
+  animation:breathe 3s ease-in-out infinite;
+  transform-origin:bottom center;
 }
-@keyframes bob{
-  50%{transform:translateY(-10px)}
+@keyframes breathe{
+  50%{transform:translateY(-5px) scale(1.025)}
 }
-.speech{
-  background:white;
-  border-radius:18px;
-  padding:12px 18px;
+.panda-head{
+  position:absolute;top:14px;left:15px;width:95px;height:85px;
+  border-radius:48%;background:#fffdfa;
+  border:3px solid #655c60;
+  z-index:2;
+}
+.ear{
+  position:absolute;width:32px;height:34px;
+  background:#625a60;border-radius:50%;top:-15px;z-index:-1;
+}
+.ear.left{left:0}
+.ear.right{right:0}
+.eye-patch{
+  position:absolute;top:28px;width:27px;height:33px;
+  background:#696168;border-radius:50%;
+}
+.eye-patch.left{left:15px;transform:rotate(20deg)}
+.eye-patch.right{right:15px;transform:rotate(-20deg)}
+.eye{
+  position:absolute;top:11px;left:10px;
+  width:8px;height:11px;background:white;border-radius:50%;
+}
+.blush{
+  position:absolute;top:54px;width:17px;height:9px;
+  border-radius:50%;background:#f3aebc88;
+}
+.blush.left{left:5px}.blush.right{right:5px}
+.nose{
+  position:absolute;top:55px;left:42px;
+  width:11px;height:8px;background:#695e65;border-radius:50%;
+}
+.mouth{
+  position:absolute;top:63px;left:43px;
+  width:10px;height:7px;
+  border-bottom:2px solid #6d5c65;border-radius:50%;
+}
+.panda-body{
+  position:absolute;bottom:0;left:27px;
+  width:74px;height:75px;background:#fffdfa;
+  border:3px solid #655c60;border-radius:45% 45% 40% 40%;
+}
+.panda-body:before{
+  content:"";position:absolute;top:8px;left:20px;
+  width:30px;height:49px;border-radius:50%;background:#e9e4e5;
+}
+.arm{
+  position:absolute;top:15px;width:28px;height:48px;
+  background:#655d63;border-radius:22px;
+}
+.arm.left{left:-15px;transform:rotate(20deg)}
+.arm.right{right:-15px;transform:rotate(-20deg)}
+.foot{
+  position:absolute;bottom:-5px;width:31px;height:21px;
+  border-radius:50%;background:#655d63;
+}
+.foot.left{left:1px}.foot.right{right:1px}
+.accessory{
+  position:absolute;z-index:5;top:0;left:38px;font-size:36px;
+  pointer-events:none;
+}
+.panda-shadow{
+  position:absolute;bottom:13%;left:18%;
+  width:130px;height:23px;border-radius:50%;
+  background:#82666a33;filter:blur(5px);
+}
+.bubble{
+  position:absolute;z-index:5;left:10%;bottom:57%;
+  max-width:185px;background:#fffdfa;
+  padding:10px 13px;border-radius:17px 17px 17px 3px;
+  box-shadow:var(--shadow);font-size:12px;font-weight:700;
+  text-align:center;
+  animation:pop .25s ease-out;
+}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.room-top{
+  position:absolute;z-index:6;top:13px;left:13px;right:13px;
+  display:flex;justify-content:space-between;align-items:flex-start;
+  pointer-events:none;
+}
+.room-top>*{pointer-events:auto}
+.room-label{
+  background:#fffaf4e8;border:1px solid white;
+  padding:10px 13px;border-radius:17px;
+  font-size:12px;font-weight:800;
+  box-shadow:0 4px 15px #826a7020;
+}
+.room-buttons{display:flex;gap:6px}
+.room-buttons button{
+  border:1px solid white;background:#fffaf4e8;
+  width:38px;height:38px;border-radius:14px;font-size:18px;
+}
+.room-bottom{
+  position:absolute;z-index:6;bottom:13px;left:12px;right:12px;
+  display:flex;gap:8px;
+}
+.action{
+  flex:1;background:#fffaf5ed;border:1px solid #fff;
+  border-radius:16px;padding:10px 4px;
+  font-size:11px;font-weight:800;color:#8d6b78;
+  box-shadow:0 4px 12px #8e707026;
+}
+.action span{display:block;font-size:22px;margin-bottom:3px}
+.home-info{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:15px 17px 5px;
+}
+.home-info strong{font-size:15px}
+.home-info p{margin:4px 0;font-size:11px;color:var(--muted)}
+.mood-pill{background:#f8e9ef;border:0;border-radius:20px;padding:9px 12px;font-size:12px;font-weight:800;color:#aa758a}
+
+/* PROFILE */
+.profile-banner{
+  background:linear-gradient(145deg,#f8dfe8,#eee4fa);
+  border-radius:24px;padding:20px;text-align:center;
   margin-bottom:15px;
+}
+.profile-avatar{font-size:75px;line-height:1.3}
+.profile-banner h2{margin:3px 0}
+.mood-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mood-option{
+  border:1px solid #f0e0e6;background:#fff9fb;
+  padding:12px 4px;border-radius:15px;
+  font-size:12px;font-weight:800;color:var(--ink);
+}
+.mood-option span{display:block;font-size:26px;margin-bottom:5px}
+.mood-option.selected{background:#fce5ef;border-color:#e7adc2}
+.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.mini-item{
+  border:1px solid var(--line);border-radius:17px;
+  background:#fffafc;padding:14px;text-align:center;
+}
+.mini-item .emoji{font-size:34px;margin-bottom:7px}
+.mini-item h4{font-size:12px;margin:5px 0}
+.mini-item p{font-size:11px;color:var(--muted);margin:5px 0 10px}
+.mini-item button{font-size:11px;padding:9px 12px}
+
+/* REWARDS */
+.gift-hero{
   text-align:center;
-  max-width:85%;
+  background:linear-gradient(145deg,#f9e3ee,#f1e9ff);
+  border-radius:25px;padding:23px;margin-bottom:15px;
 }
-.decor{
-  font-size:34px;
-  text-align:center;
-  min-height:45px;
-  letter-spacing:6px;
+.gift-hero .gift{font-size:80px;display:block;margin:8px}
+.quest{
+  display:flex;align-items:center;gap:12px;
+  border:1px solid var(--line);border-radius:18px;
+  padding:13px;margin-bottom:9px;background:#fff;
 }
-.item{
-  background:#fff8fc;
-  border:1px solid var(--line);
-  border-radius:17px;
-  padding:14px;
-  text-align:center;
+.quest-icon{
+  width:48px;height:48px;border-radius:15px;
+  background:#fff1f6;display:grid;place-items:center;font-size:25px;
 }
-.item .emoji{font-size:38px}
-.progress{
-  height:15px;
-  border-radius:20px;
-  background:#f5e7f0;
-  overflow:hidden;
+.quest-main{flex:1;min-width:0}
+.quest-main strong{font-size:12px}
+.quest-main p{font-size:10px;color:var(--muted);margin:4px 0}
+.quest-done{font-size:11px;font-weight:800;color:#b789a0}
+
+/* SHOP */
+.shop-banner{
+  background:linear-gradient(130deg,#e7d6f4,#fce2ec);
+  border-radius:24px;padding:23px;margin-bottom:14px;
 }
-.progress span{
-  display:block;
-  height:100%;
-  background:linear-gradient(90deg,#f4b6d0,#d7b5f2);
+.shop-banner h2{font-size:25px;margin:0 0 5px}
+.shop-banner p{font-size:12px;line-height:1.6}
+.shop-tabs{display:flex;gap:7px;margin-bottom:15px}
+.shop-tabs button{
+  flex:1;border:0;border-radius:14px;padding:12px 5px;
+  background:#f8eef2;color:#a78b98;font-size:12px;font-weight:800;
 }
-.notice{
-  padding:12px;
-  border-radius:15px;
-  background:#fff4df;
-  font-size:13px;
+.shop-tabs button.active{background:#eec5d6;color:#7d5b6c}
+.premium-card{
+  display:flex;align-items:center;gap:12px;
+  border:1px solid #f1e2e9;border-radius:20px;
+  padding:15px;background:white;margin-bottom:10px;
 }
-#gameArea{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
-  padding:25px;
+.premium-art{
+  width:76px;height:83px;border-radius:17px;
+  background:linear-gradient(145deg,#fce5ee,#eee4ff);
+  display:grid;place-items:center;font-size:42px;flex-shrink:0;
 }
-#gameArea button{
-  font-size:55px;
-  border:2px solid #f6d8e6;
-  background:#fff7fb;
-  border-radius:22px;
-  padding:15px;
+.premium-info{flex:1}
+.premium-info h3{margin:0 0 4px;font-size:14px}
+.premium-info p{margin:0 0 8px;font-size:11px;color:var(--muted);line-height:1.5}
+.premium-info button{padding:8px 12px;font-size:11px}
+
+/* DRAWERS */
+.overlay{
+  position:absolute;inset:0;z-index:20;
+  background:#48313f66;
+  display:none;align-items:flex-end;
 }
-#gameArea button:hover{transform:scale(1.07)}
-#toast{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#725b72;
-  color:white;
-  border-radius:18px;
-  padding:12px 20px;
+.overlay.open{display:flex}
+.sheet{
+  width:100%;max-height:85%;overflow:auto;
+  background:#fffbfa;border-radius:28px 28px 0 0;
+  padding:18px 19px 25px;
+  animation:slide .25s ease;
+}
+@keyframes slide{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.sheet-head h3{margin:0}
+.close{
+  border:0;background:#f7edf1;border-radius:50%;
+  width:33px;height:33px;font-size:18px;color:#9d7b8b;
+}
+.color-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.color-option{
+  border:2px solid white;border-radius:16px;height:70px;
+  box-shadow:0 0 0 1px #e6d7dc;
+}
+.toast{
+  position:absolute;z-index:30;bottom:87px;left:50%;
+  transform:translateX(-50%);width:max-content;max-width:85%;
+  padding:12px 16px;border-radius:18px;
+  background:#785e70;color:white;font-size:12px;font-weight:700;
+  text-align:center;box-shadow:var(--shadow);
   display:none;
-  z-index:10;
-  max-width:90%;
-  text-align:center;
 }
-footer{
-  text-align:center;
-  padding:20px;
-  color:var(--muted);
-  font-size:12px;
+.settings-note{
+  background:#fff5e8;border-radius:16px;
+  padding:13px;font-size:11px;line-height:1.6;
 }
-@media(max-width:600px){
-  h1{font-size:25px}
-  main{padding:15px 10px}
-  nav button{font-size:12px}
-  .panda{font-size:80px}
+@media(max-width:500px){
+  body{display:block;background:#fffaf9}
+  .phone{
+    width:100%;height:100dvh;max-height:none;
+    border:0;border-radius:0;box-shadow:none;
+  }
+  .app-header{padding-top:max(16px,env(safe-area-inset-top))}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
 <body>
+<div class="phone" id="app">
 
-<header>
-  <h1>🐼 Panda Friends 🌸</h1>
-  <div class="subtitle">Your own little cosy panda world</div>
-  <div class="stats">
-    <div class="pill">⭐ <b id="starsTop">0</b> stars</div>
-    <div class="pill">🐼 <b id="nameTop">Mochi</b></div>
-    <div class="pill">💗 Level <b id="levelTop">1</b></div>
-    <div class="pill">🏆 <b id="badgesTop">0</b> awards</div>
+<header class="app-header">
+  <div class="brand">panda friends <span style="color:#dfa0b7">♡</span>
+    <small>YOUR LITTLE WORLD</small>
+  </div>
+  <div class="header-actions">
+    <div class="currency">⭐ <span id="stars">0</span></div>
+    <button class="round-btn" onclick="openSheet('settings')" aria-label="Settings">⚙️</button>
   </div>
 </header>
 
-<nav id="nav">
-  <button class="active" data-page="home">🏡 Home</button>
-  <button data-page="bedroom">🛏️ Bedroom</button>
-  <button data-page="garden">🌷 Garden</button>
-  <button data-page="town">🗺️ Town</button>
-  <button data-page="studio">🐼 My Pandas</button>
-  <button data-page="shop">🛍️ Shop</button>
-  <button data-page="gifts">🎁 Daily Gifts</button>
-  <button data-page="quests">📋 Quests</button>
-  <button data-page="game">🧁 Mini Game</button>
-  <button data-page="photo">📸 Photo Booth</button>
-  <button data-page="stickers">📒 Stickers</button>
-  <button data-page="birthday">🎂 Birthday</button>
-  <button data-page="awards">🏆 Awards</button>
+<div class="content" id="content">
+
+<!-- HOME -->
+<section class="screen active" id="home">
+  <div class="room-wrap">
+    <div class="room" id="room">
+      <div class="wall-pattern"></div>
+      <div class="window"></div>
+      <div class="window-curtain"></div>
+      <div class="wall-art" id="wallArt">🌷</div>
+      <div class="shelf"></div>
+      <div class="rug"></div>
+      <div class="bed"></div>
+      <div class="lamp room-item" onclick="roomInteract('lamp')">🛋️</div>
+      <div class="plant room-item" onclick="roomInteract('plant')">🪴</div>
+      <div class="panda-shadow"></div>
+
+      <div class="panda-character" onclick="petPanda()" role="button" tabindex="0" aria-label="Pet your panda" id="pandaCharacter">
+        <div class="panda-body">
+          <div class="arm left"></div>
+          <div class="arm right"></div>
+          <div class="foot left"></div>
+          <div class="foot right"></div>
+        </div>
+        <div class="panda-head">
+          <div class="ear left"></div>
+          <div class="ear right"></div>
+          <div class="eye-patch left"><div class="eye"></div></div>
+          <div class="eye-patch right"><div class="eye"></div></div>
+          <div class="blush left"></div>
+          <div class="blush right"></div>
+          <div class="nose"></div>
+          <div class="mouth"></div>
+        </div>
+        <div class="accessory" id="pandaAccessory"></div>
+      </div>
+
+      <div class="bubble" id="speech">Welcome home! ♡</div>
+
+      <div class="room-top">
+        <div class="room-label">🏡 <span id="roomName">Mochi's room</span></div>
+        <div class="room-buttons">
+          <button onclick="openSheet('decorate')" aria-label="Decorate room">🎨</button>
+          <button onclick="openSheet('activities')" aria-label="Room activities">✨</button>
+        </div>
+      </div>
+
+      <div class="room-bottom">
+        <button class="action" onclick="doAction('feed')"><span>🍓</span>Feed</button>
+        <button class="action" onclick="doAction('rest')"><span>🛏️</span>Rest</button>
+        <button class="action" onclick="doAction('play')"><span>🧸</span>Play</button>
+        <button class="action" onclick="doAction('care')"><span>💗</span>Care</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-info">
+    <div>
+      <strong id="homePandaName">Mochi ♡</strong>
+      <p id="homeStatus">Feeling cosy today</p>
+    </div>
+    <button class="mood-pill" onclick="navigate('panda')">
+      <span id="homeMood">☁️ Cosy</span> ▾
+    </button>
+  </div>
+
+  <div class="section-pad" style="padding-top:8px">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <h3>Our little home ♡</h3>
+          <p class="small" style="margin:0">Make every day a little sweeter.</p>
+        </div>
+        <span style="font-size:32px">🧸</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PANDA PROFILE -->
+<section class="screen" id="panda">
+  <div class="section-pad">
+    <h2 class="section-title">My panda ♡</h2>
+    <p class="section-sub">Everything about your little companion.</p>
+
+    <div class="profile-banner">
+      <div class="profile-avatar">🐼</div>
+      <h2 id="profileName">Mochi</h2>
+      <span class="tag" id="profileMood">☁️ Cosy</span>
+      <p class="small">Your forever little panda pal ♡</p>
+    </div>
+
+    <div class="card">
+      <h3>✏️ About me</h3>
+      <label>My name</label>
+      <input id="nameInput" maxlength="18" placeholder="Your panda's name">
+      <label>My birthday</label>
+      <input type="date" id="birthdayInput">
+      <label>A little about me</label>
+      <input id="bioInput" maxlength="80" placeholder="I love cosy naps and strawberries...">
+      <button class="btn full" onclick="saveProfile()">Save my profile ♡</button>
+    </div>
+
+    <div class="card">
+      <h3>💭 How am I feeling?</h3>
+      <p class="small">Choose your panda's mood anytime.</p>
+      <div class="mood-grid" id="moodOptions"></div>
+    </div>
+
+    <div class="card">
+      <h3>🎀 My style</h3>
+      <p class="small">Choose a little accessory for your panda.</p>
+      <div class="mini-grid" id="accessoryOptions"></div>
+    </div>
+
+    <div class="card">
+      <h3>🎂 My special day</h3>
+      <p id="birthdayText" class="small">Set a birthday to celebrate!</p>
+    </div>
+  </div>
+</section>
+
+<!-- REWARDS -->
+<section class="screen" id="rewards">
+  <div class="section-pad">
+    <h2 class="section-title">Little rewards ♡</h2>
+    <p class="section-sub">Tiny surprises for your cosy days.</p>
+
+    <div class="gift-hero">
+      <span class="tag">DAILY SURPRISE</span>
+      <span class="gift">🎁</span>
+      <h2 style="margin:0 0 7px">A gift for you!</h2>
+      <p class="small">A little something to brighten your day.</p>
+      <button class="btn" id="giftButton" onclick="claimGift()">Open my gift ♡</button>
+      <p class="small" id="giftMessage"></p>
+    </div>
+
+    <h3 style="font-size:16px">🌷 Today's little quests</h3>
+    <p class="section-sub">Complete these while enjoying your room.</p>
+    <div id="questList"></div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="screen" id="shop">
+  <div class="section-pad">
+    <h2 class="section-title">The boutique ♡</h2>
+    <p class="section-sub">Pretty little things for your panda world.</p>
+
+    <div class="shop-banner">
+      <span class="tag">THE PANDA COLLECTION</span>
+      <h2>PandaLuxe ✨</h2>
+      <p>A dreamy collection of special extras and cosy room packs.</p>
+    </div>
+
+    <div class="shop-tabs">
+      <button id="shopTabStars" class="active" onclick="setShopTab('stars')">⭐ Star Shop</button>
+      <button id="shopTabLuxe" onclick="setShopTab('luxe')">✨ PandaLuxe</button>
+      <button id="shopTabPacks" onclick="setShopTab('packs')">🎀 Packs</button>
+    </div>
+
+    <div id="shopContent"></div>
+  </div>
+</section>
+
+</div>
+
+<nav class="bottom-nav">
+  <button class="tab active" data-screen="home" onclick="navigate('home')"><span class="tab-icon">🏡</span>Home</button>
+  <button class="tab" data-screen="panda" onclick="navigate('panda')"><span class="tab-icon">🐼</span>My Panda</button>
+  <button class="tab" data-screen="rewards" onclick="navigate('rewards')"><span class="tab-icon">🎁</span>Rewards</button>
+  <button class="tab" data-screen="shop" onclick="navigate('shop')"><span class="tab-icon">🛍️</span>Boutique</button>
 </nav>
 
-<main>
+<div class="overlay" id="overlay" onclick="overlayClick(event)">
+  <div class="sheet" id="sheet"></div>
+</div>
 
-<section class="page active" id="home">
-  <div class="card">
-    <h2>Welcome to your panda world! 🌸</h2>
-    <p>Adopt pandas, decorate your home, explore town and collect little surprises.</p>
-    <p class="small">Everything works offline. Your progress is saved in this browser.</p>
-  </div>
-  <div class="scene">
-    <div class="speech" id="speech">Hello! I'm so happy you're here! 💗</div>
-    <div class="decor" id="homeDecor">🪴 🧸 🌷</div>
-    <div class="panda" id="homePanda" onclick="pandaTalk()">🐼</div>
-  </div>
-  <div class="grid" style="margin-top:15px">
-    <div class="card">
-      <h3>🐾 Your panda</h3>
-      <p id="homeName">Mochi</p>
-      <button class="btn" onclick="pandaTalk()">Say hello 💗</button>
-    </div>
-    <div class="card">
-      <h3>⭐ Your progress</h3>
-      <p id="progressText">0 / 30 stars</p>
-      <div class="progress"><span id="progressBar"></span></div>
-    </div>
-    <div class="card">
-      <h3>🌸 Little message</h3>
-      <p id="dailyMessage">Today is a lovely day!</p>
-      <button class="btn soft" onclick="newMessage()">Another message</button>
-    </div>
-  </div>
-</section>
-
-<section class="page" id="bedroom">
-  <h2>🛏️ Panda Bedroom</h2>
-  <p>Decorate a cosy room for your pandas!</p>
-  <div class="scene bedroom">
-    <div class="speech">Home sweet home! ☁️</div>
-    <div class="decor" id="bedDecor"></div>
-    <div class="panda">🐼</div>
-  </div>
-  <div class="card">
-    <h3>Choose decorations</h3>
-    <div class="grid" id="bedOptions"></div>
-  </div>
-</section>
-
-<section class="page" id="garden">
-  <h2>🌷 Panda Garden</h2>
-  <p>Plant cute flowers and watch your garden grow!</p>
-  <div class="scene garden">
-    <div class="speech">The flowers are so pretty! 🌸</div>
-    <div class="decor" id="gardenDecor"></div>
-    <div class="panda">🐼</div>
-  </div>
-  <div class="card">
-    <h3>Plant something</h3>
-    <div class="grid" id="gardenOptions"></div>
-  </div>
-</section>
-
-<section class="page" id="town">
-  <h2>🗺️ Panda Town</h2>
-  <p>Visit different places with your panda!</p>
-  <div class="grid" id="townPlaces"></div>
-</section>
-
-<section class="page" id="studio">
-  <h2>🐼 Panda Studio</h2>
-  <p>Meet your panda family and customise your panda!</p>
-  <div class="card">
-    <label>Your panda's name</label>
-    <input id="pandaNameInput" maxlength="18" placeholder="Mochi">
-    <label>Panda style</label>
-    <select id="pandaStyle">
-      <option value="🐼">🐼 Classic Panda</option>
-      <option value="🐻‍❄️">🐻‍❄️ Snowy Panda</option>
-      <option value="🐨">🐨 Koala Pal</option>
-      <option value="🧸">🧸 Teddy Pal</option>
-    </select>
-    <button class="btn" onclick="savePanda()">Save Panda 💗</button>
-  </div>
-  <div class="card">
-    <h3>Your panda family</h3>
-    <div class="grid" id="pandaFamily"></div>
-    <button class="btn soft" onclick="adoptPanda()">Adopt another panda · 25 ⭐</button>
-  </div>
-</section>
-
-<section class="page" id="shop">
-  <h2>🛍️ Panda Shop</h2>
-  <p>Spend your stars on cute little treasures!</p>
-  <div class="grid" id="shopItems"></div>
-</section>
-
-<section class="page" id="gifts">
-  <h2>🎁 Daily Gift</h2>
-  <div class="card" style="text-align:center">
-    <div style="font-size:85px">🎁</div>
-    <h3>A little present for you!</h3>
-    <p>Come back each day for 15 free stars.</p>
-    <button class="btn" id="giftButton" onclick="claimGift()">Open gift 💗</button>
-    <p class="small" id="giftStatus"></p>
-  </div>
-</section>
-
-<section class="page" id="quests">
-  <h2>📋 Daily Quests</h2>
-  <p>Complete little tasks for extra stars!</p>
-  <div class="grid" id="questList"></div>
-</section>
-
-<section class="page" id="game">
-  <h2>🧁 Treat Catcher</h2>
-  <div class="card" style="text-align:center">
-    <h3>Catch 5 yummy treats!</h3>
-    <p>Complete the game to earn 8 stars.</p>
-    <h2 id="gameScore">0 / 5</h2>
-    <p id="gameMessage">Ready to play?</p>
-    <div id="gameArea">🧁 🍓 🍪</div>
-    <button class="btn" id="startGame" onclick="startGame()">Start Game 🌸</button>
-  </div>
-</section>
-
-<section class="page" id="photo">
-  <h2>📸 Panda Photo Booth</h2>
-  <div class="card" style="text-align:center">
-    <div class="scene" id="photoScene">
-      <div class="decor" id="photoDecor">🌸 ✨ 🌷</div>
-      <div class="panda" id="photoPanda">🐼</div>
-      <h2 id="photoName">Mochi</h2>
-    </div>
-    <button class="btn" onclick="changePhoto()">Change background 🌈</button>
-    <button class="btn soft" onclick="takePhoto()">Take a photo 📸</button>
-    <p class="small">A cute photo moment just for your panda!</p>
-  </div>
-</section>
-
-<section class="page" id="stickers">
-  <h2>📒 Sticker Book</h2>
-  <p>Collect stickers while you explore!</p>
-  <div class="grid" id="stickerBook"></div>
-</section>
-
-<section class="page" id="birthday">
-  <h2>🎂 Panda Birthday</h2>
-  <div class="card">
-    <h3>When is your panda's birthday?</h3>
-    <input type="date" id="birthdayInput">
-    <button class="btn" onclick="saveBirthday()">Save Birthday 🎀</button>
-    <p id="birthdayMessage"></p>
-  </div>
-</section>
-
-<section class="page" id="awards">
-  <h2>🏆 Panda Awards</h2>
-  <p>Unlock achievements as you play!</p>
-  <div class="grid" id="awardList"></div>
-</section>
-
-</main>
-
-<footer>
-  🐼 Panda Friends 🌸
-  <p>Your little offline world · Saved in this browser</p>
-</footer>
-
-<div id="toast"></div>
+<div class="toast" id="toast"></div>
+</div>
 
 <script>
 "use strict";
 
-const $ = id => document.getElementById(id);
+const $=id=>document.getElementById(id);
+const SAVE_KEY="pandaFriendsCosyV1";
 
-const KEY = "pandaFriendsOfflineSave";
-
-const defaults = {
-  stars:30,
+const defaults={
   name:"Mochi",
-  style:"🐼",
-  pandas:[{name:"Mochi",style:"🐼"}],
-  bedroom:["🧸","🪴"],
-  garden:["🌷"],
-  inventory:[],
-  lastGift:"",
-  visits:0,
-  gameWins:0,
   birthday:"",
-  photoIndex:0,
+  bio:"I love cosy naps and strawberries!",
+  mood:"cosy",
+  accessory:"none",
+  stars:60,
+  wall:"pink",
+  art:"🌷",
+  inventory:["none"],
+  lastGift:"",
   quests:{},
-  questDate:""
+  questDate:"",
+  totalPets:0,
+  totalFeeds:0,
+  totalPlays:0,
+  totalCare:0,
+  totalRests:0,
+  visits:0
 };
 
-let state;
+let state={...defaults};
 
 try{
-  const saved=JSON.parse(localStorage.getItem(KEY)||"null");
-  state={...defaults,...(saved||{})};
+  const stored=JSON.parse(localStorage.getItem(SAVE_KEY)||"null");
+  if(stored&&typeof stored==="object"){
+    state={...defaults,...stored};
+  }
 }catch(e){
-  state={...defaults};
+  console.warn("Could not load save",e);
 }
 
-if(!Array.isArray(state.pandas))state.pandas=[{name:"Mochi",style:"🐼"}];
-if(!Array.isArray(state.bedroom))state.bedroom=[];
-if(!Array.isArray(state.garden))state.garden=[];
-if(!Array.isArray(state.inventory))state.inventory=[];
+if(!Array.isArray(state.inventory))state.inventory=["none"];
 if(!state.quests||typeof state.quests!=="object")state.quests={};
 
-function today(){
+const moods=[
+  {id:"cosy",emoji:"☁️",name:"Cosy"},
+  {id:"happy",emoji:"🥰",name:"Happy"},
+  {id:"sleepy",emoji:"😴",name:"Sleepy"},
+  {id:"excited",emoji:"✨",name:"Excited"},
+  {id:"shy",emoji:"🌸",name:"Shy"},
+  {id:"calm",emoji:"🍵",name:"Calm"}
+];
+
+const accessories=[
+  {id:"none",emoji:"🐼",name:"Natural",price:0},
+  {id:"bow",emoji:"🎀",name:"Pink Bow",price:15},
+  {id:"crown",emoji:"👑",name:"Tiny Crown",price:30},
+  {id:"flower",emoji:"🌸",name:"Flower",price:12},
+  {id:"heart",emoji:"💗",name:"Heart",price:18},
+  {id:"star",emoji:"⭐",name:"Star",price:20}
+];
+
+const starItems=[
+  {id:"bow",emoji:"🎀",name:"Pink Bow",price:15},
+  {id:"flower",emoji:"🌸",name:"Flower",price:12},
+  {id:"heart",emoji:"💗",name:"Heart",price:18},
+  {id:"star",emoji:"⭐",name:"Star",price:20},
+  {id:"crown",emoji:"👑",name:"Tiny Crown",price:30}
+];
+
+const luxeItems=[
+  {emoji:"💎",name:"PandaLuxe Membership",description:"A future premium collection for your panda world."},
+  {emoji:"✨",name:"Luxe Style Collection",description:"Special outfits and accessories, coming later."}
+];
+
+const packs=[
+  {emoji:"🛏️",name:"Dreamy Bedroom Pack",description:"A soft pastel bedroom collection."},
+  {emoji:"🍓",name:"Strawberry Cottage Pack",description:"Sweet pink details and cottage-inspired décor."},
+  {emoji:"🌙",name:"Moonlight Cosy Pack",description:"A dreamy nighttime room theme."},
+  {emoji:"🧸",name:"Teddy Bear Pack",description:"Warm, cuddly decorations for your home."}
+];
+
+const quests=[
+  {id:"pet",emoji:"🐼",name:"Give your panda some love",detail:"Pet your panda",reward:5},
+  {id:"feed",emoji:"🍓",name:"A yummy little snack",detail:"Feed your panda",reward:8},
+  {id:"play",emoji:"🧸",name:"Playtime together",detail:"Play with your panda",reward:8},
+  {id:"decorate",emoji:"🎨",name:"Make home prettier",detail:"Change your room style",reward:10}
+];
+
+function localDay(){
   const d=new Date();
   return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 }
 
 function save(){
   try{
-    localStorage.setItem(KEY,JSON.stringify(state));
+    localStorage.setItem(SAVE_KEY,JSON.stringify(state));
   }catch(e){
-    toast("Your browser could not save progress.");
+    console.warn("Could not save progress",e);
+    showToast("Your browser couldn't save progress.");
   }
-  updateAll();
+  refresh();
 }
 
-function toast(message){
+let toastTimer;
+function showToast(message){
   const el=$("toast");
   el.textContent=message;
   el.style.display="block";
-  clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>el.style.display="none",2800);
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.style.display="none",2600);
 }
 
 function escapeHTML(value){
-  return String(value).replace(/[&<>"']/g,c=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  }[c]));
+  return String(value).replace(/[&<>"']/g,ch=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  }[ch]));
 }
 
-function changePage(page){
-  document.querySelectorAll(".page").forEach(el=>{
-    el.classList.toggle("active",el.id===page);
+function navigate(screen){
+  document.querySelectorAll(".screen").forEach(el=>{
+    el.classList.toggle("active",el.id===screen);
   });
-  document.querySelectorAll("nav button").forEach(el=>{
-    el.classList.toggle("active",el.dataset.page===page);
+  document.querySelectorAll(".tab").forEach(el=>{
+    el.classList.toggle("active",el.dataset.screen===screen);
   });
-  window.scrollTo({top:0,behavior:"smooth"});
-  renderPage(page);
+  $("content").scrollTop=0;
+  if(screen==="panda")renderProfile();
+  if(screen==="rewards")renderRewards();
+  if(screen==="shop")renderShop();
 }
 
-document.querySelectorAll("nav button").forEach(button=>{
-  button.addEventListener("click",()=>changePage(button.dataset.page));
+function getMood(){
+  return moods.find(m=>m.id===state.mood)||moods[0];
+}
+
+function refresh(){
+  $("stars").textContent=state.stars;
+  $("roomName").textContent=state.name+"'s room";
+  $("homePandaName").textContent=state.name+" ♡";
+  $("profileName").textContent=state.name;
+  const mood=getMood();
+  $("homeMood").textContent=mood.emoji+" "+mood.name;
+  $("profileMood").textContent=mood.emoji+" "+mood.name;
+  $("homeStatus").textContent="Feeling "+mood.name.toLowerCase()+" today";
+  $("pandaAccessory").textContent={
+    none:"",bow:"🎀",crown:"👑",flower:"🌸",heart:"💗",star:"⭐"
+  }[state.accessory]||"";
+  $("room").className="room wall-"+state.wall;
+  $("wallArt").textContent=state.art;
+}
+
+let speechTimer;
+function say(message){
+  $("speech").textContent=message;
+  $("speech").style.display="block";
+  clearTimeout(speechTimer);
+  speechTimer=setTimeout(()=>{
+    $("speech").style.display="none";
+  },4200);
+}
+
+function pick(list){
+  return list[Math.floor(Math.random()*list.length)];
+}
+
+function petPanda(){
+  state.totalPets++;
+  save();
+  completeQuest("pet");
+  say(pick([
+    "Hehe! That tickles! ♡",
+    "You're so sweet! 💗",
+    "I love little cuddles! 🐼",
+    "Best day ever! 🌸"
+  ]));
+}
+
+$("pandaCharacter").addEventListener("keydown",e=>{
+  if(e.key==="Enter"||e.key===" "){
+    e.preventDefault();
+    petPanda();
+  }
 });
 
-function addStars(amount){
-  state.stars+=amount;
+function doAction(type){
+  const actions={
+    feed:{
+      field:"totalFeeds",
+      quest:"feed",
+      messages:[
+        "Yummy strawberries! 🍓",
+        "That was delicious! ♡",
+        "More snacks later? 🧁"
+      ]
+    },
+    rest:{
+      field:"totalRests",
+      messages:[
+        "Time for a cosy nap... ☁️",
+        "So sleepy... zzz 💤",
+        "This bed is so soft! 🛏️"
+      ]
+    },
+    play:{
+      field:"totalPlays",
+      quest:"play",
+      messages:[
+        "YAY! Playtime! 🧸",
+        "That was so fun! ✨",
+        "Again, again! 💗"
+      ]
+    },
+    care:{
+      field:"totalCare",
+      messages:[
+        "I feel so loved! 🌸",
+        "Thank you for looking after me! ♡",
+        "You're the best! 🐼"
+      ]
+    }
+  };
+  const action=actions[type];
+  if(!action)return;
+  state[action.field]++;
   save();
-  toast("You earned "+amount+" stars! ⭐");
+  if(action.quest)completeQuest(action.quest);
+  say(pick(action.messages));
 }
 
-function updateAll(){
-  const level=1+Math.floor(Math.max(0,state.stars)/30);
-  $("starsTop").textContent=state.stars;
-  $("nameTop").textContent=state.name;
-  $("levelTop").textContent=level;
-  $("homeName").textContent=state.name;
-  $("homePanda").textContent=state.style;
-  $("progressText").textContent=(Math.max(0,state.stars)%30)+" / 30 stars";
-  $("progressBar").style.width=((Math.max(0,state.stars)%30)/30*100)+"%";
-  $("homeDecor").textContent=state.bedroom.join(" ")||"🌸";
-  $("badgesTop").textContent=awards.filter(a=>a.done()).length;
-  $("photoPanda").textContent=state.style;
-  $("photoName").textContent=state.name;
+function roomInteract(object){
+  if(object==="lamp")say("Let's get extra cosy! 🕯️");
+  if(object==="plant")say("Our little plant looks lovely! 🌿");
 }
 
-const messages=[
-  "You're a little star! ⭐",
-  "Every day can be a cosy day. 🌸",
-  "Your panda thinks you're wonderful! 🐼",
-  "A cup of cocoa makes everything cosy. ☕",
-  "Little adventures make lovely memories. 💗",
-  "Today is full of tiny surprises! 🎁"
-];
-
-function newMessage(){
-  $("dailyMessage").textContent=messages[Math.floor(Math.random()*messages.length)];
-}
-
-function pandaTalk(){
-  const lines=[
-    "I love our little home! 💗",
-    "Can we visit the garden? 🌷",
-    "You're my favourite panda pal! 🐼",
-    "Let's go on an adventure! ✨",
-    "I could eat some bamboo! 🎋"
-  ];
-  $("speech").textContent=lines[Math.floor(Math.random()*lines.length)];
-}
-
-const bedItems=[
-  {emoji:"🧸",name:"Teddy"},
-  {emoji:"🪴",name:"Plant"},
-  {emoji:"🛋️",name:"Sofa"},
-  {emoji:"🛏️",name:"Bed"},
-  {emoji:"🪞",name:"Mirror"},
-  {emoji:"🕯️",name:"Candle"},
-  {emoji:"🌸",name:"Flowers"},
-  {emoji:"🎀",name:"Bow"}
-];
-
-function renderBedroom(){
-  $("bedDecor").textContent=state.bedroom.join(" ")||"☁️";
-  $("bedOptions").innerHTML=bedItems.map(item=>`
-    <div class="item">
-      <div class="emoji">${item.emoji}</div>
-      <h3>${item.name}</h3>
-      <button class="btn soft" onclick="toggleBedroom('${item.emoji}')">
-        ${state.bedroom.includes(item.emoji)?"Remove":"Place"}
-      </button>
-    </div>
-  `).join("");
-}
-
-function toggleBedroom(emoji){
-  if(state.bedroom.includes(emoji)){
-    state.bedroom=state.bedroom.filter(x=>x!==emoji);
-  }else{
-    state.bedroom.push(emoji);
-  }
+function saveProfile(){
+  state.name=$("nameInput").value.trim().slice(0,18)||"Mochi";
+  state.birthday=$("birthdayInput").value;
+  state.bio=$("bioInput").value.trim().slice(0,80);
   save();
-  renderBedroom();
-  progressQuest("decorate");
+  renderProfile();
+  showToast("Panda profile saved! ♡");
 }
 
-const flowers=[
-  {emoji:"🌷",name:"Tulip"},
-  {emoji:"🌻",name:"Sunflower"},
-  {emoji:"🌹",name:"Rose"},
-  {emoji:"🌼",name:"Daisy"},
-  {emoji:"🍄",name:"Mushroom"},
-  {emoji:"🌳",name:"Tree"},
-  {emoji:"🪻",name:"Lavender"},
-  {emoji:"🌸",name:"Blossom"}
-];
-
-function renderGarden(){
-  $("gardenDecor").textContent=state.garden.join(" ")||"🌱";
-  $("gardenOptions").innerHTML=flowers.map(item=>`
-    <div class="item">
-      <div class="emoji">${item.emoji}</div>
-      <h3>${item.name}</h3>
-      <button class="btn green" onclick="plantFlower('${item.emoji}')">
-        Plant 🌱
-      </button>
-    </div>
-  `).join("");
+function setMood(id){
+  if(!moods.some(m=>m.id===id))return;
+  state.mood=id;
+  save();
+  renderProfile();
+  const mood=getMood();
+  say("Today I'm feeling "+mood.name.toLowerCase()+"! "+mood.emoji);
+  showToast("Mood updated ♡");
 }
 
-function plantFlower(emoji){
-  if(state.garden.length>=12){
-    toast("Your garden is full! 🌷");
+function equipAccessory(id){
+  if(!state.inventory.includes(id)){
+    showToast("Find this accessory in the Star Shop ♡");
     return;
   }
-  state.garden.push(emoji);
+  state.accessory=id;
   save();
-  renderGarden();
-  progressQuest("garden");
-  toast("A new flower has grown! 🌸");
+  renderProfile();
+  showToast("Looking adorable! 🎀");
 }
 
-const places=[
-  {emoji:"🏫",name:"Panda School",message:"Time to learn something new! 📚"},
-  {emoji:"☕",name:"Cosy Café",message:"A warm drink and a sweet treat! 🧁"},
-  {emoji:"🌳",name:"Flower Park",message:"Look at all the flowers! 🌷"},
-  {emoji:"🏖️",name:"Sunny Beach",message:"Let's build a sandcastle! 🐚"},
-  {emoji:"🎡",name:"Fun Fair",message:"So many colourful rides! 🎠"},
-  {emoji:"📚",name:"Library",message:"Let's read a bedtime story! 📖"}
-];
+function renderProfile(){
+  $("nameInput").value=state.name;
+  $("birthdayInput").value=state.birthday;
+  $("bioInput").value=state.bio;
 
-function renderTown(){
-  $("townPlaces").innerHTML=places.map((place,i)=>`
-    <div class="item">
-      <div class="emoji">${place.emoji}</div>
-      <h3>${place.name}</h3>
-      <button class="btn" onclick="visitPlace(${i})">Visit ✨</button>
-    </div>
+  $("moodOptions").innerHTML=moods.map(m=>`
+    <button class="mood-option ${state.mood===m.id?"selected":""}"
+      onclick="setMood('${m.id}')">
+      <span>${m.emoji}</span>${m.name}
+    </button>
   `).join("");
-}
 
-function visitPlace(i){
-  const place=places[i];
-  state.visits++;
-  state.stars+=2;
-  progressQuest("explore");
-  save();
-  toast(place.message+" +2 stars ⭐");
-}
-
-function savePanda(){
-  const name=$("pandaNameInput").value.trim().slice(0,18)||"Mochi";
-  state.name=name;
-  state.style=$("pandaStyle").value;
-  state.pandas[0]={name,style:state.style};
-  save();
-  renderFamily();
-  toast("Your panda was saved! 💗");
-}
-
-function adoptPanda(){
-  if(state.stars<25){
-    toast("You need 25 stars to adopt a panda!");
-    return;
-  }
-  state.stars-=25;
-  const names=["Boba","Lulu","Peach","Pudding","Coco","Mimi","Biscuit"];
-  const name=names[Math.floor(Math.random()*names.length)];
-  state.pandas.push({name,style:"🐼"});
-  save();
-  renderFamily();
-  toast(name+" joined your panda family! 🐼");
-}
-
-function renderFamily(){
-  $("pandaNameInput").value=state.name;
-  $("pandaStyle").value=state.style;
-  $("pandaFamily").innerHTML=state.pandas.map((p,i)=>`
-    <div class="item">
-      <div class="emoji">${escapeHTML(p.style)}</div>
-      <h3>${escapeHTML(p.name)}</h3>
-      <p class="small">${i===0?"Your main panda":"Panda family member"}</p>
-    </div>
-  `).join("");
-}
-
-const shopItems=[
-  {emoji:"🎀",name:"Pink Bow",price:10},
-  {emoji:"👑",name:"Tiny Crown",price:20},
-  {emoji:"🧸",name:"Cuddle Bear",price:12},
-  {emoji:"🍓",name:"Strawberry Treat",price:8},
-  {emoji:"🦋",name:"Butterfly",price:15},
-  {emoji:"🧁",name:"Cupcake",price:10},
-  {emoji:"💎",name:"Sparkly Gem",price:30},
-  {emoji:"🌈",name:"Rainbow",price:25}
-];
-
-function renderShop(){
-  $("shopItems").innerHTML=shopItems.map((item,i)=>{
-    const owned=state.inventory.includes(item.name);
+  $("accessoryOptions").innerHTML=accessories.map(a=>{
+    const owned=state.inventory.includes(a.id);
     return `
-      <div class="item">
-        <div class="emoji">${item.emoji}</div>
-        <h3>${item.name}</h3>
-        <p>${item.price} ⭐</p>
-        <button class="btn" onclick="buyItem(${i})" ${owned?"disabled":""}>
-          ${owned?"Owned 💗":"Buy"}
+      <div class="mini-item">
+        <div class="emoji">${a.emoji}</div>
+        <h4>${a.name}</h4>
+        <p>${owned?"Owned ♡":a.price+" stars"}</p>
+        <button class="btn ${owned?"":"secondary"}"
+          onclick="equipAccessory('${a.id}')">
+          ${state.accessory===a.id?"Wearing ♡":owned?"Wear":"Locked"}
         </button>
       </div>
     `;
   }).join("");
-}
 
-function buyItem(i){
-  const item=shopItems[i];
-  if(state.inventory.includes(item.name))return;
-  if(state.stars<item.price){
-    toast("Not enough stars! ⭐");
-    return;
+  if(state.birthday){
+    const parts=state.birthday.split("-");
+    const month=Number(parts[1]);
+    const day=Number(parts[2]);
+    const now=new Date();
+    const birthdayToday=month===now.getMonth()+1&&day===now.getDate();
+    $("birthdayText").textContent=birthdayToday
+      ?"🎉 Happy birthday, "+state.name+"! 🎂"
+      :"🎀 "+state.name+"'s birthday is "+new Date(2000,month-1,day)
+          .toLocaleDateString(undefined,{month:"long",day:"numeric"})+".";
+  }else{
+    $("birthdayText").textContent="Your panda's birthday hasn't been chosen yet. 🎂";
   }
-  state.stars-=item.price;
-  state.inventory.push(item.name);
-  save();
-  renderShop();
-  toast("You bought "+item.name+"! 🎀");
-}
-
-function claimGift(){
-  if(state.lastGift===today()){
-    toast("You've already opened today's gift! 🎁");
-    return;
-  }
-  state.lastGift=today();
-  state.stars+=15;
-  save();
-  renderGift();
-  toast("Surprise! You got 15 stars! ⭐");
-}
-
-function renderGift(){
-  const claimed=state.lastGift===today();
-  $("giftButton").disabled=claimed;
-  $("giftButton").textContent=claimed?"Come back tomorrow 💗":"Open gift 💗";
-  $("giftStatus").textContent=claimed?"Today's gift has been collected!":"Your daily gift is waiting!";
 }
 
 function resetQuests(){
-  if(state.questDate!==today()){
-    state.questDate=today();
+  if(state.questDate!==localDay()){
+    state.questDate=localDay();
     state.quests={};
     save();
   }
 }
 
-const questData=[
-  {id:"decorate",name:"Decorate your room",emoji:"🛏️",reward:5},
-  {id:"garden",name:"Plant a flower",emoji:"🌷",reward:5},
-  {id:"explore",name:"Explore the town",emoji:"🗺️",reward:5},
-  {id:"play",name:"Win a minigame",emoji:"🧁",reward:8}
-];
-
-function progressQuest(id){
+function completeQuest(id){
   resetQuests();
   if(state.quests[id])return;
+  const q=quests.find(q=>q.id===id);
+  if(!q)return;
   state.quests[id]=true;
-  const quest=questData.find(q=>q.id===id);
-  if(quest){
-    state.stars+=quest.reward;
-    save();
-    toast("Quest complete! +"+quest.reward+" stars ⭐");
-  }
-  renderQuests();
-}
-
-function renderQuests(){
-  resetQuests();
-  $("questList").innerHTML=questData.map(q=>`
-    <div class="item">
-      <div class="emoji">${q.emoji}</div>
-      <h3>${q.name}</h3>
-      <p>Reward: ${q.reward} ⭐</p>
-      <p>${state.quests[q.id]?"✅ Completed":"🌸 Not completed"}</p>
-    </div>
-  `).join("");
-}
-
-let gameHits=0;
-let gameRunning=false;
-
-function startGame(){
-  gameHits=0;
-  gameRunning=true;
-  $("startGame").disabled=true;
-  $("gameScore").textContent="0 / 5";
-  $("gameMessage").textContent="Tap the treats!";
-  nextTreat();
-}
-
-function nextTreat(){
-  const area=$("gameArea");
-  area.innerHTML="";
-  const treats=["🧁","🍓","🍡","🍰","🍪","🍩","🍒","🧋"];
-  for(let i=0;i<3;i++){
-    const button=document.createElement("button");
-    button.textContent=treats[Math.floor(Math.random()*treats.length)];
-    button.setAttribute("aria-label","Catch treat");
-    button.onclick=()=>{
-      if(!gameRunning)return;
-      gameHits++;
-      $("gameScore").textContent=gameHits+" / 5";
-      if(gameHits>=5){
-        gameRunning=false;
-        state.gameWins++;
-        state.stars+=8;
-        save();
-        progressQuest("play");
-        area.textContent="🎉 🐼 🎉";
-        $("gameMessage").textContent="You won 8 stars!";
-        $("startGame").disabled=false;
-        $("startGame").textContent="Play again 🌸";
-      }else{
-        nextTreat();
-      }
-    };
-    area.appendChild(button);
-  }
-}
-
-const photoBackgrounds=[
-  ["#e8f4ff","#dce5ff","🌸 ✨ 🌷"],
-  ["#fff0c9","#ffd9e6","☀️ 🌻 🦋"],
-  ["#e7ffe7","#d3f2dc","🍄 🌿 🌼"],
-  ["#f6e7ff","#e6d8ff","🌙 ⭐ ☁️"]
-];
-
-function changePhoto(){
-  state.photoIndex=(state.photoIndex+1)%photoBackgrounds.length;
+  state.stars+=q.reward;
   save();
-  renderPhoto();
+  showToast("Quest complete! +"+q.reward+" ⭐");
+  if($("rewards").classList.contains("active"))renderRewards();
 }
 
-function renderPhoto(){
-  const bg=photoBackgrounds[state.photoIndex%photoBackgrounds.length];
-  $("photoScene").style.background="linear-gradient("+bg[0]+","+bg[1]+")";
-  $("photoDecor").textContent=bg[2];
-  $("photoPanda").textContent=state.style;
-  $("photoName").textContent=state.name;
-}
-
-function takePhoto(){
-  toast("Say cheese! 📸 Your panda looks adorable!");
-}
-
-const stickers=[
-  {emoji:"🐼",name:"Panda",done:()=>true},
-  {emoji:"🌷",name:"Gardener",done:()=>state.garden.length>=3},
-  {emoji:"🧸",name:"Collector",done:()=>state.inventory.length>=1},
-  {emoji:"⭐",name:"Star",done:()=>state.stars>=50},
-  {emoji:"🎮",name:"Gamer",done:()=>state.gameWins>=1},
-  {emoji:"🗺️",name:"Explorer",done:()=>state.visits>=3}
-];
-
-function renderStickers(){
-  $("stickerBook").innerHTML=stickers.map(s=>`
-    <div class="item">
-      <div class="emoji">${s.done()?s.emoji:"🔒"}</div>
-      <h3>${s.name}</h3>
-      <p class="small">${s.done()?"Collected! 💗":"Keep playing to unlock"}</p>
-    </div>
-  `).join("");
-}
-
-function saveBirthday(){
-  state.birthday=$("birthdayInput").value;
-  save();
-  renderBirthday();
-  toast("Birthday saved! 🎂");
-}
-
-function renderBirthday(){
-  $("birthdayInput").value=state.birthday||"";
-  if(!state.birthday){
-    $("birthdayMessage").textContent="Choose a special birthday!";
+function claimGift(){
+  if(state.lastGift===localDay()){
+    showToast("Come back tomorrow for another gift! ♡");
     return;
   }
-  const parts=state.birthday.split("-");
-  const current=new Date();
-  const birthdayToday=Number(parts[1])===current.getMonth()+1
-    && Number(parts[2])===current.getDate();
-  $("birthdayMessage").textContent=birthdayToday
-    ?"🎉 Happy Panda Birthday! 🎂"
-    :"Your panda's special day is saved! 💗";
+  state.lastGift=localDay();
+  state.stars+=20;
+  save();
+  renderRewards();
+  showToast("You got 20 stars! 🎁");
 }
 
-const awards=[
-  {emoji:"🐼",name:"Panda Parent",done:()=>state.pandas.length>=1},
-  {emoji:"🌷",name:"Flower Lover",done:()=>state.garden.length>=5},
-  {emoji:"🏡",name:"Home Decorator",done:()=>state.bedroom.length>=4},
-  {emoji:"🧁",name:"Treat Champion",done:()=>state.gameWins>=3},
-  {emoji:"🗺️",name:"Town Explorer",done:()=>state.visits>=5},
-  {emoji:"⭐",name:"Star Collector",done:()=>state.stars>=100},
-  {emoji:"🎁",name:"Gift Opener",done:()=>!!state.lastGift},
-  {emoji:"🐾",name:"Big Panda Family",done:()=>state.pandas.length>=3}
-];
+function renderRewards(){
+  resetQuests();
+  const claimed=state.lastGift===localDay();
+  $("giftButton").disabled=claimed;
+  $("giftButton").textContent=claimed?"Gift collected ♡":"Open my gift ♡";
+  $("giftMessage").textContent=claimed
+    ?"A new gift will be waiting tomorrow!"
+    ?"Today's surprise contains 20 stars!";
 
-function renderAwards(){
-  $("awardList").innerHTML=awards.map(a=>`
-    <div class="item">
-      <div class="emoji">${a.done()?a.emoji:"🔒"}</div>
-      <h3>${a.name}</h3>
-      <p class="small">${a.done()?"Award unlocked! 🏆":"Not unlocked yet"}</p>
+  $("questList").innerHTML=quests.map(q=>`
+    <div class="quest">
+      <div class="quest-icon">${q.emoji}</div>
+      <div class="quest-main">
+        <strong>${q.name}</strong>
+        <p>${q.detail} · +${q.reward} ⭐</p>
+      </div>
+      <div class="quest-done">${state.quests[q.id]?"✓ Done":"○"}</div>
     </div>
   `).join("");
 }
 
-function renderPage(page){
-  const renderers={
-    bedroom:renderBedroom,
-    garden:renderGarden,
-    town:renderTown,
-    studio:renderFamily,
-    shop:renderShop,
-    gifts:renderGift,
-    quests:renderQuests,
-    photo:renderPhoto,
-    stickers:renderStickers,
-    birthday:renderBirthday,
-    awards:renderAwards
-  };
-  if(renderers[page])renderers[page]();
-  updateAll();
+let shopTab="stars";
+
+function setShopTab(tab){
+  shopTab=tab;
+  renderShop();
+}
+
+function buyAccessory(id){
+  const item=starItems.find(x=>x.id===id);
+  if(!item)return;
+  if(state.inventory.includes(id)){
+    showToast("You already own this! ♡");
+    return;
+  }
+  if(state.stars<item.price){
+    showToast("Not enough stars yet! ⭐");
+    return;
+  }
+  state.stars-=item.price;
+  state.inventory.push(id);
+  save();
+  renderShop();
+  showToast(item.name+" is yours! 🎀");
+}
+
+function renderShop(){
+  ["stars","luxe","packs"].forEach(tab=>{
+    $("shopTab"+tab.charAt(0).toUpperCase()+tab.slice(1))
+      .classList.toggle("active",shopTab===tab);
+  });
+
+  if(shopTab==="stars"){
+    $("shopContent").innerHTML=`
+      <p class="small">Spend the stars you earn by caring for your panda.</p>
+      <div class="mini-grid">
+      ${starItems.map(item=>`
+        <div class="mini-item">
+          <div class="emoji">${item.emoji}</div>
+          <h4>${item.name}</h4>
+          <p>${item.price} ⭐</p>
+          <button class="btn" onclick="buyAccessory('${item.id}')"
+            ${state.inventory.includes(item.id)?"disabled":""}>
+            ${state.inventory.includes(item.id)?"Owned ♡":"Buy"}
+          </button>
+        </div>
+      `).join("")}
+      </div>
+    `;
+    return;
+  }
+
+  const collection=shopTab==="luxe"?luxeItems:packs;
+  $("shopContent").innerHTML=`
+    <div class="settings-note" style="margin-bottom:13px">
+      ✨ Premium items are previews only. No real-money purchases are available in this offline edition.
+    </div>
+    ${collection.map(item=>`
+      <div class="premium-card">
+        <div class="premium-art">${item.emoji}</div>
+        <div class="premium-info">
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+          <button class="btn secondary" onclick="showToast('Coming soon! ♡')">
+            Coming soon
+          </button>
+        </div>
+      </div>
+    `).join("")}
+  `;
+}
+
+function openSheet(type){
+  const sheet=$("sheet");
+
+  if(type==="decorate"){
+    sheet.innerHTML=`
+      <div class="sheet-head">
+        <h3>🎨 Make it yours</h3>
+        <button class="close" onclick="closeSheet()">×</button>
+      </div>
+      <p class="small">Choose a soft colour for your cosy room.</p>
+      <div class="color-grid">
+        <button class="color-option" style="background:#f7e8e6" onclick="setWall('pink')" aria-label="Pink room"></button>
+        <button class="color-option" style="background:#eee5f8" onclick="setWall('lilac')" aria-label="Lilac room"></button>
+        <button class="color-option" style="background:#e4ede2" onclick="setWall('sage')" aria-label="Sage room"></button>
+        <button class="color-option" style="background:#f7eddd" onclick="setWall('cream')" aria-label="Cream room"></button>
+      </div>
+      <div class="divider"></div>
+      <h3>🖼️ Wall picture</h3>
+      <div class="btn-row">
+        ${["🌷","🎀","🌙","🧸","🍓","☁️"].map(art=>`
+          <button class="btn secondary" onclick="setArt('${art}')">${art}</button>
+        `).join("")}
+      </div>
+      <p class="small">Your room changes are saved automatically. ♡</p>
+    `;
+  }
+
+  if(type==="activities"){
+    sheet.innerHTML=`
+      <div class="sheet-head">
+        <h3>✨ Cosy moments</h3>
+        <button class="close" onclick="closeSheet()">×</button>
+      </div>
+      <p class="small">Spend a little time with your panda.</p>
+      <div class="mini-grid">
+        <div class="mini-item">
+          <div class="emoji">🍓</div><h4>Snack time</h4>
+          <button class="btn" onclick="sheetAction('feed')">Feed</button>
+        </div>
+        <div class="mini-item">
+          <div class="emoji">☁️</div><h4>Nap time</h4>
+          <button class="btn" onclick="sheetAction('rest')">Rest</button>
+        </div>
+        <div class="mini-item">
+          <div class="emoji">🧸</div><h4>Play together</h4>
+          <button class="btn" onclick="sheetAction('play')">Play</button>
+        </div>
+        <div class="mini-item">
+          <div class="emoji">💗</div><h4>Little cuddles</h4>
+          <button class="btn" onclick="sheetAction('care')">Care</button>
+        </div>
+      </div>
+    `;
+  }
+
+  if(type==="settings"){
+    sheet.innerHTML=`
+      <div class="sheet-head">
+        <h3>⚙️ Settings</h3>
+        <button class="close" onclick="closeSheet()">×</button>
+      </div>
+      <div class="card">
+        <h3>🐼 Panda Friends</h3>
+        <p class="small">Cosy Mobile Edition ♡</p>
+        <p class="small">Your game is completely offline and saves automatically in this browser.</p>
+      </div>
+      <div class="settings-note">
+        💗 Clearing your browser's site data may erase your saved progress.
+        This game doesn't require an account.
+      </div>
+    `;
+  }
+
+  $("overlay").classList.add("open");
+}
+
+function closeSheet(){
+  $("overlay").classList.remove("open");
+}
+
+function overlayClick(e){
+  if(e.target===$("overlay"))closeSheet();
+}
+
+function setWall(wall){
+  if(!["pink","lilac","sage","cream"].includes(wall))return;
+  state.wall=wall;
+  save();
+  completeQuest("decorate");
+  closeSheet();
+  showToast("Your room looks lovely! ♡");
+}
+
+function setArt(art){
+  if(!["🌷","🎀","🌙","🧸","🍓","☁️"].includes(art))return;
+  state.art=art;
+  save();
+  completeQuest("decorate");
+  closeSheet();
+  showToast("A cute new wall picture! 🌸");
+}
+
+function sheetAction(type){
+  closeSheet();
+  doAction(type);
 }
 
 function init(){
   resetQuests();
-  updateAll();
-  newMessage();
-  renderBedroom();
-  renderGarden();
-  renderTown();
-  renderFamily();
+  refresh();
+  renderProfile();
+  renderRewards();
   renderShop();
-  renderGift();
-  renderQuests();
-  renderPhoto();
-  renderStickers();
-  renderBirthday();
-  renderAwards();
+  say("Welcome home, cutie! ♡");
 }
 
 init();
 </script>
-
 </body>
 </html>
