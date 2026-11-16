@@ -3,862 +3,359 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#fff0f5">
-<title>Panda Friends ♡</title>
-
+<title>Bambuu ♡</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 
-:root{
-  --pink:#f2bfd1;
-  --ink:#745b69;
-  --muted:#ae93a1;
-  --line:#f1e3e9;
-  --cream:#fffaf9;
-}
+:root{--ink:#705a68;--muted:#ad93a1;--pink:#f1bad0;--line:#f1e2e9;--cream:#fffbfa}
 *{box-sizing:border-box}
-body{
-  margin:0;
-  min-height:100dvh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:
-    radial-gradient(circle at 15% 20%,#ffe4ef,transparent 38%),
-    radial-gradient(circle at 85% 80%,#e9e1ff,transparent 42%),
-    #faf1f5;
-  color:var(--ink);
-  font-family:Quicksand,Arial,sans-serif;
-}
-button,input,select,textarea{font:inherit}
+body{margin:0;min-height:100dvh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 18% 20%,#ffe2ee,transparent 38%),radial-gradient(circle at 80% 80%,#e6e0ff,transparent 42%),#faf2f5;color:var(--ink);font-family:Quicksand,Arial,sans-serif}
+button,input,textarea,select{font:inherit}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent}
-.phone{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  width:min(100%,430px);
-  height:min(900px,96dvh);
-  overflow:hidden;
-  background:var(--cream);
-  border:7px solid white;
-  border-radius:37px;
-  box-shadow:0 25px 85px #7c5c7933;
-}
-header{
-  flex-shrink:0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:17px 17px 12px;
-  background:#fffaf9;
-  z-index:10;
-}
-.brand{
-  font-size:20px;
-  font-weight:700;
-  letter-spacing:-.7px;
-}
-.brand small{
-  display:block;
-  font-size:9px;
-  letter-spacing:2px;
-  color:#c49cad;
-}
+.phone{position:relative;display:flex;flex-direction:column;width:min(100%,430px);height:min(900px,96dvh);overflow:hidden;background:var(--cream);border:7px solid #fff;border-radius:36px;box-shadow:0 25px 85px #7c5c7933}
+header{z-index:12;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding:17px 17px 11px;background:#fffaf9}
+.brand{font-weight:700;font-size:23px;letter-spacing:-.8px}
+.brand small{display:block;font-size:9px;letter-spacing:2px;color:#c69aad}
 .header-right{display:flex;align-items:center;gap:8px}
-.currency{
-  border:1px solid #d9e9cb;
-  border-radius:18px;
-  padding:9px 11px;
-  background:#f2fae9;
-  font-size:12px;
-  font-weight:700;
-}
-.gear{
-  width:36px;
-  height:36px;
-  border:0;
-  border-radius:50%;
-  background:#f8eaf0;
-  font-size:19px;
-}
-.content{
-  flex:1;
-  min-height:0;
-  overflow-y:auto;
-  scrollbar-width:none;
-}
+.currency{padding:9px 12px;border:1px solid #d7e8d0;border-radius:18px;background:#f2faea;font-weight:700;font-size:12px}
+.gear{width:36px;height:36px;border:0;border-radius:50%;background:#f7e9ef;font-size:19px}
+.content{flex:1;min-height:0;overflow:auto;scrollbar-width:none}
 .content::-webkit-scrollbar{display:none}
-.screen{display:none}
+.screen{display:none;min-height:100%}
 .screen.active{display:block}
-.bottom-nav{
-  flex-shrink:0;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  padding:10px 5px max(10px,env(safe-area-inset-bottom));
-  background:white;
-  border-top:1px solid var(--line);
-  z-index:10;
-}
-.tab{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:3px;
-  border:0;
-  background:none;
-  color:#b6a1ac;
-  font-size:10px;
-  font-weight:700;
-}
-.tab span{font-size:23px}
-.tab.active{color:#c97c9c}
-.pad{padding:17px}
-h2{font-size:22px;margin:0 0 5px}
+#home.active{display:flex;flex-direction:column;height:100%;overflow:hidden}
+.bottom-nav{z-index:12;flex-shrink:0;display:grid;grid-template-columns:repeat(5,1fr);padding:9px 4px max(9px,env(safe-area-inset-bottom));border-top:1px solid var(--line);background:white}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:2px 0;border:0;background:transparent;color:#b49da9;font-size:9px;font-weight:700}
+.tab .tab-icon{font-size:23px;line-height:1.3}
+.tab.active{color:#c67e9d}
+.tab.heart-tab .tab-icon{display:grid;place-items:center;width:38px;height:38px;margin-top:-10px;border:3px solid white;border-radius:50%;background:#fce0eb;box-shadow:0 3px 12px #d8a5bc55}
+.pad{padding:18px}
+h2{font-size:23px;margin:0 0 5px}
 h3{font-size:15px;margin:0 0 10px}
-.small{
-  font-size:12px;
-  line-height:1.6;
-  color:var(--muted);
-}
-.card{
-  margin-bottom:13px;
-  padding:17px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  background:white;
-}
-.btn{
-  border:0;
-  border-radius:15px;
-  padding:11px 14px;
-  background:var(--pink);
-  color:var(--ink);
-  font-size:12px;
-  font-weight:700;
-}
-.btn.secondary{background:#f8eef3}
+.small{color:var(--muted);font-size:12px;line-height:1.6}
+.card{margin-bottom:13px;padding:17px;border:1px solid var(--line);border-radius:22px;background:white}
+.btn{border:0;border-radius:15px;padding:12px 15px;background:var(--pink);color:var(--ink);font-size:12px;font-weight:700}
+.btn.secondary{background:#f7edf2}
 .btn.full{width:100%}
 .btn:disabled{opacity:.5;cursor:not-allowed}
-label{
-  display:block;
-  font-size:12px;
-  font-weight:700;
-}
-input,select,textarea{
-  display:block;
-  width:100%;
-  margin:7px 0 13px;
-  padding:12px;
-  border:1px solid #eadde4;
-  border-radius:13px;
-  outline:none;
-  background:#fffbfd;
-  color:var(--ink);
-}
+label{display:block;font-weight:700;font-size:12px}
+input,select,textarea{display:block;width:100%;margin:7px 0 13px;padding:12px;border:1px solid #eadddf;border-radius:12px;outline:none;background:#fffafc;color:var(--ink)}
 textarea{resize:vertical}
-.tag{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:15px;
-  background:#fcebf2;
-  font-size:11px;
-  font-weight:700;
-}
+.tag{display:inline-block;padding:7px 11px;border-radius:18px;background:#fcebf3;font-size:11px;font-weight:700}
+.notice{padding:13px;border-radius:15px;background:#fff3e8;font-size:11px;line-height:1.65}
 
 /* DREAMY BEDROOM */
 
-.room{
-  position:relative;
-  width:100%;
-  height:clamp(400px,64dvh,600px);
-  overflow:hidden;
-  isolation:isolate;
-  background-image:url("Pandapinkroom.png");
-  background-size:100% 100%;
-  background-position:center;
-  background-repeat:no-repeat;
-  touch-action:none;
-}
-.room.blue{
-  background-image:url("Pandablueroom.png");
-}
-.room::before,
-.room::after{
-  position:absolute;
-  z-index:1;
-  pointer-events:none;
-  text-align:center;
-  color:#fffbe1;
-  text-shadow:0 0 12px #fff4a5;
-  animation:sparkle 4s ease-in-out infinite;
-}
-.room::before{
-  content:"✦   ✧   ✦";
-  top:20%;
-  left:12%;
-  width:76%;
-  font-size:20px;
-}
-.room::after{
-  content:"✧       ✦       ✧";
-  top:50%;
-  left:5%;
-  width:90%;
-  font-size:17px;
-  animation-duration:5s;
-  animation-direction:reverse;
-}
-@keyframes sparkle{
+/* Full-screen room with portrait artwork centred on tablets */
+.home-stage{position:relative;flex:1;min-height:0;display:flex;justify-content:center;overflow:hidden;background:#eddfec}
+.stage-backdrop{position:absolute;inset:-25px;background-image:url('Pandapinkroom.png');background-position:center;background-size:cover;filter:blur(23px) brightness(1.04);opacity:.64}
+.home-stage.blue .stage-backdrop{background-image:url('Pandablueroom.png')}
+.world{position:relative;flex-shrink:0;width:100%;height:100%;max-width:calc((100dvh - 132px) * .70);overflow:hidden;isolation:isolate;background-image:url('Pandapinkroom.png');background-position:center;background-size:100% 100%;box-shadow:0 0 18px #8056702b;touch-action:pan-y}
+.world.blue{background-image:url('Pandablueroom.png')}
+.world::before,.world::after{content:'✧   ✦   ✧';position:absolute;z-index:1;left:12%;width:76%;text-align:center;color:#fff6cf;text-shadow:0 0 13px #ffedaf;pointer-events:none;animation:twinkle 4.2s ease-in-out infinite}
+.world::before{top:19%;font-size:21px}
+.world::after{top:43%;font-size:15px;animation-delay:-2s}
+@keyframes twinkle{
   0%,100%{opacity:.2;transform:translateY(0)}
-  50%{opacity:.95;transform:translateY(-8px)}
+  50%{opacity:1;transform:translateY(-9px)}
 }
-.room-label{
-  position:absolute;
-  z-index:7;
-  top:12px;
-  left:12px;
-  padding:10px 12px;
-  border:1px solid white;
-  border-radius:16px;
-  background:#fffaf5e8;
-  font-size:12px;
-  font-weight:700;
-}
-.bed-zone{
-  position:absolute;
-  z-index:2;
-  left:2%;
-  bottom:16%;
-  width:49%;
-  height:31%;
-  border:0;
-  background:transparent;
-  border-radius:24px;
-}
-.room-actions{
-  position:absolute;
-  z-index:8;
-  left:11px;
-  right:11px;
-  bottom:12px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
-}
-.action{
-  padding:10px 3px;
-  border:1px solid white;
-  border-radius:15px;
-  background:#fffaf5ed;
-  color:#876b78;
-  font-size:11px;
-  font-weight:700;
-}
-.action span{
-  display:block;
-  font-size:22px;
-  margin-bottom:3px;
-}
+.room-label{position:absolute;top:12px;left:12px;z-index:15;padding:9px 12px;border:1px solid white;border-radius:15px;background:#fffaf5e8;font-size:12px;font-weight:700}
+.swipe-hint{position:absolute;right:9px;top:14px;z-index:8;padding:7px 9px;border-radius:15px;background:#fffaf5c9;font-size:10px;font-weight:700}
+.bed-zone{position:absolute;z-index:3;left:7%;top:51%;width:56%;height:29%;border:0;background:transparent}
+.room-actions{position:absolute;z-index:16;left:10px;right:10px;bottom:11px;display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.action{padding:9px 2px;border:1px solid white;border-radius:15px;background:#fffaf5ed;color:#876b78;font-weight:700;font-size:11px}
+.action span{display:block;font-size:22px;margin-bottom:3px}
+.bubble{position:absolute;z-index:14;top:34%;left:13%;max-width:74%;padding:10px 13px;border-radius:16px 16px 16px 4px;background:#fffdf9f4;box-shadow:0 6px 16px #7b5c7028;font-size:12px;font-weight:700;pointer-events:none}
+.bamboo-food{position:absolute;z-index:18;left:68%;top:66%;padding:9px;border:2px solid #e3ecc7;border-radius:50%;background:#f3ffe9;font-size:32px;line-height:1.3;cursor:grab;touch-action:none;user-select:none}
+.hidden{display:none!important}
+.guest-badge{position:absolute;z-index:10;top:20%;right:4%;padding:7px 9px;border:1px solid #fff;border-radius:16px;background:#fffaf4df;text-align:center;font-size:10px;box-shadow:0 4px 14px #72536f30}
+.guest-badge b{display:block;font-size:23px}
+.sleep-blanket{position:absolute;z-index:9;top:68%;left:12%;width:53%;height:11%;border:3px solid #dba7c2;border-radius:45% 55% 30% 30%;background:repeating-linear-gradient(90deg,#f7cbe1 0 20px,#efb7d5 20px 35px);opacity:.94;pointer-events:none;display:none;transform:rotate(-7deg)}
+.world.blue .sleep-blanket{border-color:#9cbedc;background:repeating-linear-gradient(90deg,#d9edfa 0 20px,#bad7f4 20px 35px)}
+.world.asleep .sleep-blanket{display:block}
+.sleep-z{position:absolute;z-index:13;top:50%;left:45%;font-size:26px;pointer-events:none;animation:float 2s ease-in-out infinite;display:none}
+.world.asleep .sleep-z{display:block}
+@keyframes float{50%{transform:translateY(-7px)}}
 
-/* CUTE CSS PANDA */
+/* THE PANDA */
+/* Same panda design for Home and My Panda */
 
-.panda{
-  position:absolute;
-  z-index:5;
-  width:125px;
-  height:145px;
-  user-select:none;
-  -webkit-user-select:none;
-  touch-action:none;
-  cursor:grab;
-  filter:drop-shadow(0 10px 6px #70566833);
-}
+.panda{position:absolute;z-index:7;width:126px;height:145px;user-select:none;-webkit-user-select:none;touch-action:none;cursor:grab;filter:drop-shadow(0 8px 7px #6e566035);transform-origin:center bottom}
 .panda:active{cursor:grabbing}
-.room .panda{
-  left:32%;
-  top:57%;
-}
-.panda.preview{
-  position:relative;
-  left:auto!important;
-  top:auto!important;
-  margin:auto;
-  cursor:default;
-  animation:float 3s ease-in-out infinite;
-}
-@keyframes float{
-  50%{transform:translateY(-5px)}
-}
-.panda-body{
-  position:absolute;
-  left:27px;
-  bottom:2px;
-  width:74px;
-  height:77px;
-  border:3px solid #665d65;
-  border-radius:45% 45% 43% 43%;
-  background:#fffdfa;
-}
-.panda-body::before{
-  content:"";
-  position:absolute;
-  top:12px;
-  left:19px;
-  width:31px;
-  height:48px;
-  border-radius:50%;
-  background:#eee9eb;
-}
-.arm{
-  position:absolute;
-  top:15px;
-  width:28px;
-  height:49px;
-  border-radius:24px;
-  background:#625b64;
-}
-.arm.left{left:-16px;transform:rotate(19deg)}
-.arm.right{right:-16px;transform:rotate(-19deg)}
-.foot{
-  position:absolute;
-  bottom:-6px;
-  width:32px;
-  height:22px;
-  border-radius:50%;
-  background:#625b64;
-}
-.foot.left{left:0}
-.foot.right{right:0}
-.head{
-  position:absolute;
-  z-index:2;
-  top:14px;
-  left:15px;
-  width:95px;
-  height:87px;
-  border:3px solid #665d65;
-  border-radius:49%;
-  background:#fffdfa;
-}
-.ear{
-  position:absolute;
-  z-index:-1;
-  top:-16px;
-  width:34px;
-  height:35px;
-  border-radius:50%;
-  background:#625b64;
-}
-.ear.left{left:0}
-.ear.right{right:0}
-.patch{
-  position:absolute;
-  top:28px;
-  width:28px;
-  height:34px;
-  border-radius:50%;
-  background:#6a626a;
-}
-.patch.left{left:14px;transform:rotate(20deg)}
-.patch.right{right:14px;transform:rotate(-20deg)}
-.eye{
-  position:absolute;
-  top:10px;
-  left:10px;
-  width:9px;
-  height:12px;
-  border-radius:50%;
-  background:white;
-}
-.eye::after{
-  content:"";
-  position:absolute;
-  top:2px;
-  left:2px;
-  width:3px;
-  height:3px;
-  border-radius:50%;
-  background:#ffffffaa;
-}
-.blush{
-  position:absolute;
-  top:56px;
-  width:18px;
-  height:9px;
-  border-radius:50%;
-  background:#f5a6bd99;
-}
+.panda.sleeping{transform:rotate(-17deg) scale(.76)}
+.panda.preview{position:relative!important;top:auto!important;left:auto!important;margin:5px auto;cursor:pointer;animation:float 3.2s ease-in-out infinite}
+.panda-body{position:absolute;bottom:0;left:25px;width:76px;height:80px;border:3px solid #665d65;border-radius:46% 46% 40% 40%;background:#fffefb}
+.panda-body::before{content:'';position:absolute;top:12px;left:20px;width:31px;height:50px;border-radius:50%;background:#f0ebed}
+.arm{position:absolute;top:16px;width:28px;height:50px;border-radius:25px;background:#625b64}
+.arm.left{left:-16px;transform:rotate(22deg)}
+.arm.right{right:-16px;transform:rotate(-22deg)}
+.foot{position:absolute;bottom:-6px;width:33px;height:23px;border-radius:50%;background:#625b64}
+.foot.left{left:1px}
+.foot.right{right:1px}
+.panda-head{position:absolute;top:13px;left:14px;z-index:3;width:98px;height:89px;border:3px solid #665d65;border-radius:48%;background:#fffefb}
+.ear{position:absolute;top:-16px;z-index:-1;width:35px;height:37px;border-radius:50%;background:#625b64}
+.ear.left{left:-1px}
+.ear.right{right:-1px}
+.patch{position:absolute;top:29px;width:28px;height:34px;border-radius:50%;background:#6b636b}
+.patch.left{left:15px;transform:rotate(19deg)}
+.patch.right{right:15px;transform:rotate(-19deg)}
+.eye{position:absolute;top:10px;left:9px;width:10px;height:13px;border-radius:50%;background:white}
+.eye::before{content:'';position:absolute;top:2px;left:2px;width:3px;height:3px;border-radius:50%;background:#fff}
+.blush{position:absolute;top:56px;width:18px;height:10px;border-radius:50%;background:#f4a5ba99}
 .blush.left{left:4px}
 .blush.right{right:4px}
-.nose{
-  position:absolute;
-  top:53px;
-  left:41px;
-  width:12px;
-  height:9px;
-  border-radius:50%;
-  background:#695e65;
-}
-.mouth{
-  position:absolute;
-  top:62px;
-  left:41px;
-  width:13px;
-  height:9px;
-  border-bottom:2px solid #695e65;
-  border-radius:50%;
-}
-.panda.sleeping .eye{
-  height:3px;
-  top:17px;
-  border-radius:50%;
-}
-.panda.sleeping .mouth{width:9px;left:43px}
-.panda .accessory{
-  position:absolute;
-  z-index:6;
-  top:-2px;
-  left:37px;
-  font-size:35px;
-  pointer-events:none;
-}
-.panda .cheek-heart{
-  position:absolute;
-  z-index:7;
-  top:40px;
-  right:-4px;
-  font-size:16px;
-  opacity:0;
-}
-.panda.loved .cheek-heart{
-  animation:heartPop .8s ease-out;
-}
-@keyframes heartPop{
-  0%{opacity:0;transform:translateY(5px) scale(.5)}
-  30%{opacity:1}
-  100%{opacity:0;transform:translateY(-30px) scale(1.4)}
-}
-.bubble{
-  position:absolute;
-  z-index:7;
-  top:39%;
-  left:12%;
-  max-width:76%;
-  padding:10px 13px;
-  border-radius:17px 17px 17px 4px;
-  background:#fffdf8f2;
-  box-shadow:0 5px 18px #745c6926;
-  font-size:12px;
-  font-weight:700;
-  pointer-events:none;
-}
-.float-heart{
-  position:absolute;
-  z-index:9;
-  pointer-events:none;
-  font-size:23px;
-  animation:rise 1.15s ease-out forwards;
-}
+.nose{position:absolute;top:56px;left:42px;width:11px;height:8px;border-radius:50%;background:#6d6268}
+.mouth{position:absolute;top:64px;left:41px;width:14px;height:8px;border-bottom:2px solid #6d6268;border-radius:50%}
+.panda.sleeping .eye{height:3px;top:17px}
+.panda .accessory{position:absolute;top:-3px;left:38px;z-index:8;font-size:35px;pointer-events:none}
+.float-heart{position:absolute;z-index:30;pointer-events:none;font-size:24px;animation:rise 1.1s ease-out forwards}
 @keyframes rise{
   from{opacity:1;transform:translateY(0) scale(.8)}
-  to{opacity:0;transform:translateY(-65px) scale(1.4)}
-}
-.bamboo-food{
-  position:absolute;
-  z-index:9;
-  left:11%;
-  bottom:19%;
-  padding:9px;
-  border:2px solid #e1eecb;
-  border-radius:50%;
-  background:#f5ffe9;
-  font-size:31px;
-  cursor:grab;
-  touch-action:none;
-  user-select:none;
-}
-.bamboo-food.hidden{display:none}
-.sleep-cloud{
-  position:absolute;
-  z-index:6;
-  display:none;
-  font-size:27px;
-  pointer-events:none;
-  animation:float 2s infinite;
-}
-.sleep-cloud.show{display:block}
-
-/* NEEDS */
-
-.needs{
-  padding:15px 15px 12px;
-  background:#fffaf9;
-}
-.needs-heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:11px;
-}
-.needs-heading strong{font-size:13px}
-.needs-heading span{font-size:10px;color:var(--muted)}
-.need-row{
-  display:grid;
-  grid-template-columns:84px 1fr 32px;
-  align-items:center;
-  gap:8px;
-  margin:9px 0;
-  font-size:11px;
-  font-weight:700;
-}
-.track{
-  height:10px;
-  overflow:hidden;
-  border-radius:20px;
-  background:#f3e9ed;
-}
-.fill{
-  height:100%;
-  width:100%;
-  border-radius:20px;
-  transition:width .4s;
-}
-#hungerFill{background:#a9d99b}
-#energyFill{background:#b5b3ee}
-#happyFill{background:#f4b4c8}
-#cleanFill{background:#a5dce9}
-.need-value{
-  text-align:right;
-  font-size:10px;
-  color:var(--muted);
+  to{opacity:0;transform:translateY(-70px) scale(1.4)}
 }
 
-/* PROFILE */
+/* SWIPE-OUT NEEDS PANEL */
 
-.profile-banner{
-  padding:19px;
-  margin-bottom:14px;
-  border-radius:24px;
-  text-align:center;
-  background:linear-gradient(145deg,#fbe0ed,#eee6ff);
-}
-.profile-banner.blue{
-  background:linear-gradient(145deg,#dff4e9,#e0e9ff);
-}
-.profile-banner h2{margin:9px 0 4px}
-.profile-panda-space{
-  display:grid;
-  place-items:center;
-  min-height:175px;
-}
-.style-strip{
-  display:flex;
-  gap:9px;
-  overflow-x:auto;
-  padding:8px 1px;
-}
-.style-item{
-  flex:0 0 75px;
-  border:1px solid #f0e0e7;
-  border-radius:15px;
-  padding:10px 5px;
-  background:#fff8fb;
-  text-align:center;
-  font-size:10px;
-}
-.style-item span{
-  display:block;
-  font-size:27px;
-  margin-bottom:6px;
-}
-.style-item.selected{
-  border-color:#e5a4bd;
-  background:#fce6ef;
-}
+.needs-shade{position:absolute;inset:0;z-index:24;background:#3f2e4360;display:none}
+.needs-shade.open{display:block}
+.needs-drawer{position:absolute;z-index:25;right:0;top:0;bottom:0;width:min(87%,345px);padding:24px 19px;background:#fffbfaf7;box-shadow:-12px 0 28px #65495b30;transform:translateX(105%);transition:transform .25s ease;pointer-events:none;overflow:auto}
+.needs-drawer.open{transform:translateX(0);pointer-events:auto}
+.needs-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.needs-head h3{margin:0;font-size:17px}
+.need-row{display:grid;grid-template-columns:78px 1fr 34px;gap:7px;align-items:center;margin:15px 0;font-size:11px;font-weight:700}
+.track{height:11px;border-radius:20px;overflow:hidden;background:#f0e7eb}
+.fill{height:100%;border-radius:20px;transition:width .3s}
+#hungerFill{background:#a3d896}
+#energyFill{background:#aca9ee}
+#happyFill{background:#f2b0c5}
+#cleanFill{background:#91d4e5}
+.need-number{text-align:right;color:var(--muted);font-size:10px}
 
-/* REWARDS AND SHOP */
+/* MY PANDA */
 
-.gift-hero{
-  padding:24px;
-  margin-bottom:15px;
-  border-radius:24px;
-  background:linear-gradient(145deg,#fbe3ed,#eee7ff);
-  text-align:center;
-}
+.profile-banner{margin-bottom:14px;padding:18px;border-radius:23px;background:linear-gradient(135deg,#fbe2ee,#eee5ff);text-align:center}
+.profile-banner.blue{background:linear-gradient(135deg,#e3f5e8,#e0ebff)}
+.profile-panda-space{position:relative;display:grid;place-items:center;height:160px}
+.profile-banner h2{margin:9px 0}
+.style-strip{display:flex;gap:8px;margin-top:14px;overflow:auto;padding:4px}
+.style-item{flex:0 0 77px;padding:10px 5px;border:1px solid #f0dfe8;border-radius:15px;background:#fff9fc;font-size:10px;color:var(--ink)}
+.style-item span{display:block;margin-bottom:6px;font-size:27px}
+.style-item.selected{border-color:#e6a4be;background:#fce5ef}
+
+/* REWARDS AND BOUTIQUE */
+
+.gift-hero{padding:23px;margin-bottom:14px;border-radius:24px;background:linear-gradient(130deg,#fbe0ec,#ede7ff);text-align:center}
 .gift-hero .big{font-size:65px;margin:10px}
-.quest{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:13px;
-  margin-bottom:9px;
-  border:1px solid var(--line);
-  border-radius:17px;
-  background:white;
-}
-.quest-icon{
-  display:grid;
-  place-items:center;
-  flex-shrink:0;
-  width:46px;
-  height:46px;
-  border-radius:14px;
-  background:#fff0f5;
-  font-size:24px;
-}
+.quest{display:flex;align-items:center;gap:11px;padding:13px;margin-bottom:9px;border:1px solid var(--line);border-radius:17px;background:white}
+.quest-icon{display:grid;place-items:center;flex-shrink:0;width:45px;height:45px;border-radius:14px;background:#fff1f6;font-size:24px}
 .quest-main{flex:1;min-width:0}
 .quest-main strong{font-size:12px}
-.quest-main p{font-size:10px;color:var(--muted)}
+.quest-main p{margin:4px 0;font-size:10px;color:var(--muted)}
 .quest-status{font-size:11px;font-weight:700}
-.shop-tabs{
-  display:flex;
-  gap:6px;
-  margin:15px 0;
-}
-.shop-tabs button{
-  flex:1;
-  padding:11px 4px;
-  border:0;
-  border-radius:13px;
-  background:#f8edf2;
-  color:var(--muted);
-  font-size:11px;
-  font-weight:700;
-}
-.shop-tabs button.active{
-  background:#efc3d5;
-  color:var(--ink);
-}
-.mini-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-.mini-item{
-  padding:15px 9px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:white;
-  text-align:center;
-}
-.mini-item .emoji{font-size:37px}
-.mini-item h3{font-size:12px;margin:9px 0}
+.shop-tabs{display:flex;gap:6px;margin:13px 0}
+.shop-tabs button{flex:1;border:0;border-radius:13px;padding:11px 4px;background:#f8edf2;color:var(--muted);font-size:11px;font-weight:700}
+.shop-tabs button.active{background:#efc3d5;color:var(--ink)}
+.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.mini-item{padding:15px 9px;border:1px solid var(--line);border-radius:18px;background:white;text-align:center}
+.mini-item .emoji{font-size:36px}
+.mini-item h3{margin:9px 0;font-size:12px}
 .mini-item p{font-size:11px;color:var(--muted)}
-.mini-item button{font-size:11px}
+
+/* FRIENDS AND COUPLES */
+
+.friend-code{padding:14px;border:2px dashed #e5b6ca;border-radius:17px;background:#fff4f8;text-align:center;font-size:18px;font-weight:700;letter-spacing:2px;user-select:all}
+.friend-card{padding:14px;border:1px solid var(--line);border-radius:18px;background:white;margin:10px 0}
+.friend-card strong{font-size:13px}
+.friend-card p{font-size:11px;color:var(--muted)}
 
 /* SETTINGS */
 
-.overlay{
-  position:absolute;
-  z-index:30;
-  inset:0;
-  display:none;
-  align-items:flex-end;
-  background:#4a344766;
-}
+.overlay{position:absolute;z-index:35;inset:0;display:none;align-items:flex-end;background:#4a344766}
 .overlay.open{display:flex}
-.sheet{
-  width:100%;
-  max-height:88%;
-  overflow:auto;
-  padding:19px;
-  border-radius:28px 28px 0 0;
-  background:#fffbfa;
-}
-.sheet-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
-.sheet-head h3{margin:0;font-size:18px}
-.close{
-  width:33px;
-  height:33px;
-  border:0;
-  border-radius:50%;
-  background:#f7eaf0;
-  font-size:20px;
-}
-.setting-link{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  width:100%;
-  padding:15px 5px;
-  border:0;
-  border-bottom:1px solid var(--line);
-  background:transparent;
-  color:var(--ink);
-  text-align:left;
-  font-size:13px;
-  font-weight:700;
-}
-.setting-link span{color:#bca2ae}
-.notice{
-  padding:13px;
-  border-radius:15px;
-  background:#fff3e7;
-  font-size:11px;
-  line-height:1.6;
-}
-.toggle-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 0;
-  font-size:12px;
-}
-.toggle-row input{
-  width:auto;
-  margin:0;
-}
-.toast{
-  position:absolute;
-  z-index:50;
-  left:50%;
-  bottom:87px;
-  display:none;
-  width:max-content;
-  max-width:85%;
-  padding:12px 16px;
-  border-radius:17px;
-  background:#765e6e;
-  color:white;
-  text-align:center;
-  font-size:12px;
-  font-weight:700;
-  transform:translateX(-50%);
-}
-@media(max-width:500px){
+.sheet{width:100%;max-height:90%;overflow:auto;padding:19px;border-radius:27px 27px 0 0;background:#fffbfa}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}
+.sheet-head h3{font-size:18px;margin:0}
+.close{width:33px;height:33px;border:0;border-radius:50%;background:#f7e9f0;font-size:19px}
+.setting-link{display:flex;justify-content:space-between;align-items:center;width:100%;padding:15px 5px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;color:var(--ink);font-weight:700;font-size:13px}
+.setting-link span{color:#b89ca9}
+.toggle-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:12px}
+.toggle-row input{width:auto;margin:0}
+.toast{position:absolute;z-index:50;bottom:86px;left:50%;display:none;max-width:88%;padding:11px 15px;border-radius:16px;background:#755d6d;color:white;text-align:center;font-size:12px;font-weight:700;transform:translateX(-50%);box-shadow:0 7px 22px #62475844}
+.reduce-motion .world::before,.reduce-motion .world::after,.reduce-motion .panda.preview{animation:none!important}
+
+/* TABLETS AND PHONES: FULL SCREEN */
+
+@media(max-width:1024px),(pointer:coarse){
   body{display:block;background:#fffaf9}
-  .phone{
-    width:100%;
-    height:100dvh;
-    border:0;
-    border-radius:0;
-    box-shadow:none;
-  }
-  header{padding-top:max(16px,env(safe-area-inset-top))}
+  .phone{height:100dvh;width:100%;max-height:none;border:0;border-radius:0;box-shadow:none}
+  header{padding-top:max(15px,env(safe-area-inset-top))}
+}
+@media(min-width:600px){
+  .room-actions{max-width:420px;margin:auto;left:12px;right:12px}
+  .action{padding:12px 4px}
 }
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation:none!important;
-    transition:none!important;
-  }
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
-
 <body>
+
 <div class="phone" id="app">
 
 <header>
   <div class="brand">
-    panda friends <span style="color:#e3a1b9">♡</span>
-    <small>YOUR LITTLE WORLD</small>
+    bambuu <span style="color:#e5a2bb">♡</span>
+    <small>YOUR LITTLE PANDA WORLD</small>
   </div>
+
   <div class="header-right">
     <div class="currency">🎋 <span id="bambooCount">0</span></div>
-    <button class="gear" onclick="openSettings()" aria-label="Settings">⚙️</button>
+    <button class="gear" type="button" onclick="openSettings()" aria-label="Settings">⚙️</button>
   </div>
 </header>
 
 <main class="content" id="content">
 
 <!-- HOME -->
-<section class="screen active" id="home">
 
-  <div class="room" id="room">
-    <div class="room-label">
-      🌙 <span id="roomName">Mochi's room</span>
+<section id="home" class="screen active">
+  <div class="home-stage" id="homeStage">
+    <div class="stage-backdrop"></div>
+
+    <div class="world" id="world">
+      <div class="room-label">
+        🌙 <span id="roomName">Mochi's room</span>
+      </div>
+
+      <div class="swipe-hint">← swipe for needs</div>
+
+      <button
+        class="bed-zone"
+        type="button"
+        onclick="putToBed()"
+        aria-label="Put panda to bed">
+      </button>
+
+      <div id="homePandaHolder"></div>
+
+      <div class="sleep-blanket"></div>
+      <div class="sleep-z">💤</div>
+
+      <div id="guestBadge" class="guest-badge hidden">
+        <b>🐼</b>
+        Guest preview
+      </div>
+
+      <div id="speech" class="bubble" aria-live="polite">
+        Welcome home! ♡
+      </div>
+
+      <div
+        id="bambooFood"
+        class="bamboo-food hidden"
+        role="button"
+        tabindex="0"
+        aria-label="Bamboo food. Drag to panda's mouth or press Enter">
+        🎋
+      </div>
+
+      <div class="room-actions">
+        <button class="action" type="button" onclick="prepareFood()">
+          <span>🎋</span>Feed
+        </button>
+        <button class="action" type="button" onclick="putToBed()">
+          <span>🛏️</span>Rest
+        </button>
+        <button class="action" type="button" onclick="playPanda()">
+          <span>🧸</span>Play
+        </button>
+        <button class="action" type="button" onclick="carePanda()">
+          <span>💗</span>Care
+        </button>
+      </div>
     </div>
 
-    <button
-      class="bed-zone"
-      onclick="putToBed()"
-      aria-label="Put panda to bed">
-    </button>
-
-    <div id="homePandaHolder"></div>
-
-    <div class="sleep-cloud" id="sleepCloud">💤</div>
-
-    <div class="bubble" id="speech">
-      Welcome home! ♡
-    </div>
+    <!-- HIDDEN NEEDS DRAWER -->
 
     <div
-      class="bamboo-food hidden"
-      id="bambooFood"
-      role="button"
-      tabindex="0"
-      aria-label="Feed bamboo to panda">
-      🎋
+      id="needsShade"
+      class="needs-shade"
+      onclick="closeNeeds()">
     </div>
 
-    <div class="room-actions">
-      <button class="action" onclick="prepareFood()">
-        <span>🎋</span>Feed
-      </button>
-      <button class="action" onclick="putToBed()">
-        <span>🛏️</span>Rest
-      </button>
-      <button class="action" onclick="playPanda()">
-        <span>🧸</span>Play
-      </button>
-      <button class="action" onclick="carePanda()">
-        <span>💗</span>Care
-      </button>
-    </div>
-  </div>
+    <aside
+      id="needsDrawer"
+      class="needs-drawer"
+      aria-label="Your panda's needs"
+      aria-hidden="true">
 
-  <div class="needs">
-    <div class="needs-heading">
-      <strong>🐼 My little needs ♡</strong>
-      <span>Changes over time</span>
-    </div>
+      <div class="needs-head">
+        <h3>🐼 Little needs ♡</h3>
+        <button
+          class="close"
+          type="button"
+          onclick="closeNeeds()"
+          aria-label="Close needs">×</button>
+      </div>
 
-    <div class="need-row">
-      <span>🎋 Fullness</span>
-      <div class="track"><div class="fill" id="hungerFill"></div></div>
-      <span class="need-value" id="hungerValue"></span>
-    </div>
+      <p class="small">
+        Swipe right to close. Needs change gently with real time.
+      </p>
 
-    <div class="need-row">
-      <span>💤 Energy</span>
-      <div class="track"><div class="fill" id="energyFill"></div></div>
-      <span class="need-value" id="energyValue"></span>
-    </div>
+      <div class="need-row">
+        <span>🎋 Fullness</span>
+        <div class="track"><div class="fill" id="hungerFill"></div></div>
+        <span class="need-number" id="hungerValue">—</span>
+      </div>
 
-    <div class="need-row">
-      <span>💗 Happy</span>
-      <div class="track"><div class="fill" id="happyFill"></div></div>
-      <span class="need-value" id="happyValue"></span>
-    </div>
+      <div class="need-row">
+        <span>💤 Energy</span>
+        <div class="track"><div class="fill" id="energyFill"></div></div>
+        <span class="need-number" id="energyValue">—</span>
+      </div>
 
-    <div class="need-row">
-      <span>🫧 Clean</span>
-      <div class="track"><div class="fill" id="cleanFill"></div></div>
-      <span class="need-value" id="cleanValue"></span>
-    </div>
+      <div class="need-row">
+        <span>💗 Happy</span>
+        <div class="track"><div class="fill" id="happyFill"></div></div>
+        <span class="need-number" id="happyValue">—</span>
+      </div>
+
+      <div class="need-row">
+        <span>🫧 Clean</span>
+        <div class="track"><div class="fill" id="cleanFill"></div></div>
+        <span class="need-number" id="cleanValue">—</span>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <h3 id="needMessage">Looking cosy!</h3>
+        <p class="small">
+          Help when your panda asks for something to earn bamboo.
+          Repeated taps don't give unlimited rewards.
+        </p>
+      </div>
+    </aside>
   </div>
 </section>
 
 <!-- MY PANDA -->
-<section class="screen" id="panda">
+
+<section id="panda" class="screen">
   <div class="pad">
     <h2>My panda ♡</h2>
-    <p class="small">Your one and only little companion.</p>
+    <p class="small">The very same little panda from your room.</p>
 
     <div class="profile-banner" id="profileBanner">
-      <div class="profile-panda-space" id="profilePandaHolder"></div>
-      <h2 id="profileName">Mochi</h2>
-      <span class="tag" id="profileMood">☁️ Cosy</span>
-      <p class="small">The same panda from your bedroom! ♡</p>
+      <div id="profilePandaHolder" class="profile-panda-space"></div>
 
-      <div class="style-strip" id="styleStrip"></div>
+      <h2 id="profileName">Mochi</h2>
+      <span id="profileMood" class="tag">🥰 Happy</span>
+
+      <p class="small">Tap your panda for a little heart ♡</p>
+
+      <div id="styleStrip" class="style-strip"></div>
     </div>
 
     <div class="card">
@@ -874,10 +371,10 @@ textarea{resize:vertical}
       </select>
 
       <label for="birthdayInput">My birthday</label>
-      <input type="date" id="birthdayInput">
+      <input id="birthdayInput" type="date">
 
       <label for="bioInput">A little about me</label>
-      <textarea id="bioInput" maxlength="80" rows="3"></textarea>
+      <textarea id="bioInput" rows="3" maxlength="80"></textarea>
 
       <button class="btn full" onclick="saveProfile()">
         Save my profile ♡
@@ -886,64 +383,143 @@ textarea{resize:vertical}
 
     <div class="card">
       <h3>🎂 My special day</h3>
-      <p class="small" id="birthdayText"></p>
+      <p id="birthdayText" class="small"></p>
     </div>
 
     <div class="card">
-      <h3>🌷 Our little memories</h3>
-      <p class="small" id="memoryText"></p>
+      <h3>🌷 Our memories</h3>
+      <p id="memoryText" class="small"></p>
+    </div>
+  </div>
+</section>
+
+<!-- FRIENDS AND COUPLES -->
+
+<section id="friends" class="screen">
+  <div class="pad">
+    <h2>Our little circle ♡</h2>
+    <p class="small">
+      A cosy place for your future Bambuu friends and couples. 💗
+    </p>
+
+    <div class="card">
+      <h3>🪪 Your Bambuu code</h3>
+      <div class="friend-code" id="myCode">PF-XXXXXXXX</div>
+
+      <div style="height:10px"></div>
+
+      <button class="btn secondary full" onclick="copyFriendCode()">
+        📋 Copy my code
+      </button>
+
+      <p class="small">
+        This is a code saved to this browser. It is not yet
+        registered or verified on a server, so worldwide
+        uniqueness cannot be guaranteed.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>💌 Invite someone</h3>
+
+      <label for="inviteCode">Their friend code</label>
+      <input
+        id="inviteCode"
+        placeholder="PF-XXXXXXXX"
+        maxlength="16"
+        autocapitalize="characters">
+
+      <label for="inviteType">They're my...</label>
+      <select id="inviteType">
+        <option value="friend">🐼 Friend</option>
+        <option value="couple">💗 Couple</option>
+      </select>
+
+      <button class="btn full" onclick="addGuestPreview()">
+        Save guest preview ♡
+      </button>
+
+      <p class="small">
+        Preview only: entering a code won't contact or connect
+        another person yet. Real invites need online accounts.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🏡 Your room guests <span id="slotCount">0/1</span></h3>
+      <div id="guestList"></div>
+    </div>
+
+    <div class="card">
+      <h3>✨ PandaLuxe extra spaces</h3>
+      <p class="small">
+        The free preview has space for one guest. More guest
+        slots will require PandaLuxe once real memberships and
+        online connections are available.
+      </p>
+
+      <button
+        class="btn secondary"
+        onclick="navigate('shop');setShopTab('luxe')">
+        See PandaLuxe
+      </button>
     </div>
   </div>
 </section>
 
 <!-- REWARDS -->
-<section class="screen" id="rewards">
+
+<section id="rewards" class="screen">
   <div class="pad">
     <h2>Little rewards ♡</h2>
-    <p class="small">
-      Earn bamboo by looking after your panda when it needs you.
-    </p>
+    <p class="small">Earn 🎋 by helping your panda with real needs.</p>
 
     <div class="gift-hero">
       <span class="tag">DAILY SURPRISE</span>
       <div class="big">🎁</div>
-      <h2>A little gift!</h2>
-      <p class="small">
-        A small daily bamboo surprise.
-      </p>
-      <button class="btn" id="giftButton" onclick="claimGift()">
+      <h2>A tiny gift!</h2>
+      <p class="small">A few bamboo each day.</p>
+
+      <button id="giftButton" class="btn" onclick="claimGift()">
         Open my gift ♡
       </button>
-      <p class="small" id="giftMessage"></p>
+
+      <p id="giftMessage" class="small"></p>
     </div>
 
-    <h3>🎀 Today's little quests</h3>
+    <h3>🎀 Today's quests</h3>
     <p class="small">
-      Each quest can only reward you once per day.
+      One reward per quest per day, only when your panda needs care.
     </p>
     <div id="questList"></div>
   </div>
 </section>
 
 <!-- BOUTIQUE -->
-<section class="screen" id="shop">
+
+<section id="shop" class="screen">
   <div class="pad">
-    <h2>The boutique ♡</h2>
-    <p class="small">Little treasures for your panda.</p>
+    <h2>Bambuu Boutique ♡</h2>
+    <p class="small">Little treats for your panda world.</p>
 
     <div class="gift-hero">
-      <span class="tag">PANDA COLLECTION</span>
+      <span class="tag">BAMBUU COLLECTION</span>
       <h2 style="margin-top:10px">PandaLuxe ✨</h2>
-      <p class="small">A dreamy little collection.</p>
+      <p class="small">Dreamy possibilities for the future.</p>
     </div>
 
     <div class="shop-tabs">
-      <button id="tabBamboo" class="active" onclick="setShopTab('bamboo')">
+      <button
+        id="tabBamboo"
+        class="active"
+        onclick="setShopTab('bamboo')">
         🎋 Bamboo
       </button>
+
       <button id="tabLuxe" onclick="setShopTab('luxe')">
         ✨ PandaLuxe
       </button>
+
       <button id="tabPacks" onclick="setShopTab('packs')">
         🎀 Packs
       </button>
@@ -955,51 +531,84 @@ textarea{resize:vertical}
 
 </main>
 
+<!-- FIVE BOTTOM ICONS -->
+
 <nav class="bottom-nav">
-  <button class="tab active" data-screen="home" onclick="navigate('home')">
-    <span>🏡</span>Home
+  <button
+    class="tab active"
+    data-screen="home"
+    onclick="navigate('home')">
+    <span class="tab-icon">🏡</span>Home
   </button>
-  <button class="tab" data-screen="panda" onclick="navigate('panda')">
-    <span>🐼</span>My Panda
+
+  <button
+    class="tab"
+    data-screen="panda"
+    onclick="navigate('panda')">
+    <span class="tab-icon">🐼</span>My Panda
   </button>
-  <button class="tab" data-screen="rewards" onclick="navigate('rewards')">
-    <span>🎁</span>Rewards
+
+  <button
+    class="tab heart-tab"
+    data-screen="friends"
+    onclick="navigate('friends')">
+    <span class="tab-icon">💗</span>Circle
   </button>
-  <button class="tab" data-screen="shop" onclick="navigate('shop')">
-    <span>🛍️</span>Boutique
+
+  <button
+    class="tab"
+    data-screen="rewards"
+    onclick="navigate('rewards')">
+    <span class="tab-icon">🎁</span>Rewards
+  </button>
+
+  <button
+    class="tab"
+    data-screen="shop"
+    onclick="navigate('shop')">
+    <span class="tab-icon">🛍️</span>Boutique
   </button>
 </nav>
 
-<div class="overlay" id="overlay" onclick="overlayClick(event)">
-  <div class="sheet" id="sheet"></div>
+<!-- SETTINGS POPUP -->
+
+<div
+  id="overlay"
+  class="overlay"
+  onclick="overlayClick(event)">
+  <div id="sheet" class="sheet"></div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div id="toast" class="toast" role="status"></div>
+
 </div>
 
 <script>
 "use strict";
 
 const $ = id => document.getElementById(id);
-const SAVE_KEY = "pandaFriendsCosyV1";
+
+// New save location, but old progress is imported automatically.
+const SAVE_KEY = "bambuuSaveV2";
+const OLD_KEY = "pandaFriendsCosyV1";
 
 const defaults = {
   name:"Mochi",
   gender:"girl",
   birthday:"",
-  bio:"I love cosy naps and bamboo!",
+  bio:"I love bamboo and little naps!",
   mood:"cosy",
   accessory:"none",
   inventory:["none"],
   bamboo:30,
   currencyVersion:2,
-  hunger:75,
-  energy:80,
-  happy:80,
-  clean:85,
+  hunger:78,
+  energy:78,
+  happy:82,
+  clean:86,
   lastUpdate:Date.now(),
   sleeping:false,
-  sleepStart:0,
+  sleepUntil:0,
   lastGift:"",
   questDate:"",
   quests:{},
@@ -1009,52 +618,66 @@ const defaults = {
   totalPlays:0,
   totalCare:0,
   totalRests:0,
-  notifications:false,
-  sound:true,
+  friendCode:"",
+  guest:null,
   motion:true
 };
 
 let state = {...defaults};
 
-try{
-  const stored = JSON.parse(localStorage.getItem(SAVE_KEY) || "null");
-  if(stored && typeof stored === "object"){
-    state = {...defaults,...stored};
+try {
+  const saved = JSON.parse(
+    localStorage.getItem(SAVE_KEY) ||
+    localStorage.getItem(OLD_KEY) ||
+    "null"
+  );
+
+  if(saved && typeof saved === "object"){
+    state = {...defaults,...saved};
   }
-}catch(error){
-  console.warn("Save could not load:",error);
+} catch(e){
+  console.warn("Bambuu save wasn't readable",e);
 }
+
+const clamp = n =>
+  Math.max(0,Math.min(100,Number(n)||0));
+
+/* CONVERT PREVIOUS CURRENCY */
+
+if(state.currencyVersion !== 2){
+  state.bamboo = Math.max(0,Number(state.stars)||30);
+  state.currencyVersion = 2;
+}
+
+delete state.stars;
 
 if(!Array.isArray(state.inventory)){
   state.inventory = ["none"];
 }
+
 if(!state.inventory.includes("none")){
   state.inventory.unshift("none");
 }
+
 if(!state.quests || typeof state.quests !== "object"){
   state.quests = {};
 }
-if(!state.careCooldowns || typeof state.careCooldowns !== "object"){
+
+if(!state.careCooldowns ||
+   typeof state.careCooldowns !== "object"){
   state.careCooldowns = {};
 }
 
-/* CONVERT OLD STARS ONCE */
-
-if(state.currencyVersion !== 2){
-  state.bamboo = Math.max(0,Number(state.stars) || 30);
-  state.currencyVersion = 2;
+if(!Number.isFinite(Number(state.lastUpdate))){
+  state.lastUpdate = Date.now();
 }
-delete state.stars;
-
-const clamp = value =>
-  Math.max(0,Math.min(100,Number(value) || 0));
 
 ["hunger","energy","happy","clean"].forEach(key=>{
   state[key] = clamp(state[key]);
 });
 
-if(!Number.isFinite(state.lastUpdate)){
-  state.lastUpdate = Date.now();
+if(!state.friendCode){
+  state.friendCode = makeCode();
 }
 
 const accessories = [
@@ -1073,20 +696,20 @@ const quests = [
     id:"feed",
     emoji:"🎋",
     name:"A proper bamboo meal",
-    detail:"Feed your panda when fullness is below 65%",
+    detail:"Feed when fullness is below 65%",
     reward:8
   },
   {
     id:"rest",
     emoji:"💤",
-    name:"A well-deserved nap",
-    detail:"Let your tired panda rest",
+    name:"A much-needed nap",
+    detail:"Rest when energy is below 60%",
     reward:8
   },
   {
     id:"play",
     emoji:"🧸",
-    name:"A happy little playdate",
+    name:"A sweet playdate",
     detail:"Play when happiness is below 70%",
     reward:7
   },
@@ -1094,7 +717,7 @@ const quests = [
     id:"care",
     emoji:"🫧",
     name:"Fresh and fluffy",
-    detail:"Care for your panda when cleanliness is low",
+    detail:"Clean when cleanliness is below 65%",
     reward:7
   }
 ];
@@ -1102,14 +725,35 @@ const quests = [
 let shopTab = "bamboo";
 let toastTimer;
 let speechTimer;
-let lastStroke = 0;
-let dragState = null;
-let foodDrag = null;
+let petTime = 0;
+let gesture = null;
+let foodGesture = null;
+let swipeStart = null;
 
-/* BASIC HELPERS */
+/* HELPERS */
+
+function makeCode(){
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const bytes = new Uint8Array(9);
+
+  if(window.crypto && crypto.getRandomValues){
+    crypto.getRandomValues(bytes);
+  } else {
+    for(let i=0;i<bytes.length;i++){
+      bytes[i] = Math.floor(Math.random()*256);
+    }
+  }
+
+  return "PF-" +
+    Array.from(
+      bytes,
+      b=>alphabet[b%alphabet.length]
+    ).join("");
+}
 
 function localDay(){
   const d = new Date();
+
   return [
     d.getFullYear(),
     String(d.getMonth()+1).padStart(2,"0"),
@@ -1118,10 +762,10 @@ function localDay(){
 }
 
 function persist(){
-  try{
+  try {
     localStorage.setItem(SAVE_KEY,JSON.stringify(state));
-  }catch(error){
-    console.warn("Could not save:",error);
+  } catch(e){
+    console.warn("Save failed",e);
   }
 }
 
@@ -1130,115 +774,178 @@ function save(){
   refresh();
 }
 
-function showToast(message){
-  const toast = $("toast");
-  toast.textContent = message;
-  toast.style.display = "block";
+function toast(message){
+  const el = $("toast");
+
+  el.textContent = message;
+  el.style.display = "block";
+
   clearTimeout(toastTimer);
+
   toastTimer = setTimeout(()=>{
-    toast.style.display = "none";
+    el.style.display = "none";
   },2600);
 }
 
 function say(message){
-  const speech = $("speech");
-  speech.textContent = message;
-  speech.style.display = "block";
+  const bubble = $("speech");
+
+  bubble.textContent = message;
+  bubble.style.display = "block";
+
   clearTimeout(speechTimer);
+
   speechTimer = setTimeout(()=>{
-    speech.style.display = "none";
-  },3900);
+    bubble.style.display = "none";
+  },4200);
 }
 
-function navigate(screen){
-  document.querySelectorAll(".screen").forEach(el=>{
-    el.classList.toggle("active",el.id === screen);
+function navigate(page){
+  closeNeeds();
+
+  document.querySelectorAll(".screen").forEach(screen=>{
+    screen.classList.toggle("active",screen.id===page);
   });
 
-  document.querySelectorAll(".tab").forEach(el=>{
-    el.classList.toggle("active",el.dataset.screen === screen);
+  document.querySelectorAll(".tab").forEach(tab=>{
+    tab.classList.toggle(
+      "active",
+      tab.dataset.screen===page
+    );
   });
 
   $("content").scrollTop = 0;
 
-  if(screen === "panda") renderProfile();
-  if(screen === "rewards") renderRewards();
-  if(screen === "shop") renderShop();
+  if(page==="panda") renderProfile();
+  if(page==="friends") renderFriends();
+  if(page==="rewards") renderRewards();
+  if(page==="shop") renderShop();
 }
 
-/* REAL-TIME NEEDS */
+/* GENTLER NEEDS SYSTEM */
 
 function updateNeeds(){
   const now = Date.now();
-  const elapsed = Math.max(
+
+  const seconds = Math.max(
     0,
-    Math.min((now-state.lastUpdate)/60000,10080)
+    Math.min((now-state.lastUpdate)/1000,86400)
   );
 
-  if(elapsed < 0.001) return;
+  if(seconds < .1) return;
 
-  state.hunger = clamp(state.hunger - elapsed*.12);
-  state.happy = clamp(state.happy - elapsed*.055);
-  state.clean = clamp(state.clean - elapsed*.045);
+  // Gentle real-time changes.
+  // Rates are percentages lost per hour.
+  state.hunger = clamp(
+    state.hunger-seconds*2.5/3600
+  );
+
+  state.happy = clamp(
+    state.happy-seconds*1.6/3600
+  );
+
+  state.clean = clamp(
+    state.clean-seconds*1.2/3600
+  );
 
   if(state.sleeping){
-    state.energy = clamp(state.energy + elapsed*.85);
-  }else{
-    state.energy = clamp(state.energy - elapsed*.09);
+    // Naps restore energy quickly.
+    state.energy = clamp(
+      state.energy+seconds*3.4
+    );
+
+    if(
+      state.energy>=98 &&
+      now >= (Number(state.sleepUntil)||0)
+    ){
+      state.sleeping = false;
+      state.sleepUntil = 0;
+
+      if($("homePanda")){
+        placePanda("24%","56%");
+      }
+    }
+
+  } else {
+    state.energy = clamp(
+      state.energy-seconds*2/3600
+    );
   }
 
   state.lastUpdate = now;
-
-  if(state.sleeping && state.energy >= 100){
-    state.sleeping = false;
-  }
-
   persist();
 }
 
-function getNeed(){
+function needType(){
   if(state.sleeping) return "sleep";
-  if(state.hunger < 45) return "feed";
-  if(state.energy < 35) return "rest";
-  if(state.clean < 40) return "care";
-  if(state.happy < 45) return "play";
+  if(state.hunger<55) return "feed";
+  if(state.energy<50) return "rest";
+  if(state.clean<55) return "care";
+  if(state.happy<55) return "play";
+
   return "fine";
 }
 
+const needWords = {
+  sleep:"Zzz... dreaming of bamboo! 💤",
+  feed:"My tummy wants bamboo! 🎋",
+  rest:"Can I have a tiny nap? 🌙",
+  care:"Can you help me get fluffy? 🫧",
+  play:"Could we play together? 🧸",
+  fine:"I'm feeling cosy! ♡"
+};
+
 function refresh(){
-  $("bambooCount").textContent = Math.floor(state.bamboo);
-  $("roomName").textContent = state.name + "'s room";
-  $("room").classList.toggle("blue",state.gender === "boy");
+  $("bambooCount").textContent =
+    Math.floor(Math.max(0,Number(state.bamboo)||0));
 
-  const values = {
-    hunger:state.hunger,
-    energy:state.energy,
-    happy:state.happy,
-    clean:state.clean
-  };
+  $("roomName").textContent =
+    state.name+"'s room";
 
-  Object.entries(values).forEach(([key,value])=>{
-    $(key+"Fill").style.width = value+"%";
-    $(key+"Value").textContent = Math.round(value)+"%";
+  // Pink/blue changes immediately.
+  $("world").classList.toggle(
+    "blue",state.gender==="boy"
+  );
+
+  $("homeStage").classList.toggle(
+    "blue",state.gender==="boy"
+  );
+
+  $("world").classList.toggle(
+    "asleep",!!state.sleeping
+  );
+
+  ["hunger","energy","happy","clean"].forEach(key=>{
+    $(key+"Fill").style.width = state[key]+"%";
+    $(key+"Value").textContent =
+      Math.round(state[key])+"%";
   });
+
+  $("needMessage").textContent =
+    needWords[needType()];
+
+  const accessoryIcon =
+    accessories.find(a=>a.id===state.accessory)?.emoji || "";
 
   document.querySelectorAll(".panda").forEach(panda=>{
-    panda.classList.toggle("sleeping",state.sleeping);
-    const accessory = panda.querySelector(".accessory");
-    if(accessory){
-      accessory.textContent =
-        accessories.find(a=>a.id === state.accessory)?.emoji || "";
-    }
+    panda.classList.toggle(
+      "sleeping",
+      !!state.sleeping
+    );
+
+    panda.querySelector(".accessory").textContent =
+      accessoryIcon;
   });
 
-  const cloud = $("sleepCloud");
-  cloud.classList.toggle("show",state.sleeping);
+  $("guestBadge").classList.toggle(
+    "hidden",
+    !state.guest
+  );
 
-  if(state.sleeping){
-    const panda = $("homePanda");
-    cloud.style.left = (panda.offsetLeft+75)+"px";
-    cloud.style.top = (panda.offsetTop-15)+"px";
-  }
+  $("app").classList.toggle(
+    "reduce-motion",
+    state.motion===false
+  );
 }
 
 function tick(){
@@ -1246,318 +953,234 @@ function tick(){
   refresh();
 }
 
-function tellNeeds(){
-  const need = getNeed();
-  const messages = {
-    feed:"My tummy is rumbling... bamboo please! 🎋",
-    rest:"I'm getting sleepy... 💤",
-    care:"Can you help me get fluffy again? 🫧",
-    play:"Can we play together? 🧸",
-    sleep:"Zzz... sweet dreams... 🌙",
-    fine:"I'm feeling lovely! ♡"
-  };
-  say(messages[need]);
+/* SWIPE LEFT TO VIEW NEEDS */
+
+function openNeeds(){
+  updateNeeds();
+  refresh();
+
+  $("needsShade").classList.add("open");
+  $("needsDrawer").classList.add("open");
+
+  $("needsDrawer").setAttribute(
+    "aria-hidden","false"
+  );
 }
 
-/* ONE PANDA DESIGN, USED TWICE */
+function closeNeeds(){
+  $("needsShade").classList.remove("open");
+  $("needsDrawer").classList.remove("open");
+
+  $("needsDrawer").setAttribute(
+    "aria-hidden","true"
+  );
+}
+
+function setupSwipe(){
+  const area = $("homeStage");
+
+  area.addEventListener("pointerdown",event=>{
+    // Don't interfere with dragging, feeding or buttons.
+    if(event.target.closest(
+      "button,.panda,.bamboo-food,.needs-drawer"
+    )){
+      return;
+    }
+
+    swipeStart = {
+      x:event.clientX,
+      y:event.clientY
+    };
+  });
+
+  area.addEventListener("pointerup",event=>{
+    if(!swipeStart) return;
+
+    const dx = event.clientX-swipeStart.x;
+    const dy = event.clientY-swipeStart.y;
+
+    swipeStart = null;
+
+    if(
+      Math.abs(dx)>60 &&
+      Math.abs(dx)>Math.abs(dy)*1.3
+    ){
+      if(dx<0){
+        openNeeds();
+      }else{
+        closeNeeds();
+      }
+    }
+  });
+
+  area.addEventListener("pointercancel",()=>{
+    swipeStart = null;
+  });
+
+  $("needsDrawer").addEventListener(
+    "touchstart",
+    event=>{
+      const touch = event.touches[0];
+
+      swipeStart = {
+        x:touch.clientX,
+        y:touch.clientY
+      };
+    },
+    {passive:true}
+  );
+
+  $("needsDrawer").addEventListener(
+    "touchend",
+    event=>{
+      if(
+        swipeStart &&
+        event.changedTouches[0].clientX-swipeStart.x>55
+      ){
+        closeNeeds();
+      }
+
+      swipeStart = null;
+    },
+    {passive:true}
+  );
+}
+
+/* ONE PANDA DESIGN, TWO PLACES */
 
 function pandaHTML(id,preview=false){
   return `
     <div
-      class="panda ${preview ? "preview" : ""}"
+      class="panda ${preview?"preview":""}"
       id="${id}"
       role="button"
       tabindex="0"
-      aria-label="Cute panda">
+      aria-label="Pet your panda">
+
       <div class="panda-body">
         <div class="arm left"></div>
         <div class="arm right"></div>
         <div class="foot left"></div>
         <div class="foot right"></div>
       </div>
-      <div class="head">
+
+      <div class="panda-head">
         <div class="ear left"></div>
         <div class="ear right"></div>
-        <div class="patch left"><div class="eye"></div></div>
-        <div class="patch right"><div class="eye"></div></div>
+
+        <div class="patch left">
+          <div class="eye"></div>
+        </div>
+
+        <div class="patch right">
+          <div class="eye"></div>
+        </div>
+
         <div class="blush left"></div>
         <div class="blush right"></div>
         <div class="nose"></div>
         <div class="mouth"></div>
       </div>
+
       <div class="accessory"></div>
-      <div class="cheek-heart">💗</div>
     </div>
   `;
 }
 
 function createPandas(){
-  $("homePandaHolder").innerHTML = pandaHTML("homePanda");
+  $("homePandaHolder").innerHTML =
+    pandaHTML("homePanda");
+
   $("profilePandaHolder").innerHTML =
     pandaHTML("profilePanda",true);
 
-  setupPandaInteractions();
-}
-
-/* DRAGGING AND PETTING */
-
-function heartBurst(){
-  const room = $("room");
   const panda = $("homePanda");
 
-  for(let i=0;i<3;i++){
-    const heart = document.createElement("span");
-    heart.className = "float-heart";
-    heart.textContent = ["💗","💕","♡"][i];
+  panda.style.left = "24%";
+  panda.style.top = "56%";
 
-    heart.style.left =
-      (panda.offsetLeft+45+i*12)+"px";
-    heart.style.top =
-      (panda.offsetTop+15+i*5)+"px";
+  $("profilePanda").addEventListener("click",()=>{
+    const preview = $("profilePanda");
 
-    room.appendChild(heart);
-    setTimeout(()=>heart.remove(),1200);
-  }
-
-  panda.classList.remove("loved");
-  void panda.offsetWidth;
-  panda.classList.add("loved");
-}
-
-function strokePanda(){
-  const now = Date.now();
-  if(now-lastStroke < 850) return;
-
-  lastStroke = now;
-  state.totalPets++;
-  state.happy = clamp(state.happy+1.5);
-
-  heartBurst();
-  persist();
-  refresh();
-}
-
-function setupPandaInteractions(){
-  const panda = $("homePanda");
-  const room = $("room");
-
-  panda.addEventListener("pointerdown",event=>{
-    if(state.sleeping) wakePanda();
-
-    const rect = panda.getBoundingClientRect();
-
-    dragState = {
-      id:event.pointerId,
-      offsetX:event.clientX-rect.left,
-      offsetY:event.clientY-rect.top,
-      startX:event.clientX,
-      startY:event.clientY,
-      moved:false
-    };
-
-    panda.setPointerCapture(event.pointerId);
-    strokePanda();
-  });
-
-  panda.addEventListener("pointermove",event=>{
-    if(!dragState || dragState.id !== event.pointerId){
-      return;
-    }
-
-    const roomRect = room.getBoundingClientRect();
-
-    const dx = event.clientX-dragState.startX;
-    const dy = event.clientY-dragState.startY;
-
-    if(Math.abs(dx)+Math.abs(dy)>8){
-      dragState.moved = true;
-    }
-
-    if(!dragState.moved){
-      strokePanda();
-      return;
-    }
-
-    const x = Math.max(
-      0,
-      Math.min(
-        room.clientWidth-panda.offsetWidth,
-        event.clientX-roomRect.left-dragState.offsetX
-      )
+    heartBurst(
+      $("profilePandaHolder"),
+      preview.offsetLeft+54,
+      preview.offsetTop+14
     );
 
-    const y = Math.max(
-      45,
-      Math.min(
-        room.clientHeight-panda.offsetHeight-65,
-        event.clientY-roomRect.top-dragState.offsetY
-      )
-    );
-
-    panda.style.left = x+"px";
-    panda.style.top = y+"px";
-  });
-
-  panda.addEventListener("pointerup",event=>{
-    if(!dragState) return;
-
-    const wasMoved = dragState.moved;
-    dragState = null;
-
-    if(!wasMoved){
-      heartBurst();
-      say("Hehe! I love head pats! 💗");
-    }else{
-      const roomRect = room.getBoundingClientRect();
-      const x = event.clientX-roomRect.left;
-      const y = event.clientY-roomRect.top;
-
-      if(x < room.clientWidth*.52 &&
-         y > room.clientHeight*.48 &&
-         y < room.clientHeight*.85){
-        putToBed();
-      }
-    }
-  });
-
-  panda.addEventListener("pointercancel",()=>{
-    dragState = null;
+    toast("A little panda cuddle! 💗");
   });
 
   panda.addEventListener("keydown",event=>{
     if(event.key==="Enter" || event.key===" "){
       event.preventDefault();
       strokePanda();
-      say("Aww! ♡");
     }
   });
 
-  $("profilePanda").addEventListener("click",()=>{
-    showToast("Your adorable little panda! 🐼💗");
-  });
+  setupPandaDrag();
 }
 
-/* BAMBOO FOOD DRAGGING */
+/* HEARTS AND HEAD STROKES */
 
-function prepareFood(){
-  updateNeeds();
+function heartBurst(parent,x,y){
+  for(let i=0;i<3;i++){
+    const heart = document.createElement("span");
 
-  if(state.sleeping) wakePanda();
+    heart.className = "float-heart";
+    heart.textContent = ["💗","💕","♡"][i];
 
-  $("bambooFood").classList.remove("hidden");
+    heart.style.left = (x+i*12)+"px";
+    heart.style.top = (y+i*5)+"px";
 
-  if(state.hunger >= 90){
-    say("My tummy is already full! ♡");
-  }else{
-    say("Drag the bamboo to my mouth! 🎋");
+    parent.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),1200);
   }
 }
 
-function setupFoodDrag(){
-  const food = $("bambooFood");
-  const room = $("room");
+function strokePanda(){
+  if(Date.now()-petTime<280) return;
 
-  food.addEventListener("pointerdown",event=>{
-    event.preventDefault();
+  petTime = Date.now();
 
-    const rect = food.getBoundingClientRect();
+  state.totalPets++;
+  state.happy = clamp(state.happy+.4);
 
-    foodDrag = {
-      id:event.pointerId,
-      offsetX:event.clientX-rect.left,
-      offsetY:event.clientY-rect.top
-    };
+  const panda = $("homePanda");
 
-    food.setPointerCapture(event.pointerId);
-  });
+  heartBurst(
+    $("world"),
+    panda.offsetLeft+54,
+    panda.offsetTop+17
+  );
 
-  food.addEventListener("pointermove",event=>{
-    if(!foodDrag || foodDrag.id!==event.pointerId){
-      return;
-    }
-
-    const rect = room.getBoundingClientRect();
-
-    food.style.left =
-      Math.max(0,Math.min(
-        room.clientWidth-food.offsetWidth,
-        event.clientX-rect.left-foodDrag.offsetX
-      ))+"px";
-
-    food.style.top =
-      Math.max(0,Math.min(
-        room.clientHeight-food.offsetHeight,
-        event.clientY-rect.top-foodDrag.offsetY
-      ))+"px";
-
-    food.style.bottom = "auto";
-  });
-
-  food.addEventListener("pointerup",event=>{
-    if(!foodDrag) return;
-    foodDrag = null;
-
-    const pandaRect =
-      $("homePanda").querySelector(".head").getBoundingClientRect();
-
-    const mouthX = pandaRect.left+pandaRect.width/2;
-    const mouthY = pandaRect.top+pandaRect.height*.72;
-
-    const distance = Math.hypot(
-      event.clientX-mouthX,
-      event.clientY-mouthY
-    );
-
-    if(distance < 75){
-      feedPanda();
-    }
-
-    resetFoodPosition();
-  });
-
-  food.addEventListener("pointercancel",()=>{
-    foodDrag = null;
-    resetFoodPosition();
-  });
-
-  food.addEventListener("keydown",event=>{
-    if(event.key==="Enter" || event.key===" "){
-      event.preventDefault();
-      feedPanda();
-      resetFoodPosition();
-    }
-  });
+  persist();
+  refresh();
 }
 
-function resetFoodPosition(){
-  const food = $("bambooFood");
-  food.style.left = "11%";
-  food.style.top = "";
-  food.style.bottom = "19%";
-}
+/* BED AND SLEEP */
 
-function feedPanda(){
+function wakePanda(){
+  if(!state.sleeping) return;
+
   updateNeeds();
 
-  if(state.hunger >= 90){
-    say("I'm full! Save the bamboo for later! ♡");
-    return;
-  }
+  state.sleeping = false;
+  state.sleepUntil = 0;
 
-  const before = state.hunger;
-  state.hunger = clamp(state.hunger+27);
-  state.happy = clamp(state.happy+3);
-  state.totalFeeds++;
+  placePanda("24%","56%");
 
-  $("bambooFood").classList.add("hidden");
-
-  say("Nom nom! Delicious bamboo! 🎋💗");
-
-  rewardForCare("feed",before<65);
   save();
+  say("Good morning! ☀️");
 }
 
-/* REST, PLAY AND CARE */
+function placePanda(x,y){
+  const panda = $("homePanda");
+
+  panda.style.left = x;
+  panda.style.top = y;
+}
 
 function putToBed(){
   updateNeeds();
@@ -1567,83 +1190,337 @@ function putToBed(){
     return;
   }
 
-  if(state.energy > 90){
-    say("I'm not sleepy yet! ♡");
+  const needed = state.energy<60;
+
+  state.sleeping = true;
+
+  // Minimum twelve-second nap, even when nearly rested.
+  state.sleepUntil = Date.now()+12000;
+
+  state.totalRests++;
+
+  // Position panda directly over illustrated bed.
+  placePanda("22%","57%");
+
+  rewardForCare("rest",needed);
+  save();
+
+  say("Time for a quick cosy nap... zzz! 💤");
+}
+
+/* DRAG PANDA AROUND THE ROOM */
+
+function setupPandaDrag(){
+  const panda = $("homePanda");
+  const world = $("world");
+
+  panda.addEventListener("pointerdown",event=>{
+    if(event.button!==undefined && event.button!==0){
+      return;
+    }
+
+    event.preventDefault();
+
+    if(state.sleeping){
+      wakePanda();
+    }
+
+    const rect = panda.getBoundingClientRect();
+
+    gesture = {
+      id:event.pointerId,
+      startX:event.clientX,
+      startY:event.clientY,
+      offX:event.clientX-rect.left,
+      offY:event.clientY-rect.top,
+      mode:event.target.closest(".panda-head")
+        ? "pet"
+        : "drag",
+      moved:false
+    };
+
+    panda.setPointerCapture(event.pointerId);
+
+    if(gesture.mode==="pet"){
+      strokePanda();
+    }
+  });
+
+  panda.addEventListener("pointermove",event=>{
+    if(!gesture || gesture.id!==event.pointerId){
+      return;
+    }
+
+    const distance = Math.hypot(
+      event.clientX-gesture.startX,
+      event.clientY-gesture.startY
+    );
+
+    // Small head movements give hearts.
+    if(gesture.mode==="pet" && distance<38){
+      strokePanda();
+      return;
+    }
+
+    if(distance<9 && !gesture.moved){
+      return;
+    }
+
+    gesture.mode = "drag";
+    gesture.moved = true;
+
+    const rect = world.getBoundingClientRect();
+
+    const x = Math.max(
+      0,
+      Math.min(
+        world.clientWidth-panda.offsetWidth,
+        event.clientX-rect.left-gesture.offX
+      )
+    );
+
+    const y = Math.max(
+      30,
+      Math.min(
+        world.clientHeight-panda.offsetHeight-65,
+        event.clientY-rect.top-gesture.offY
+      )
+    );
+
+    panda.style.left = x+"px";
+    panda.style.top = y+"px";
+  });
+
+  panda.addEventListener("pointerup",event=>{
+    if(!gesture) return;
+
+    const dragged = gesture.moved;
+    gesture = null;
+
+    if(!dragged){
+      strokePanda();
+      say("Awww, head pats! 💗");
+      return;
+    }
+
+    // Detect the illustrated bed area.
+    const cx =
+      (panda.offsetLeft+panda.offsetWidth/2) /
+      world.clientWidth;
+
+    const cy =
+      (panda.offsetTop+panda.offsetHeight/2) /
+      world.clientHeight;
+
+    if(
+      cx>.08 && cx<.64 &&
+      cy>.49 && cy<.83
+    ){
+      putToBed();
+    }
+  });
+
+  panda.addEventListener("pointercancel",()=>{
+    gesture = null;
+  });
+}
+
+/* FEEDING BAMBOO */
+
+function resetFood(){
+  const food = $("bambooFood");
+
+  // Hide immediately and clear dragging coordinates.
+  food.classList.add("hidden");
+  food.style.left = "";
+  food.style.top = "";
+}
+
+function prepareFood(){
+  updateNeeds();
+
+  if(state.sleeping){
+    wakePanda();
+  }
+
+  if(state.hunger>94){
+    say("I'm full right now! ♡");
+    resetFood();
     return;
   }
 
-  const before = state.energy;
-  state.sleeping = true;
-  state.sleepStart = Date.now();
-  state.totalRests++;
+  resetFood();
 
-  const panda = $("homePanda");
+  $("bambooFood").classList.remove("hidden");
 
-  panda.style.left = "13%";
-  panda.style.top = "58%";
-
-  say("Goodnight... zzz... 🌙💤");
-
-  rewardForCare("rest",before<55);
-  save();
+  say("Drag my bamboo to my mouth! 🎋");
 }
 
-function wakePanda(){
+function setupFoodDrag(){
+  const food = $("bambooFood");
+  const world = $("world");
+
+  food.addEventListener("pointerdown",event=>{
+    event.preventDefault();
+
+    const rect = food.getBoundingClientRect();
+
+    foodGesture = {
+      id:event.pointerId,
+      offX:event.clientX-rect.left,
+      offY:event.clientY-rect.top
+    };
+
+    food.setPointerCapture(event.pointerId);
+  });
+
+  food.addEventListener("pointermove",event=>{
+    if(
+      !foodGesture ||
+      foodGesture.id!==event.pointerId
+    ){
+      return;
+    }
+
+    const rect = world.getBoundingClientRect();
+
+    food.style.left = Math.max(
+      0,
+      Math.min(
+        world.clientWidth-food.offsetWidth,
+        event.clientX-rect.left-foodGesture.offX
+      )
+    )+"px";
+
+    food.style.top = Math.max(
+      0,
+      Math.min(
+        world.clientHeight-food.offsetHeight,
+        event.clientY-rect.top-foodGesture.offY
+      )
+    )+"px";
+  });
+
+  food.addEventListener("pointerup",event=>{
+    if(!foodGesture) return;
+
+    foodGesture = null;
+
+    const mouth = $("homePanda")
+      .querySelector(".mouth")
+      .getBoundingClientRect();
+
+    const x = mouth.left+mouth.width/2;
+    const y = mouth.top+mouth.height/2;
+
+    if(
+      Math.hypot(
+        event.clientX-x,
+        event.clientY-y
+      )<83
+    ){
+      feedPanda();
+    }else{
+      resetFood();
+      say("Oops! Try feeding me again! 🎋");
+    }
+  });
+
+  food.addEventListener("pointercancel",()=>{
+    foodGesture = null;
+    resetFood();
+  });
+
+  food.addEventListener("keydown",event=>{
+    if(event.key==="Enter" || event.key===" "){
+      event.preventDefault();
+      feedPanda();
+    }
+  });
+}
+
+function feedPanda(){
   updateNeeds();
-  state.sleeping = false;
-  state.sleepStart = 0;
+
+  // The bamboo vanishes immediately after feeding.
+  resetFood();
+
+  if(state.hunger>94){
+    say("My tummy is full! ♡");
+    return;
+  }
+
+  const needed = state.hunger<65;
+
+  state.hunger = clamp(state.hunger+32);
+  state.happy = clamp(state.happy+3);
+  state.totalFeeds++;
+
+  rewardForCare("feed",needed);
   save();
-  say("Good morning! 🐼☀️");
+
+  say("Nom nom! Yummy bamboo! 🎋💗");
 }
+
+/* PLAY AND CARE */
 
 function playPanda(){
   updateNeeds();
 
   if(state.sleeping){
-    say("Shhh... I'm sleeping! 💤");
+    say("I'm dreaming... zzz! 💤");
     return;
   }
 
-  if(state.energy<15){
-    say("I'm too tired to play... 💤");
+  if(state.energy<12){
+    say("I'm too tired to play! 💤");
     return;
   }
 
-  const before = state.happy;
+  const needed = state.happy<70;
 
-  state.happy = clamp(state.happy+19);
-  state.energy = clamp(state.energy-9);
-  state.hunger = clamp(state.hunger-4);
+  state.happy = clamp(state.happy+24);
+  state.energy = clamp(state.energy-6);
+  state.hunger = clamp(state.hunger-2);
   state.totalPlays++;
 
-  say("Wheeee! That was so fun! 🧸✨");
-
-  rewardForCare("play",before<70);
+  rewardForCare("play",needed);
   save();
+
+  say("Wheee! That was so fun! 🧸");
 }
 
 function carePanda(){
   updateNeeds();
 
-  if(state.sleeping) wakePanda();
+  if(state.sleeping){
+    wakePanda();
+  }
 
-  const before = state.clean;
+  const needed = state.clean<65;
 
-  state.clean = clamp(state.clean+23);
+  state.clean = clamp(state.clean+32);
   state.happy = clamp(state.happy+5);
   state.totalCare++;
 
-  heartBurst();
-  say("All clean and fluffy! 🫧💗");
+  const panda = $("homePanda");
 
-  rewardForCare("care",before<65);
+  heartBurst(
+    $("world"),
+    panda.offsetLeft+52,
+    panda.offsetTop+10
+  );
+
+  rewardForCare("care",needed);
   save();
+
+  say("All clean and fluffy! 🫧💗");
 }
 
-/* FAIR BAMBOO REWARDS */
+/* BAMBOO REWARDS */
 
 function resetQuests(){
-  if(state.questDate !== localDay()){
+  if(state.questDate!==localDay()){
     state.questDate = localDay();
     state.quests = {};
     persist();
@@ -1656,22 +1533,25 @@ function rewardForCare(type,needed){
   if(!needed) return;
 
   const now = Date.now();
-  const last = Number(state.careCooldowns[type]) || 0;
-  const cooldown = 20*60*1000;
+  const last = Number(state.careCooldowns[type])||0;
 
-  if(now-last >= cooldown){
+  // Extra care reward every 30 minutes at most.
+  if(now-last>=30*60*1000){
     state.bamboo += 2;
     state.careCooldowns[type] = now;
-    showToast("You helped your panda! +2 🎋");
+
+    toast("You helped your panda! +2 🎋");
   }
 
+  // Quest rewards only once each day.
   if(!state.quests[type]){
     const quest = quests.find(q=>q.id===type);
 
     if(quest){
       state.quests[type] = true;
       state.bamboo += quest.reward;
-      showToast("Quest complete! +"+quest.reward+" 🎋");
+
+      toast("Quest complete! +"+quest.reward+" 🎋");
     }
   }
 }
@@ -1679,8 +1559,8 @@ function rewardForCare(type,needed){
 function claimGift(){
   resetQuests();
 
-  if(state.lastGift === localDay()){
-    showToast("Your gift is already collected! ♡");
+  if(state.lastGift===localDay()){
+    toast("Already collected today! ♡");
     return;
   }
 
@@ -1689,30 +1569,32 @@ function claimGift(){
 
   save();
   renderRewards();
-  showToast("Daily surprise! +5 🎋");
+
+  toast("Daily surprise! +5 🎋");
 }
 
 function renderRewards(){
   resetQuests();
 
-  const claimed = state.lastGift===localDay();
+  const done = state.lastGift===localDay();
 
-  $("giftButton").disabled = claimed;
+  $("giftButton").disabled = done;
   $("giftButton").textContent =
-    claimed ? "Collected ♡" : "Open my gift ♡";
+    done ? "Collected ♡" : "Open my gift ♡";
 
-  $("giftMessage").textContent =
-    claimed
-      ? "Another surprise will arrive tomorrow!"
-      : "Today's gift contains 5 bamboo.";
+  $("giftMessage").textContent = done
+    ? "Another tiny gift arrives tomorrow!"
+    : "Today's surprise is 5 bamboo.";
 
   $("questList").innerHTML = quests.map(q=>`
     <div class="quest">
       <div class="quest-icon">${q.emoji}</div>
+
       <div class="quest-main">
         <strong>${q.name}</strong>
         <p>${q.detail} · +${q.reward} 🎋</p>
       </div>
+
       <div class="quest-status">
         ${state.quests[q.id] ? "✓ Done" : "○"}
       </div>
@@ -1720,34 +1602,36 @@ function renderRewards(){
   `).join("");
 }
 
-/* PROFILE */
+/* MY PANDA PROFILE */
 
 function saveProfile(){
   state.name =
     $("nameInput").value.trim().slice(0,18) || "Mochi";
 
-  state.gender = $("genderInput").value==="boy"
-    ? "boy"
-    : "girl";
+  state.gender =
+    $("genderInput").value==="boy" ? "boy" : "girl";
 
   state.birthday = $("birthdayInput").value;
   state.bio = $("bioInput").value.trim().slice(0,80);
 
   save();
   renderProfile();
-  showToast("Profile saved! ♡");
+
+  toast("Profile saved! ♡");
 }
 
 function equipAccessory(id){
   if(!state.inventory.includes(id)){
-    showToast("Find this in the Bamboo Boutique! 🎋");
+    toast("Find this in the boutique! 🎋");
     return;
   }
 
   state.accessory = id;
+
   save();
   renderProfile();
-  showToast("Looking adorable! 🎀");
+
+  toast("So cute! 🎀");
 }
 
 function renderProfile(){
@@ -1759,10 +1643,9 @@ function renderProfile(){
   $("profileName").textContent = state.name;
 
   $("profileBanner").classList.toggle(
-    "blue",state.gender==="boy"
+    "blue",
+    state.gender==="boy"
   );
-
-  const need = getNeed();
 
   const moods = {
     feed:"🎋 Hungry",
@@ -1773,7 +1656,8 @@ function renderProfile(){
     fine:"🥰 Happy"
   };
 
-  $("profileMood").textContent = moods[need];
+  $("profileMood").textContent =
+    moods[needType()];
 
   $("styleStrip").innerHTML = accessories.map(a=>{
     const owned = state.inventory.includes(a.id);
@@ -1782,8 +1666,10 @@ function renderProfile(){
       <button
         class="style-item ${state.accessory===a.id ? "selected" : ""}"
         onclick="equipAccessory('${a.id}')">
+
         <span>${a.emoji || "🐼"}</span>
         ${a.name}
+
         <div style="margin-top:5px">
           ${owned ? "♡" : "🔒"}
         </div>
@@ -1795,17 +1681,20 @@ function renderProfile(){
     const parts = state.birthday.split("-");
     const month = Number(parts[1]);
     const day = Number(parts[2]);
-    const today = new Date();
+    const now = new Date();
 
-    if(month===today.getMonth()+1 &&
-       day===today.getDate()){
+    if(
+      month===now.getMonth()+1 &&
+      day===now.getDate()
+    ){
       $("birthdayText").textContent =
         "🎉 Happy birthday, "+state.name+"! 🎂";
     }else{
       $("birthdayText").textContent =
         "🎂 "+state.name+"'s birthday is "+
         new Date(2000,month-1,day).toLocaleDateString(
-          undefined,{month:"long",day:"numeric"}
+          undefined,
+          {month:"long",day:"numeric"}
         )+".";
     }
   }else{
@@ -1822,7 +1711,107 @@ function renderProfile(){
   refresh();
 }
 
-/* BOUTIQUE */
+/* FRIEND AND COUPLE CODES */
+
+function renderFriends(){
+  $("myCode").textContent = state.friendCode;
+
+  $("slotCount").textContent =
+    state.guest ? "1/1" : "0/1";
+
+  $("guestList").innerHTML = state.guest
+    ? `
+      <div class="friend-card">
+        <strong>
+          🐼 ${state.guest.type==="couple" ? "Couple" : "Friend"}
+          guest preview
+        </strong>
+
+        <p>Code: ${escapeHTML(state.guest.code)}</p>
+
+        <p>
+          Not connected — this is saved only in your browser.
+        </p>
+
+        <button
+          class="btn secondary"
+          onclick="removeGuest()">
+          Remove preview guest
+        </button>
+      </div>
+    `
+    : `<p class="small">
+         No guest preview saved yet. ♡
+       </p>`;
+}
+
+function escapeHTML(value){
+  return String(value).replace(
+    /[&<>"']/g,
+    character=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    })[character]
+  );
+}
+
+async function copyFriendCode(){
+  try {
+    await navigator.clipboard.writeText(state.friendCode);
+    toast("Code copied! ♡");
+  }catch(e){
+    window.prompt("Copy your code:",state.friendCode);
+  }
+}
+
+function addGuestPreview(){
+  const code = $("inviteCode")
+    .value
+    .trim()
+    .toUpperCase()
+    .replace(/\s+/g,"");
+
+  if(state.guest){
+    toast("Your one preview guest spot is full! 💗");
+    return;
+  }
+
+  if(!/^PF-[A-HJ-NP-Z2-9]{8,10}$/.test(code)){
+    toast("That code doesn't look right! ♡");
+    return;
+  }
+
+  if(code===state.friendCode){
+    toast("That's your own code! 🐼");
+    return;
+  }
+
+  state.guest = {
+    code:code,
+    type:$("inviteType").value==="couple"
+      ? "couple"
+      : "friend"
+  };
+
+  save();
+  renderFriends();
+
+  toast("Local guest preview saved! ♡");
+}
+
+function removeGuest(){
+  state.guest = null;
+
+  save();
+  renderFriends();
+
+  toast("Preview guest removed ♡");
+}
+
+/* BAMBUU BOUTIQUE */
 
 function setShopTab(tab){
   shopTab = tab;
@@ -1832,15 +1821,16 @@ function setShopTab(tab){
 function buyAccessory(id){
   const item = accessories.find(a=>a.id===id);
 
-  if(!item || id==="none") return;
-
-  if(state.inventory.includes(id)){
-    showToast("You already own this! ♡");
+  if(
+    !item ||
+    id==="none" ||
+    state.inventory.includes(id)
+  ){
     return;
   }
 
   if(state.bamboo<item.price){
-    showToast("Not enough bamboo yet! 🎋");
+    toast("Not enough bamboo yet! 🎋");
     return;
   }
 
@@ -1850,35 +1840,46 @@ function buyAccessory(id){
   save();
   renderShop();
 
-  showToast(item.name+" is yours! 🎀");
+  toast(item.name+" is yours! 🎀");
 }
 
 function renderShop(){
   ["bamboo","luxe","packs"].forEach(tab=>{
-    const id = "tab"+tab[0].toUpperCase()+tab.slice(1);
-    $(id).classList.toggle("active",shopTab===tab);
+    const id =
+      "tab"+tab[0].toUpperCase()+tab.slice(1);
+
+    $(id).classList.toggle(
+      "active",
+      shopTab===tab
+    );
   });
 
   if(shopTab==="bamboo"){
     $("shopContent").innerHTML = `
       <p class="small">
-        Earn bamboo by caring for your panda.
-        Spend it on adorable accessories! ♡
+        Spend bamboo earned from real needs. ♡
       </p>
+
       <div class="mini-grid">
-        ${accessories.filter(a=>a.id!=="none").map(a=>`
-          <div class="mini-item">
-            <div class="emoji">${a.emoji}</div>
-            <h3>${a.name}</h3>
-            <p>${a.price} 🎋</p>
-            <button
-              class="btn"
-              onclick="buyAccessory('${a.id}')"
-              ${state.inventory.includes(a.id) ? "disabled" : ""}>
-              ${state.inventory.includes(a.id) ? "Owned ♡" : "Buy"}
-            </button>
-          </div>
-        `).join("")}
+        ${accessories
+          .filter(a=>a.id!=="none")
+          .map(a=>`
+            <div class="mini-item">
+              <div class="emoji">${a.emoji}</div>
+              <h3>${a.name}</h3>
+              <p>${a.price} 🎋</p>
+
+              <button
+                class="btn"
+                onclick="buyAccessory('${a.id}')"
+                ${state.inventory.includes(a.id) ? "disabled" : ""}>
+
+                ${state.inventory.includes(a.id)
+                  ? "Owned ♡"
+                  : "Buy"}
+              </button>
+            </div>
+          `).join("")}
       </div>
     `;
     return;
@@ -1886,24 +1887,41 @@ function renderShop(){
 
   const items = shopTab==="luxe"
     ? [
-        ["💎","PandaLuxe Membership"],
-        ["🎀","Luxe Outfit Collection"]
+        [
+          "💎",
+          "PandaLuxe Membership",
+          "Future upgrade: more than one real room guest."
+        ]
       ]
     : [
-        ["🌙","Moonlight Collection"],
-        ["🍓","Strawberry Collection"],
-        ["🧸","Teddy Collection"]
+        [
+          "🌙",
+          "Moonlight Collection",
+          "A cosy future room pack."
+        ],
+        [
+          "🍓",
+          "Strawberry Collection",
+          "A sweet future room pack."
+        ],
+        [
+          "🧸",
+          "Teddy Collection",
+          "Cuddly extras planned for later."
+        ]
       ];
 
   $("shopContent").innerHTML = `
     <div class="notice" style="margin-bottom:12px">
-      ✨ Preview only. No real-money purchases
-      are available in this offline game.
+      ✨ Preview only. Memberships and real-money purchases
+      are not enabled.
     </div>
+
     ${items.map(item=>`
       <div class="card">
         <h3>${item[0]} ${item[1]}</h3>
-        <p class="small">A future Panda Friends extra.</p>
+        <p class="small">${item[2]}</p>
+
         <button class="btn secondary" disabled>
           Coming soon
         </button>
@@ -1912,14 +1930,18 @@ function renderShop(){
   `;
 }
 
-/* SETTINGS */
+/* SETTINGS AND CONTACT */
 
 function showSheet(title,body){
   $("sheet").innerHTML = `
     <div class="sheet-head">
       <h3>${title}</h3>
-      <button class="close" onclick="closeSheet()">×</button>
+      <button
+        class="close"
+        onclick="closeSheet()"
+        aria-label="Close">×</button>
     </div>
+
     ${body}
   `;
 
@@ -1931,21 +1953,23 @@ function closeSheet(){
 }
 
 function overlayClick(event){
-  if(event.target===$("overlay")) closeSheet();
+  if(event.target===$("overlay")){
+    closeSheet();
+  }
 }
 
 function openSettings(){
-  showSheet("⚙️ Settings",`
+  showSheet("⚙️ Bambuu Settings",`
     <div class="card">
-      <h3>🐼 Panda Friends</h3>
-      <p class="small">Your little world ♡</p>
+      <h3>🐼 Bambuu ♡</h3>
       <p class="small">
-        Your panda's progress is saved in this browser.
+        A cosy little panda world.
+        Your game saves in this browser.
       </p>
     </div>
 
     <button class="setting-link" onclick="openAccount()">
-      👤 My account <span>›</span>
+      👤 Account and login <span>›</span>
     </button>
 
     <button class="setting-link" onclick="openPreferences()">
@@ -1965,73 +1989,63 @@ function openSettings(){
     </button>
 
     <button class="setting-link" onclick="openInfo('privacy')">
-      🔒 Privacy policy <span>›</span>
+      🔒 Privacy <span>›</span>
     </button>
 
     <button class="setting-link" onclick="openInfo('terms')">
-      📄 Terms of service <span>›</span>
-    </button>
-
-    <button class="setting-link" onclick="openInfo('about')">
-      🌸 About Panda Friends <span>›</span>
+      📄 Terms <span>›</span>
     </button>
 
     <button class="setting-link" onclick="openInfo('data')">
-      💾 My saved data <span>›</span>
+      💾 Backup my save <span>›</span>
     </button>
 
-    <div class="notice" style="margin-top:16px">
-      💗 Clearing your browser's website data may
-      erase your panda's saved progress.
+    <button class="setting-link" onclick="openInfo('about')">
+      🌸 About Bambuu <span>›</span>
+    </button>
+
+    <div class="notice" style="margin-top:14px">
+      Your progress is stored locally.
+      Clearing website data may delete it.
+      Use Backup my save to keep a copy.
     </div>
   `);
 }
 
 function openAccount(){
-  showSheet("👤 My account",`
-    <p class="small">
-      Your future Panda Friends account ♡
-    </p>
-
+  showSheet("👤 My Bambuu account",`
     <div class="notice">
-      🚧 Account login is not connected yet.
-      This offline edition cannot securely create
-      or sign into real email/password accounts.
-      Please don't enter a real password here.
+      🚧 Real accounts aren't connected yet.
+      This local edition cannot securely log in or register people.
+      Don't enter a real password into an unfinished form.
     </div>
 
-    <div class="card" style="margin-top:14px">
-      <h3>💌 Log in</h3>
+    <div class="card" style="margin-top:12px">
+      <h3>💌 Login — coming soon</h3>
 
       <label>Email address</label>
       <input
         type="email"
-        placeholder="Email login coming soon"
+        placeholder="Coming soon"
         disabled>
 
       <label>Password</label>
       <input
         type="password"
-        placeholder="Password login coming soon"
+        placeholder="Coming soon"
         disabled>
 
       <button class="btn full" disabled>
-        Log in ♡ — Coming soon
+        Log in ♡
       </button>
 
-      <div style="height:10px"></div>
-
-      <button class="btn secondary full" disabled>
-        Create an account — Coming soon
-      </button>
-
-      <p class="small" style="text-align:center">
-        Forgot password? Coming soon
+      <p class="small">
+        Create account · Reset password · Sign out — planned
       </p>
     </div>
 
     <button class="btn secondary full" onclick="openSettings()">
-      ← Back to settings
+      ← Settings
     </button>
   `);
 }
@@ -2040,85 +2054,67 @@ function openPreferences(){
   showSheet("🎀 Preferences",`
     <div class="card">
       <div class="toggle-row">
-        <span>✨ Gentle animations</span>
+        <label for="motionPref">✨ Gentle motion</label>
+
         <input
+          id="motionPref"
           type="checkbox"
-          id="motionToggle"
-          ${state.motion ? "checked" : ""}
-          onchange="changePreference('motion',this.checked)">
+          ${state.motion!==false ? "checked" : ""}
+          onchange="state.motion=this.checked;save()">
       </div>
 
       <div class="toggle-row">
-        <span>🔊 Sounds (future feature)</span>
+        <span>🔊 Music and sounds (planned)</span>
         <input type="checkbox" disabled>
       </div>
 
       <p class="small">
-        Your animation preference is saved locally.
+        Motion choices are saved.
+        Music, language, and notification settings
+        are coming later.
       </p>
     </div>
 
     <button class="btn secondary full" onclick="openSettings()">
-      ← Back to settings
+      ← Settings
     </button>
   `);
 }
 
-function changePreference(key,value){
-  if(key==="motion"){
-    state.motion = value;
-    applyPreferences();
-    save();
-  }
-}
-
-function applyPreferences(){
-  let style = $("motionStyle");
-
-  if(!style){
-    style = document.createElement("style");
-    style.id = "motionStyle";
-    document.head.appendChild(style);
-  }
-
-  style.textContent = state.motion
-    ? ""
-    : ".room::before,.room::after,.panda.preview{animation:none!important}";
-}
-
-function openInfo(type){
+function openInfo(key){
   const pages = {
     notifications:[
       "🔔 Notifications",
-      "Notification reminders are planned for a future update. Your panda's needs currently update whenever you open the game."
-    ],
-    contact:[
-      "💌 Contact us",
-      "A support email address or contact form can be connected here in the future. No messages can be sent from this version yet."
+      "Needs update when you return to Bambuu. Push notifications are a future feature."
     ],
     help:[
       "❔ Help & FAQ",
-      "Drag bamboo to your panda's mouth to feed it. Drag your panda around the room, stroke its head for hearts, and tap Rest to put it to bed. Bamboo rewards are earned when you help with genuine needs."
+      "Swipe left across the bedroom to open needs, and right to close. Drag bamboo to your panda's mouth. Rub its head for hearts, drag it onto the illustrated bed, or tap Rest for a quick nap. Rewards need actual care and have cooldowns."
     ],
     privacy:[
-      "🔒 Privacy policy",
-      "This offline version stores game progress in your browser's localStorage. It does not send your panda's data to a game server. A full privacy policy will be needed before online accounts launch."
+      "🔒 Privacy",
+      "Bambuu currently stores your save locally in this browser. No Bambuu login data or friend invitations are sent to a server. The contact link opens your email app. A complete privacy policy will be needed before real accounts launch."
     ],
     terms:[
-      "📄 Terms of service",
-      "Official terms of service have not been published yet. This is a preview section for the future website."
+      "📄 Terms",
+      "Terms of service are planned. Membership purchases are not available in this preview."
     ],
     about:[
-      "🌸 About Panda Friends",
-      "Panda Friends is a cosy little virtual-pet game. Care for your panda, collect bamboo, and enjoy your dreamy bedroom. Made with love ♡"
+      "🌸 About Bambuu",
+      "Bambuu is a pastel panda-care game featuring cosy bedrooms, bamboo, and little memories. ♡"
     ],
     data:[
-      "💾 My saved data",
-      "Your game saves automatically on this browser. You can export a backup below or import one later."
+      "💾 Your saved data",
+      "Export a backup file and import it later. Importing replaces the current local save."
+    ],
+    contact:[
+      "💌 Contact Bambuu",
+      "Questions, bug reports, or ideas? Email hello.bambuu@gmail.com."
     ]
   };
 
-  const page = pages[type];
+  const page = pages[key];
+
   if(!page) return;
 
   showSheet(page[0],`
@@ -2126,32 +2122,46 @@ function openInfo(type){
       <p class="small">${page[1]}</p>
     </div>
 
-    ${type==="data" ? `
-      <button class="btn full" onclick="exportSave()">
-        💾 Export my save
-      </button>
+    ${key==="contact" ? `
+      <a
+        class="btn full"
+        style="display:block;text-align:center;text-decoration:none"
+        href="mailto:hello.bambuu@gmail.com?subject=Bambuu%20Support">
+        💌 Email hello.bambuu@gmail.com
+      </a>
 
       <div style="height:10px"></div>
+    ` : ""}
 
-      <label for="importSave">Import a saved backup</label>
+    ${key==="data" ? `
+      <button class="btn full" onclick="exportSave()">
+        💾 Export my Bambuu save
+      </button>
+
+      <div style="height:14px"></div>
+
+      <label for="importSave">Import a backup</label>
+
       <input
-        type="file"
         id="importSave"
+        type="file"
         accept=".json,application/json"
         onchange="importSaveFile(this)">
 
       <div class="notice">
-        Importing a backup replaces your current game progress.
+        Importing replaces your current progress.
       </div>
 
       <div style="height:12px"></div>
     ` : ""}
 
     <button class="btn secondary full" onclick="openSettings()">
-      ← Back to settings
+      ← Settings
     </button>
   `);
 }
+
+/* BACKUP SYSTEM */
 
 function exportSave(){
   updateNeeds();
@@ -2165,30 +2175,47 @@ function exportSave(){
   const link = document.createElement("a");
 
   link.href = url;
-  link.download = "panda-friends-save.json";
+  link.download = "bambuu-save.json";
   link.click();
 
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  setTimeout(()=>{
+    URL.revokeObjectURL(url);
+  },1200);
 }
 
 async function importSaveFile(input){
   const file = input.files?.[0];
+
   if(!file) return;
 
-  try{
+  try {
     const data = JSON.parse(await file.text());
 
-    if(!data || typeof data!=="object" ||
-       typeof data.name!=="string" ||
-       !Array.isArray(data.inventory)){
-      throw new Error("Invalid save");
+    if(
+      !data ||
+      typeof data!=="object" ||
+      typeof data.name!=="string" ||
+      !Array.isArray(data.inventory)
+    ){
+      throw Error("Not a Bambuu save");
     }
 
-    if(!confirm("Replace your current panda progress with this backup?")){
+    if(!confirm(
+      "Replace your current Bambuu progress with this backup?"
+    )){
       return;
     }
 
     state = {...defaults,...data};
+
+    state.name =
+      String(state.name).slice(0,18) || "Mochi";
+
+    state.gender =
+      state.gender==="boy" ? "boy" : "girl";
+
+    state.bio =
+      String(state.bio||"").slice(0,80);
 
     state.inventory = state.inventory.filter(
       id=>accessories.some(a=>a.id===id)
@@ -2202,10 +2229,10 @@ async function importSaveFile(input){
       state.accessory = "none";
     }
 
-    state.gender = state.gender==="boy" ? "boy" : "girl";
-    state.name = state.name.slice(0,18) || "Mochi";
-    state.bio = String(state.bio || "").slice(0,80);
-    state.bamboo = Math.max(0,Number(state.bamboo)||0);
+    state.bamboo = Math.max(
+      0,
+      Number(state.bamboo)||0
+    );
 
     ["hunger","energy","happy","clean"].forEach(key=>{
       state[key] = clamp(state[key]);
@@ -2214,50 +2241,70 @@ async function importSaveFile(input){
     state.currencyVersion = 2;
     state.lastUpdate = Date.now();
 
-    if(!state.quests || typeof state.quests!=="object"){
-      state.quests = {};
-    }
+    state.quests =
+      state.quests && typeof state.quests==="object"
+        ? state.quests
+        : {};
 
-    if(!state.careCooldowns ||
-       typeof state.careCooldowns!=="object"){
-      state.careCooldowns = {};
+    state.careCooldowns =
+      state.careCooldowns &&
+      typeof state.careCooldowns==="object"
+        ? state.careCooldowns
+        : {};
+
+    state.friendCode =
+      state.friendCode || makeCode();
+
+    if(
+      state.guest &&
+      !/^PF-[A-HJ-NP-Z2-9]{8,10}$/.test(state.guest.code)
+    ){
+      state.guest = null;
     }
 
     save();
-    applyPreferences();
     renderProfile();
     renderRewards();
+    renderFriends();
     renderShop();
     closeSheet();
 
-    showToast("Panda backup restored! ♡");
-  }catch(error){
-    showToast("That backup couldn't be opened.");
+    toast("Bambuu save restored! ♡");
+
+  } catch(e){
+    toast("That backup couldn't be opened");
   }
 }
 
-/* START */
+/* START BAMBUU */
 
 function init(){
   createPandas();
   setupFoodDrag();
+  setupSwipe();
 
   updateNeeds();
   resetQuests();
-  applyPreferences();
 
   refresh();
   renderProfile();
+  renderFriends();
   renderRewards();
   renderShop();
 
-  setInterval(tick,15000);
+  // Needs refresh smoothly every second while open.
+  setInterval(tick,1000);
 
+  // Catch up whenever the player returns.
   document.addEventListener("visibilitychange",()=>{
-    if(!document.hidden) tick();
+    if(!document.hidden){
+      tick();
+    }
   });
 
-  setTimeout(tellNeeds,700);
+  setTimeout(()=>{
+    say(needWords[needType()]);
+  },650);
 }
 
 init();
