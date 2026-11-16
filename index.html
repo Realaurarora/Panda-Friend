@@ -1574,8 +1574,9 @@ function renderProfile(){
   $("bioInput").value = state.bio;
 $("genderInput").value = state.gender;
 
+  
   $("moodOptions").innerHTML = moods.map(m=>`
-
+    <button
       class="mood-option ${state.mood === m.id ? "selected" : ""}"
       onclick="setMood('${m.id}')">
       <span>${m.emoji}</span>
