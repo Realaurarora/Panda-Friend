@@ -1,766 +1,475 @@
-f
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f4b9d2">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Panda Friends 🌸</title>
 <style>
 :root{
-  --pink:#f4b9d2;--pink2:#ffe4ef;--cream:#fffaf5;--purple:#ded5f7;
-  --ink:#66566a;--white:#fff;--green:#d9edda;--shadow:0 8px 25px #9b77931c;
-  --line:#f7e6ed;--deep:#bd7899;
+  --pink:#f8c9dd;
+  --pink2:#fff0f6;
+  --purple:#e9ddff;
+  --ink:#71576a;
+  --muted:#a18b9c;
+  --line:#f1dce7;
 }
 *{box-sizing:border-box}
-body{margin:0;background:#fff8f8;color:var(--ink);font-family:"Trebuchet MS",Arial,sans-serif}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
-header{text-align:center;padding:27px 15px 20px;background:linear-gradient(135deg,#ffe4ef,#f4eaff,#fff1e7)}
-.logo{font-size:35px;font-weight:900;color:#c77d9e}
-.subtitle{font-size:13px;color:#9c8195;margin-top:5px}
-.profilebar{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:17px;font-size:13px}
-.pill{background:#ffffffbd;padding:8px 14px;border-radius:30px}
-nav{display:flex;gap:8px;padding:12px;overflow-x:auto;justify-content:flex-start;background:white;position:sticky;top:0;z-index:10;box-shadow:0 3px 12px #00000008}
-nav button{flex-shrink:0;background:#fff3f7;color:#9d7187;padding:10px 15px;border-radius:20px;font-size:13px}
-nav button.active{background:var(--pink);color:white}
-main{max-width:1120px;margin:auto;padding:22px 16px 60px}
-.page{display:none}.page.active{display:block}
-h2{color:var(--deep);font-size:24px;margin:0 0 8px}h3{color:#b67c98;margin:0 0 8px}
-p{line-height:1.6}.small{font-size:12px;color:#a18d9d}
-.card{background:white;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow);margin-bottom:15px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:15px}
-.btn{background:var(--pink);color:white;padding:11px 17px;border-radius:18px;font-weight:bold;margin:4px 3px;transition:.18s}
-.btn:hover{filter:brightness(.97);transform:translateY(-1px)}
-.btn.soft{background:#fff0f5;color:#ae7891}.btn.purple{background:#ded5f7;color:#796b9d}.btn.green{background:#d9edda;color:#688b6b}
-.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
-input,select,textarea{padding:11px;border:1px solid #f0dce5;border-radius:13px;background:#fffafd;color:var(--ink);max-width:100%;width:100%}
-label{display:block;font-size:13px;margin:10px 0 5px}
-.panda-stage{min-height:300px;border-radius:25px;background:linear-gradient(#e8e5fa 0 65%,#dcefdc 65%);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding-bottom:32px}
-.house-window{position:absolute;top:35px;left:35px;width:75px;height:90px;border:7px solid white;border-radius:12px;background:#fff2c9;box-shadow:0 4px 10px #00000010}
-.house-window:after{content:"";position:absolute;left:50%;height:100%;border-left:4px solid white}
-.house-window:before{content:"";position:absolute;top:50%;width:100%;border-top:4px solid white}
-.sun{position:absolute;right:45px;top:28px;font-size:40px}
-.rug{position:absolute;bottom:17px;width:70%;height:40px;border-radius:50%;background:#f5d6e5}
-.panda{position:relative;z-index:2;font-size:105px;line-height:1.2;filter:drop-shadow(0 6px 3px #9c829333);animation:floaty 3s ease-in-out infinite;cursor:pointer;user-select:none}
-.panda.walk{animation:walk 8s ease-in-out infinite alternate}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-@keyframes walk{0%{transform:translateX(-100px)}100%{transform:translateX(100px)}}
-.speech{position:absolute;z-index:4;top:20px;left:50%;transform:translateX(-50%);background:white;padding:12px 17px;border-radius:18px;box-shadow:var(--shadow);font-size:13px;text-align:center;width:max-content;max-width:85%}
-.room-items{position:absolute;bottom:75px;font-size:30px;width:100%;display:flex;justify-content:space-around;gap:8px;flex-wrap:wrap}
-.feature{font-size:38px;margin-bottom:7px}.item-card{text-align:center}.item-card .feature{font-size:42px}
-.price{color:#c47d9d;font-weight:bold;margin:8px}.badge{background:#fff0f5;color:#b47b96;border-radius:20px;padding:5px 9px;font-size:11px;display:inline-block}
-.progress{height:9px;border-radius:20px;background:#f6e9ef;overflow:hidden;margin:8px 0}.progress span{display:block;height:100%;background:#e7a9c5;width:0;transition:width .3s}
-.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day{background:#fff4f7;border-radius:13px;min-height:65px;padding:7px 3px;text-align:center;font-size:12px}
-.day.claimed{background:#e5f2e4}.day.today{outline:2px solid #e6a5c3}.day button{background:none;color:#a66f8a;font-size:13px;padding:3px}
-.stickers{display:grid;grid-template-columns:repeat(auto-fit,minmax(85px,1fr));gap:10px}
-.sticker{background:#fff4f7;border-radius:15px;padding:15px;text-align:center;font-size:30px}
-footer{text-align:center;padding:25px;color:#b49baa;font-size:12px}
-.modal{display:none;position:fixed;inset:0;background:#55405288;z-index:30;align-items:center;justify-content:center;padding:18px}
-.modal.show{display:flex}.modalbox{background:white;padding:24px;border-radius:25px;max-width:420px;width:100%;text-align:center;box-shadow:0 15px 60px #5c405044}
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#765c70;color:white;padding:12px 20px;border-radius:30px;display:none;z-index:50;max-width:90%;text-align:center}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.panda-choice{border:2px solid #f6e2eb;border-radius:18px;padding:12px;text-align:center;background:#fffafd;cursor:pointer}
-.panda-choice.selected{border-color:#e5a4c2;background:#fff0f6}
-.location-card{min-height:145px;display:flex;flex-direction:column;justify-content:space-between}
-.quest{display:flex;gap:12px;align-items:center;background:#fff7fa;border-radius:15px;padding:12px;margin:9px 0}
-.quest .qicon{font-size:27px}.quest-info{flex:1}.quest.done{background:#edf7ed}
-.achievement{border-radius:16px;padding:14px;background:#fff4f7;text-align:center}.achievement.locked{opacity:.45;filter:grayscale(.6)}
-.stat{font-size:24px;font-weight:bold;color:#bd7899}
-#gameArea{background:linear-gradient(#e8e5fa 0 62%,#dcefdc 62%);border-radius:22px;min-height:210px;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;padding:20px}
-#gameArea button{font-size:36px;background:#ffffffc9;border-radius:18px;padding:12px}
-footer{line-height:1.7}
-@media(max-width:650px){.logo{font-size:29px}.panda-stage{min-height:260px}.calendar{gap:3px}.day{min-height:55px;font-size:10px}.two-col{grid-template-columns:1fr}.profilebar{font-size:12px}}
-
-/* New game-style shell */
-body{background:radial-gradient(circle at top left,#fff0f6 0,#fff9fb 42%,#f7f3ff 100%)}
-header{margin-left:228px;text-align:left;padding:20px 28px 16px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:linear-gradient(110deg,#ffe4ef,#f4eaff 70%,#fff1e7);border-bottom:1px solid #f4e1eb}
-header .logo{font-size:28px}.subtitle{margin-top:2px}.profilebar{margin:0;justify-content:flex-end}
-nav{position:fixed;left:0;top:0;bottom:0;width:215px;height:100vh;overflow-y:auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;padding:18px 13px;background:#fff;box-shadow:5px 0 24px #8e6c8210;z-index:20}
-nav:before{content:'🐼 PANDA WORLD';font-weight:900;letter-spacing:1px;color:#c77d9e;font-size:15px;padding:12px 10px 20px}
-nav button{text-align:left;border-radius:14px;padding:12px 14px;font-size:13px}
-nav button.active{box-shadow:0 5px 14px #eab6ce55}
-main{margin:0 0 0 228px;max-width:1300px;padding:25px 28px 60px}
-.page>h2{font-size:28px}.card{border-radius:24px}.game-hero{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;align-items:stretch;margin-bottom:16px}.game-hero .card{margin:0}.welcome-panel{background:linear-gradient(130deg,#fff0f6,#f1eaff);padding:24px}.welcome-panel h2{font-size:29px}.mini-profile{display:flex;align-items:center;gap:14px}.mini-profile .avatar{font-size:58px;background:#ffffffa8;border-radius:22px;padding:9px}.section-kicker{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#b18ba1;font-weight:bold}
-.friend-layout{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.5fr);gap:15px;align-items:start}.friend-list{display:grid;gap:8px}.friend-entry{display:flex;align-items:center;gap:10px;padding:11px;border-radius:15px;background:#fff5f8;border:1px solid #f7e6ed;cursor:pointer;text-align:left;color:var(--ink);width:100%}.friend-entry.selected{border-color:#dc9fba;background:#ffedf4}.friend-entry .friend-avatar{font-size:27px}.friend-entry .friend-meta{flex:1;min-width:0}.friend-entry small{display:block;color:#a18d9d}.chat-panel{min-height:420px;display:flex;flex-direction:column}.chat-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}.chat-messages{flex:1;min-height:245px;max-height:390px;overflow:auto;padding:14px 3px;display:flex;flex-direction:column;gap:9px}.bubble{max-width:82%;padding:10px 13px;border-radius:17px;background:#fff0f5;align-self:flex-start;overflow-wrap:anywhere}.bubble.mine{align-self:flex-end;background:#eee8ff}.bubble small{display:block;color:#a18d9d;font-size:10px;margin-top:4px}.chat-compose{display:flex;gap:8px;align-items:center}.chat-compose input{flex:1}.code-chip{font-size:20px;letter-spacing:2px;font-weight:900;color:#a96f8c;background:#fff2f7;border:1px dashed #e2aac3;border-radius:14px;padding:12px;text-align:center}.notice{background:#fff8e9;border:1px solid #f4e5c4;padding:12px 14px;border-radius:15px;color:#907b57;font-size:12px;line-height:1.5}.vip-card{background:linear-gradient(130deg,#fff0f6,#eee8ff)}
-@media(max-width:760px){header{margin-left:0;padding:17px;text-align:center;justify-content:center}header .logo{font-size:25px}.profilebar{justify-content:center}nav{position:sticky;top:0;bottom:auto;width:100%;height:auto;flex-direction:row;overflow-x:auto;padding:9px;gap:6px;box-shadow:0 3px 12px #00000008}nav:before{display:none}nav button{white-space:nowrap;padding:10px 12px}main{margin:0;padding:18px 13px 45px}.game-hero,.friend-layout{grid-template-columns:1fr}.chat-panel{min-height:390px}}
-
-/* Panda Friends 2.0 mobile game interface */
-:root{--ink:#55475f;--deep:#b86f93;--pink:#eaa9c7}
-html{scroll-behavior:smooth}
-body{padding-bottom:22px}
-header{position:relative;min-height:92px}
-.home-status{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(120deg,#fff,#fff1f7)}
-.coin-purse{min-width:105px;text-align:center;background:#f3f7e9;border-radius:20px;padding:15px;color:#718b58;font-size:25px}
-.coin-purse small{display:block;font-size:11px}
-.mood-current{display:flex;align-items:center;gap:15px;margin-bottom:16px}
-.mood-face{font-size:55px;background:#fff3f8;border-radius:20px;padding:10px}
-.mood-choice{background:#fff7fa;border:1px solid #f3e0e9;border-radius:18px;padding:13px;color:var(--ink);display:flex;flex-direction:column;gap:5px;text-align:center}
-.mood-choice span{font-size:30px}
-.mood-choice small{font-size:11px;color:#9c8999}
-.mood-choice.selected,.game-tile.selected{border:2px solid #d995b4;background:#fff0f6}
-.music-card{background:linear-gradient(120deg,#f8f2ff,#fff3f8)}
-.music-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}
-.store-heading{grid-column:1/-1;font-size:18px;font-weight:900;color:#b87999;padding:8px 4px}
-.game-select{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:14px}
-.game-tile{display:flex;flex-direction:column;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;color:var(--ink)}
-.game-tile span{font-size:30px}
-.game-tile small{font-size:10px;color:#9b8797}
-.arcade-board{background:linear-gradient(140deg,#fff,#fff4f8)}
-.memory-grid{display:grid!important;grid-template-columns:repeat(3,minmax(70px,100px));justify-content:center;gap:10px;min-height:180px}
-.memory-card{min-height:80px;background:#fff0f6;border:1px solid #f0dce6;border-radius:16px;font-size:30px}
-.garden-match{display:flex;justify-content:center;gap:12px;min-height:150px}
-.garden-match button{font-size:40px;background:#fff0f6;border-radius:18px;padding:15px}
-.gift-streak{background:linear-gradient(120deg,#f3f8e9,#fff)}
-.gift-streak .stat{color:#78975b}
-
-@media(max-width:760px){
-body{padding-bottom:84px}
-header{margin:0;padding:14px 15px;display:block;text-align:left}
-.logo{font-size:24px!important}
-.subtitle{font-size:11px}
-.profilebar{justify-content:flex-start;margin-top:10px;gap:6px}
-.pill{padding:6px 9px;font-size:11px}
-nav{position:fixed;top:auto;bottom:0;left:0;right:0;width:100%;height:72px;min-height:72px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;padding:7px 8px calc(7px + env(safe-area-inset-bottom));gap:7px;border-top:1px solid #f2e2ea;box-shadow:0 -5px 20px #8e6c8215;background:#fff;z-index:40}
-nav:before{display:none}
-nav button{min-width:64px;min-height:52px;padding:7px 9px;text-align:center;font-size:10px;border-radius:13px;white-space:nowrap}
-main{margin:0;padding:17px 12px 35px}
-.page>h2{font-size:23px}
-.game-hero{grid-template-columns:1fr}
-.welcome-panel h2{font-size:24px}
-.card{padding:15px;border-radius:20px}
-.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.grid .card{min-width:0}
-.panda-stage{min-height:235px}
-.panda{font-size:82px}
-.speech{font-size:11px}
-.friend-layout{grid-template-columns:1fr}
-.chat-panel{min-height:370px}
-.chat-messages{min-height:190px}
-.game-select{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
-.game-tile{padding:10px 5px}
-.game-tile span{font-size:24px}
-.game-tile b{font-size:11px}
-.game-tile small{font-size:9px}
-.calendar{gap:4px}
-.day{min-height:54px;padding:5px 1px}
-.location-card{min-height:160px}
-.home-status{align-items:flex-start}
-.coin-purse{min-width:88px;padding:10px;font-size:21px}
+body{
+  margin:0;
+  font-family:"Trebuchet MS",Arial,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(135deg,#fff6fa,#f7f0ff);
 }
-@media(max-width:390px){
-.grid{grid-template-columns:1fr}
-.game-select{grid-template-columns:repeat(3,minmax(0,1fr))}
-.game-tile b{font-size:10px}
-.pill{font-size:10px}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{
+  padding:22px;
+  text-align:center;
+  background:linear-gradient(110deg,#ffe4ef,#eee4ff);
+  border-bottom:2px solid white;
 }
-
+h1{margin:0;font-size:32px}
+h2{margin-top:0}
+h3{margin:0 0 9px}
+p{line-height:1.6}
+.subtitle{font-size:13px;color:var(--muted)}
+.stats{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+.pill{
+  background:white;
+  border-radius:30px;
+  padding:9px 15px;
+  box-shadow:0 3px 12px #b77b9917;
+}
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:15px;
+  background:#fffafd;
+  border-bottom:1px solid var(--line);
+}
+nav button{
+  border:0;
+  border-radius:20px;
+  padding:11px 15px;
+  background:#fff0f6;
+  color:var(--ink);
+  font-weight:bold;
+}
+nav button.active{
+  background:#e9c9ec;
+  color:#664d72;
+}
+main{
+  max-width:1050px;
+  margin:auto;
+  padding:24px 15px 60px;
+}
+.page{display:none}
+.page.active{display:block}
+.card{
+  background:#fff;
+  padding:20px;
+  border-radius:23px;
+  border:1px solid var(--line);
+  box-shadow:0 7px 22px #b77b9912;
+  margin-bottom:15px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px;
+}
+.btn{
+  background:#f5bad3;
+  border:0;
+  border-radius:15px;
+  padding:11px 17px;
+  color:#684e62;
+  font-weight:bold;
+  margin:4px 3px 4px 0;
+}
+.btn:hover{filter:brightness(.97)}
+.btn.soft{background:#f5e9ff}
+.btn.green{background:#d7efd9}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+input,select{
+  display:block;
+  width:100%;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fffafd;
+  color:var(--ink);
+  margin:8px 0 14px;
+}
+label{font-size:13px;font-weight:bold}
+.small{font-size:12px;color:var(--muted)}
+.scene{
+  position:relative;
+  min-height:290px;
+  border-radius:25px;
+  overflow:hidden;
+  background:linear-gradient(#e5f3ff 0 65%,#e6d5ed 65%);
+  border:5px solid white;
+  box-shadow:0 5px 20px #b77b9920;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+.scene.garden{
+  background:linear-gradient(#dcf3ff 0 60%,#cbe9c5 60%);
+}
+.scene.bedroom{
+  background:linear-gradient(#f6e9ff 0 65%,#ebd8e6 65%);
+}
+.panda{
+  font-size:100px;
+  animation:bob 2.5s ease-in-out infinite;
+  cursor:pointer;
+  user-select:none;
+}
+@keyframes bob{
+  50%{transform:translateY(-10px)}
+}
+.speech{
+  background:white;
+  border-radius:18px;
+  padding:12px 18px;
+  margin-bottom:15px;
+  text-align:center;
+  max-width:85%;
+}
+.decor{
+  font-size:34px;
+  text-align:center;
+  min-height:45px;
+  letter-spacing:6px;
+}
+.item{
+  background:#fff8fc;
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:14px;
+  text-align:center;
+}
+.item .emoji{font-size:38px}
+.progress{
+  height:15px;
+  border-radius:20px;
+  background:#f5e7f0;
+  overflow:hidden;
+}
+.progress span{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,#f4b6d0,#d7b5f2);
+}
+.notice{
+  padding:12px;
+  border-radius:15px;
+  background:#fff4df;
+  font-size:13px;
+}
+#gameArea{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  padding:25px;
+}
+#gameArea button{
+  font-size:55px;
+  border:2px solid #f6d8e6;
+  background:#fff7fb;
+  border-radius:22px;
+  padding:15px;
+}
+#gameArea button:hover{transform:scale(1.07)}
+#toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#725b72;
+  color:white;
+  border-radius:18px;
+  padding:12px 20px;
+  display:none;
+  z-index:10;
+  max-width:90%;
+  text-align:center;
+}
+footer{
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
+  font-size:12px;
+}
+@media(max-width:600px){
+  h1{font-size:25px}
+  main{padding:15px 10px}
+  nav button{font-size:12px}
+  .panda{font-size:80px}
+}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">🐼 Panda Friends 🌸</div>
-  <div class="subtitle">A little world full of pandas, friendship and magic</div>
-  <div class="profilebar">
-    <span class="pill">⭐ <b id="stars">0</b> stars</span>
-    <span class="pill">🎋 <b id="bambooCoins">0</b> bamboo</span>
-    <span class="pill">🐼 <b id="pandaNameTop">Mochi</b></span>
-    <span class="pill">💗 <b id="level">Level 1</b></span>
-    <span class="pill">🏅 <b id="badgeCount">0</b> badges</span>
+  <h1>🐼 Panda Friends 🌸</h1>
+  <div class="subtitle">Your own little cosy panda world</div>
+  <div class="stats">
+    <div class="pill">⭐ <b id="starsTop">0</b> stars</div>
+    <div class="pill">🐼 <b id="nameTop">Mochi</b></div>
+    <div class="pill">💗 Level <b id="levelTop">1</b></div>
+    <div class="pill">🏆 <b id="badgesTop">0</b> awards</div>
   </div>
 </header>
 
 <nav id="nav">
   <button class="active" data-page="home">🏡 Home</button>
-  <button data-page="mood">🌈 Mood & music</button>
-  <button data-page="friends">💌 Friends & chat</button>
   <button data-page="bedroom">🛏️ Bedroom</button>
   <button data-page="garden">🌷 Garden</button>
-  <button data-page="locations">🗺️ Places</button>
-  <button data-page="activities">🎨 Activities</button>
+  <button data-page="town">🗺️ Town</button>
+  <button data-page="studio">🐼 My Pandas</button>
+  <button data-page="shop">🛍️ Shop</button>
+  <button data-page="gifts">🎁 Daily Gifts</button>
   <button data-page="quests">📋 Quests</button>
-  <button data-page="birthday">🎂 Birthday</button>
-  <button data-page="gifts">🎁 Daily gifts</button>
-  <button data-page="studio">🐼 My pandas</button>
-  <button data-page="store">🛍️ Store</button>
-  <button data-page="luxe">💎 PandaLuxe</button>
-  <button data-page="photo">📸 Photo booth</button>
+  <button data-page="game">🧁 Mini Game</button>
+  <button data-page="photo">📸 Photo Booth</button>
   <button data-page="stickers">📒 Stickers</button>
-  <button data-page="achievements">🏆 Awards</button>
-  <button data-page="game">🕹️ Mini games</button>
+  <button data-page="birthday">🎂 Birthday</button>
+  <button data-page="awards">🏆 Awards</button>
 </nav>
 
 <main>
 
 <section class="page active" id="home">
-  <div class="game-hero">
-    <div class="card welcome-panel">
-      <div class="section-kicker">YOUR LITTLE WORLD</div>
-      <h2>Welcome back, panda pal! 🌸</h2>
-      <p>Your cosy world is ready. Decorate, explore, collect rewards and keep in touch with your friends.</p>
-      <button class="btn" onclick="changePage('friends')">💌 Open friends</button>
-      <button class="btn soft" onclick="changePage('locations')">🗺️ Explore town</button>
-    </div>
-
-    <div class="card mini-profile">
-      <div class="avatar" id="homeAvatar">🐼</div>
-      <div>
-        <div class="section-kicker">CURRENT PANDA</div>
-        <h3 id="homeProfileName">Mochi</h3>
-        <p class="small">Level <b id="homeLevel">1</b> · <span id="homeStars">0</span> stars</p>
-        <span class="badge">🌷 Cosy world member</span>
-      </div>
-    </div>
-  </div>
-
   <div class="card">
-    <h2>Welcome to your cosy little home! 🌸</h2>
-    <p>Spend some time with your pandas. Explore, decorate, collect gifts and make lovely memories.</p>
+    <h2>Welcome to your panda world! 🌸</h2>
+    <p>Adopt pandas, decorate your home, explore town and collect little surprises.</p>
+    <p class="small">Everything works offline. Your progress is saved in this browser.</p>
   </div>
-
-  <div class="panda-stage">
-    <div class="house-window"></div>
-    <div class="sun">☀️</div>
+  <div class="scene">
     <div class="speech" id="speech">Hello! I'm so happy you're here! 💗</div>
-    <div class="room-items" id="homeDecor">
-      <span>🪴</span>
-      <span>🧸</span>
-      <span>🛋️</span>
-    </div>
-    <div class="rug"></div>
-    <div class="panda walk" id="homePanda" onclick="pandaTalk()" role="button" aria-label="Talk to panda">🐼</div>
+    <div class="decor" id="homeDecor">🪴 🧸 🌷</div>
+    <div class="panda" id="homePanda" onclick="pandaTalk()">🐼</div>
   </div>
-
   <div class="grid" style="margin-top:15px">
     <div class="card">
-      <h3>💌 A little message</h3>
-      <p id="homeMessage">You're doing amazing. Remember to have fun!</p>
+      <h3>🐾 Your panda</h3>
+      <p id="homeName">Mochi</p>
+      <button class="btn" onclick="pandaTalk()">Say hello 💗</button>
+    </div>
+    <div class="card">
+      <h3>⭐ Your progress</h3>
+      <p id="progressText">0 / 30 stars</p>
+      <div class="progress"><span id="progressBar"></span></div>
+    </div>
+    <div class="card">
+      <h3>🌸 Little message</h3>
+      <p id="dailyMessage">Today is a lovely day!</p>
       <button class="btn soft" onclick="newMessage()">Another message</button>
     </div>
-
-    <div class="card">
-      <h3>✨ Your progress</h3>
-      <p><b id="stars2">0</b> stars collected</p>
-      <div class="progress"><span id="progress"></span></div>
-      <p class="small" id="levelProgress">30 stars until your next level.</p>
-    </div>
-
-    <div class="card">
-      <h3>🐾 Your panda family</h3>
-      <p><b id="familyCount">1</b> panda friend(s) live here.</p>
-      <button class="btn soft" onclick="changePage('studio')">Visit panda studio</button>
-    </div>
-  </div>
-</section>
-
-<section class="page" id="mood">
-  <h2>🌈 Mood & music corner</h2>
-  <p>Choose how your panda feels today, then set the soundtrack for your little world.</p>
-
-  <div class="card">
-    <div class="mood-current">
-      <div class="mood-face" id="moodFace">☁️</div>
-      <div>
-        <span class="section-kicker">CURRENT MOOD</span>
-        <h3 id="moodName">Cosy</h3>
-        <p class="small" id="moodDescription">A peaceful little day.</p>
-      </div>
-    </div>
-    <div class="grid" id="moodChoices"></div>
-  </div>
-
-  <div class="card music-card">
-    <span class="section-kicker">PANDA RADIO · ORIGINAL TUNES</span>
-    <h3>🎧 Cosy music player</h3>
-    <p class="small">These gentle melodies are generated by the game. Choose a mood and press play.</p>
-
-    <label for="musicTrack">Playlist</label>
-    <select id="musicTrack" onchange="selectTrack()">
-      <option value="morning">🌤️ Soft morning</option>
-      <option value="rain">🌧️ Rainy window</option>
-      <option value="garden">🌷 Garden day</option>
-      <option value="sleep">🌙 Sleepy stars</option>
-    </select>
-
-    <div class="music-controls">
-      <button class="btn" id="musicToggle" onclick="toggleMusic()">▶ Play music</button>
-      <button class="btn soft" onclick="stopMusic()">Stop</button>
-      <span class="badge" id="musicStatus">Music paused</span>
-    </div>
-  </div>
-</section>
-
-<section class="page" id="friends">
-  <h2>💌 Panda Friends Online</h2>
-  <p>Make an account, send friend requests, and chat with friends who accept.</p>
-
-  <div class="card" id="onlineStatus">🌐 Connecting…</div>
-
-  <div class="card" id="authPanel">
-    <h3>🐼 Your panda account</h3>
-
-    <label>Email</label>
-    <input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com">
-
-    <label>Password</label>
-    <input id="authPassword" type="password" autocomplete="current-password" placeholder="At least 6 characters">
-
-    <button class="btn" onclick="onlineSignUp()">Create account</button>
-    <button class="btn soft" onclick="onlineSignIn()">Sign in</button>
-
-    <p class="small">Use a private password. Ask a trusted adult for help setting up an account if needed.</p>
-  </div>
-
-  <div id="onlinePanel" hidden>
-    <div class="grid">
-      <div class="card">
-        <h3>🪪 Your unique player code</h3>
-        <div class="code-chip" id="myFriendCode">Loading…</div>
-        <button class="btn soft" onclick="copyFriendCode()">Copy code</button>
-        <button class="btn soft" onclick="onlineSignOut()">Sign out</button>
-        <p class="small">Only share your code with people you know.</p>
-      </div>
-
-      <div class="card">
-        <h3>➕ Send friend request</h3>
-        <input id="friendCodeInput" placeholder="PF-XXXXXXXXXX" maxlength="13">
-        <button class="btn" onclick="addFriendByCode()">Send request</button>
-        <p class="small">The other player must accept before you can chat.</p>
-      </div>
-    </div>
-
-    <div class="friend-layout">
-      <div class="card">
-        <h3>📨 Friend requests</h3>
-        <div id="pendingRequests"></div>
-
-        <h3 style="margin-top:15px">🌷 Friends</h3>
-        <div id="friendList" class="friend-list"></div>
-
-        <p class="small">Private one-to-one chats are available after acceptance. Group chat and shared-world play are not online yet.</p>
-      </div>
-
-      <div class="card chat-panel">
-        <div class="chat-head">
-          <div class="feature" id="chatAvatar">💬</div>
-          <div>
-            <h3 id="chatTitle">Choose a friend</h3>
-            <div class="small" id="chatSubtitle">Live chat</div>
-          </div>
-        </div>
-
-        <div id="chatMessages" class="chat-messages"></div>
-
-        <form class="chat-compose" onsubmit="sendChatMessage(event)">
-          <input id="chatInput" maxlength="240" placeholder="Write a friendly message…" disabled>
-          <button class="btn" id="sendChatButton" type="submit" disabled>Send</button>
-        </form>
-
-        <button class="btn soft" id="blockFriendButton" onclick="onlineBlockFriend()" hidden>Block this player</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="notice">
-    For a public launch, add reporting, moderation, abuse prevention, account recovery and privacy review before inviting other players. Do not share personal information in chat.
   </div>
 </section>
 
 <section class="page" id="bedroom">
-  <h2>🛏️ Your panda's bedroom</h2>
-  <p>Make the bedroom a lovely little place to relax.</p>
-  <div class="panda-stage" style="background:linear-gradient(#f4e7f7 0 65%,#e8d9ef 65%)">
-    <div class="speech">This is my favourite room! ☁️</div>
-    <div class="room-items" id="bedDisplay">
-      <span>🪟</span><span>🧸</span><span>🌸</span>
-    </div>
-    <div class="rug"></div>
+  <h2>🛏️ Panda Bedroom</h2>
+  <p>Decorate a cosy room for your pandas!</p>
+  <div class="scene bedroom">
+    <div class="speech">Home sweet home! ☁️</div>
+    <div class="decor" id="bedDecor"></div>
     <div class="panda">🐼</div>
   </div>
   <div class="card">
-    <h3>Choose your bedroom decorations</h3>
-    <p class="small">Place as many decorations as you like. Your choices are saved.</p>
+    <h3>Choose decorations</h3>
     <div class="grid" id="bedOptions"></div>
   </div>
 </section>
 
 <section class="page" id="garden">
-  <h2>🌷 Panda garden</h2>
-  <p>Plant flowers, grow a little garden and make it your own.</p>
-  <div class="panda-stage" style="background:linear-gradient(#dff0ff 0 58%,#cce8c8 58%)">
-    <div class="sun">🌤️</div>
-    <div class="room-items" id="gardenItems"></div>
+  <h2>🌷 Panda Garden</h2>
+  <p>Plant cute flowers and watch your garden grow!</p>
+  <div class="scene garden">
+    <div class="speech">The flowers are so pretty! 🌸</div>
+    <div class="decor" id="gardenDecor"></div>
     <div class="panda">🐼</div>
   </div>
   <div class="card">
-    <h3>Pick something to plant or place</h3>
+    <h3>Plant something</h3>
     <div class="grid" id="gardenOptions"></div>
   </div>
 </section>
 
-<section class="page" id="locations">
-  <h2>🗺️ Explore Panda Town</h2>
-  <p>Choose somewhere to visit. Every trip is a little adventure!</p>
-  <div class="grid" id="locationGrid"></div>
+<section class="page" id="town">
+  <h2>🗺️ Panda Town</h2>
+  <p>Visit different places with your panda!</p>
+  <div class="grid" id="townPlaces"></div>
+</section>
+
+<section class="page" id="studio">
+  <h2>🐼 Panda Studio</h2>
+  <p>Meet your panda family and customise your panda!</p>
   <div class="card">
-    <h3 id="locationTitle">🏡 Your cosy home</h3>
-    <p id="locationDescription">Your home is the perfect place to rest after an adventure.</p>
-    <div id="locationScene" class="panda-stage" style="min-height:190px">
-      <div class="speech" id="locationSpeech">Welcome home! 💗</div>
-      <div class="panda">🐼</div>
-    </div>
+    <label>Your panda's name</label>
+    <input id="pandaNameInput" maxlength="18" placeholder="Mochi">
+    <label>Panda style</label>
+    <select id="pandaStyle">
+      <option value="🐼">🐼 Classic Panda</option>
+      <option value="🐻‍❄️">🐻‍❄️ Snowy Panda</option>
+      <option value="🐨">🐨 Koala Pal</option>
+      <option value="🧸">🧸 Teddy Pal</option>
+    </select>
+    <button class="btn" onclick="savePanda()">Save Panda 💗</button>
+  </div>
+  <div class="card">
+    <h3>Your panda family</h3>
+    <div class="grid" id="pandaFamily"></div>
+    <button class="btn soft" onclick="adoptPanda()">Adopt another panda · 25 ⭐</button>
   </div>
 </section>
 
-<section class="page" id="activities">
-  <h2>🎨 Panda activities</h2>
-  <p>Little activities to earn stars and make your panda happy.</p>
-  <div class="grid">
-    <div class="card item-card">
-      <div class="feature">🧁</div>
-      <h3>Bake a cake</h3>
-      <p class="small">Make a delicious pretend treat.</p>
-      <button class="btn" onclick="activity('Baking a cake',5)">Play · +5 ⭐</button>
-    </div>
-    <div class="card item-card">
-      <div class="feature">🎨</div>
-      <h3>Paint together</h3>
-      <p class="small">Create a colourful masterpiece.</p>
-      <button class="btn" onclick="activity('Painting',5)">Play · +5 ⭐</button>
-    </div>
-    <div class="card item-card">
-      <div class="feature">🧸</div>
-      <h3>Play with toys</h3>
-      <p class="small">Spend some time with your panda.</p>
-      <button class="btn" onclick="activity('Playing with toys',3)">Play · +3 ⭐</button>
-    </div>
-    <div class="card item-card">
-      <div class="feature">🫖</div>
-      <h3>Tea party</h3>
-      <p class="small">Invite your favourite teddy.</p>
-      <button class="btn" onclick="activity('Having a tea party',5)">Play · +5 ⭐</button>
-    </div>
-    <div class="card item-card">
-      <div class="feature">🌈</div>
-      <h3>Garden adventure</h3>
-      <p class="small">Look for pretty flowers.</p>
-      <button class="btn" onclick="activity('Exploring the garden',4)">Play · +4 ⭐</button>
-    </div>
-    <div class="card item-card">
-      <div class="feature">💤</div>
-      <h3>Cosy nap</h3>
-      <p class="small">Rest and recharge.</p>
-      <button class="btn" onclick="activity('Having a cosy nap',3)">Play · +3 ⭐</button>
-    </div>
-    <div class="card item-card">
-      <div class="feature">📚</div>
-      <h3>Story time</h3>
-      <p class="small">Read a little story together.</p>
-      <button class="btn" onclick="activity('Reading a story',4)">Play · +4 ⭐</button>
-    </div>
-    <div class="card item-card">
-      <div class="feature">🪴</div>
-      <h3>Water the plants</h3>
-      <p class="small">Help the garden grow.</p>
-      <button class="btn" onclick="activity('Watering the plants',4)">Play · +4 ⭐</button>
-    </div>
+<section class="page" id="shop">
+  <h2>🛍️ Panda Shop</h2>
+  <p>Spend your stars on cute little treasures!</p>
+  <div class="grid" id="shopItems"></div>
+</section>
+
+<section class="page" id="gifts">
+  <h2>🎁 Daily Gift</h2>
+  <div class="card" style="text-align:center">
+    <div style="font-size:85px">🎁</div>
+    <h3>A little present for you!</h3>
+    <p>Come back each day for 15 free stars.</p>
+    <button class="btn" id="giftButton" onclick="claimGift()">Open gift 💗</button>
+    <p class="small" id="giftStatus"></p>
   </div>
 </section>
 
 <section class="page" id="quests">
-  <h2>📋 Panda quests</h2>
-  <p>Complete little goals to earn bonus stars. Your daily quests refresh each day.</p>
-  <div class="card">
-    <h3>🌞 Today's quests</h3>
-    <div id="questList"></div>
-    <p class="small">Quest progress is saved on this browser.</p>
-  </div>
-  <div class="card">
-    <h3>🌟 How quests work</h3>
-    <p>Play activities, visit places, decorate your rooms and collect a daily gift. Each completed quest can be claimed once.</p>
-  </div>
+  <h2>📋 Daily Quests</h2>
+  <p>Complete little tasks for extra stars!</p>
+  <div class="grid" id="questList"></div>
 </section>
 
-<section class="page" id="birthday">
-  <h2>🎂 Panda birthday</h2>
-  <div class="card">
-    <div class="feature">🎈🎂🎁</div>
-    <h3>Let's celebrate!</h3>
-    <p>Set your panda's birthday. When the date arrives, your panda will have a special celebration!</p>
-    <label for="birthdayDate">Panda's birthday</label>
-    <input type="date" id="birthdayDate">
-    <button class="btn" onclick="saveBirthday()">Save birthday 💗</button>
-    <p id="birthdayMessage" class="small">No birthday set yet.</p>
-  </div>
-  <div class="card">
-    <h3>Birthday celebration ideas</h3>
-    <p>🎂 A birthday cake</p>
-    <p>🎈 Balloons and decorations</p>
-    <p>🎁 A special birthday gift</p>
-    <p>💌 A birthday message from your panda</p>
-  </div>
-</section>
-
-<section class="page" id="gifts">
-  <h2>🎁 Daily gift calendar</h2>
-  <p>Collect bamboo coins, stars and real in-game unlocks every day!</p>
-  <div class="card gift-streak">
-    <h3>🎋 Bamboo wallet</h3>
-    <div class="stat"><span id="giftCoins">0</span> bamboo coins</div>
-    <p class="small">Spend coins in the Bamboo Boutique to unlock decorations and outfits.</p>
-    <button class="btn soft" onclick="changePage('store')">Visit the boutique</button>
-  </div>
-  <div class="card">
-    <h3 id="giftMonth"></h3>
-    <div class="calendar" id="calendar"></div>
-    <p class="small">One gift can be claimed per day on this browser.</p>
-  </div>
-</section>
-
-<section class="page" id="studio">
-  <h2>🐼 Panda studio</h2>
-  <p>Customise your panda, choose an outfit and give them a name.</p>
-  <div class="card">
-    <h3>Your panda family</h3>
-    <div class="grid" id="pandaFamily"></div>
-  </div>
+<section class="page" id="game">
+  <h2>🧁 Treat Catcher</h2>
   <div class="card" style="text-align:center">
-    <div class="feature" style="font-size:100px" id="studioPanda">🐼</div>
-    <h3 id="studioName">Mochi</h3>
-    <span class="badge" id="studioMood">Sweet & gentle</span>
-  </div>
-  <div class="card">
-    <label for="pandaName">Panda name</label>
-    <input id="pandaName" maxlength="18" placeholder="Name your panda">
-
-    <label for="pandaMood">Personality</label>
-    <select id="pandaMood">
-      <option>Sweet & gentle</option>
-      <option>Playful & silly</option>
-      <option>Sleepy & cosy</option>
-      <option>Curious & adventurous</option>
-      <option>Shy & thoughtful</option>
-    </select>
-
-    <label for="pandaAccessory">Accessory</label>
-    <select id="pandaAccessory">
-      <option value="">No accessory</option>
-      <option>🎀 Pink bow</option>
-      <option>🌸 Flower crown</option>
-      <option>🧢 Cute cap</option>
-      <option>👑 Little crown</option>
-      <option>🧣 Cosy scarf</option>
-      <option>🕶️ Starry glasses</option>
-      <option>🪽 Fairy wings</option>
-    </select>
-
-    <label for="pandaOutfit">Outfit</label>
-    <select id="pandaOutfit">
-      <option>Everyday outfit</option>
-      <option>🌷 Flower dress</option>
-      <option>☁️ Cosy pyjamas</option>
-      <option>🍓 Strawberry outfit</option>
-      <option>🎀 Pink outfit</option>
-      <option>🐝 Bumblebee costume</option>
-      <option>🧁 Cupcake costume</option>
-    </select>
-
-    <label for="pandaColour">Panda style</label>
-    <select id="pandaColour">
-      <option value="🐼">Classic panda 🐼</option>
-      <option value="🐻‍❄️">Snowy friend 🐻‍❄️</option>
-      <option value="🐨">Koala pal 🐨</option>
-      <option value="🧸">Teddy bear pal 🧸</option>
-    </select>
-
-    <button class="btn" onclick="savePanda()">Save my panda 💗</button>
-  </div>
-</section>
-
-<section class="page" id="store">
-  <h2>🛍️ Panda Friends store</h2><p>Find something special for your panda. Packs are optional demo unlocks.</p>
-  <div class="card"><h3>⭐ Your stars: <span id="storeStars">0</span> · 🎋 Bamboo: <span id="storeCoins">0</span></h3><p class="small">Items marked with stars can be unlocked using your in-game stars. Pack previews are free demos; no real payments are connected.</p></div>
-  <div class="grid" id="storeItems"></div>
-</section>
-
-<section class="page" id="luxe">
-  <div class="card" style="text-align:center;background:linear-gradient(140deg,#fff0f6,#f1eaff)">
-    <div class="feature">💎</div><h2 style="font-size:32px">PandaLuxe</h2><p>A little extra sparkle for your panda world.</p>
-    <div style="font-size:32px;color:#b77a9c;font-weight:bold">VIP <span style="font-size:14px">preview</span></div><span class="badge">PREMIUM DEMO</span>
-    <p>✨ Exclusive outfits and accessories</p><p>🏡 Special cottage and bedroom decorations</p><p>🎁 Extra mystery gifts</p><p>📸 Exclusive photo booth backgrounds</p><p>🌷 Special garden decorations</p><p>💗 PandaLuxe member badge</p>
-    <button class="btn" onclick="buyItem('PandaLuxe membership')">Activate free preview</button>
-    <p class="small">Preview only. No subscription or payment is created.</p><p id="luxeStatus"></p>
+    <h3>Catch 5 yummy treats!</h3>
+    <p>Complete the game to earn 8 stars.</p>
+    <h2 id="gameScore">0 / 5</h2>
+    <p id="gameMessage">Ready to play?</p>
+    <div id="gameArea">🧁 🍓 🍪</div>
+    <button class="btn" id="startGame" onclick="startGame()">Start Game 🌸</button>
   </div>
 </section>
 
 <section class="page" id="photo">
-  <h2>📸 Panda photo booth</h2><p>Make a cute picture of your panda!</p>
+  <h2>📸 Panda Photo Booth</h2>
   <div class="card" style="text-align:center">
-    <label for="photoTheme">Choose a background</label><select id="photoTheme"><option value="#ffe6f0">Pink clouds 🌸</option><option value="#e9e3ff">Lavender dreams 💜</option><option value="#e0f2dc">Flower garden 🌷</option><option value="#fff0d7">Vanilla sunshine ☀️</option><option value="#dff0ff">Blueberry skies ☁️</option></select>
-    <label for="photoCaption">Picture caption</label><input id="photoCaption" maxlength="35" placeholder="My little panda 💗">
-    <div id="photoPreview" style="margin:15px auto;max-width:380px;padding:30px;border-radius:25px;background:#ffe6f0"><div style="font-size:100px" id="photoEmoji">🐼</div><h3 id="photoName">Mochi</h3><p id="photoText">My little panda 💗</p><div>🌸 ✨ 🎀 ✨ 🌸</div></div>
-    <button class="btn" onclick="updatePhoto()">Update picture</button><button class="btn soft" onclick="downloadPhoto()">Save picture</button>
+    <div class="scene" id="photoScene">
+      <div class="decor" id="photoDecor">🌸 ✨ 🌷</div>
+      <div class="panda" id="photoPanda">🐼</div>
+      <h2 id="photoName">Mochi</h2>
+    </div>
+    <button class="btn" onclick="changePhoto()">Change background 🌈</button>
+    <button class="btn soft" onclick="takePhoto()">Take a photo 📸</button>
+    <p class="small">A cute photo moment just for your panda!</p>
   </div>
 </section>
 
 <section class="page" id="stickers">
-  <h2>📒 Sticker book</h2><p>Collect stickers as you play. Some are little surprises!</p>
-  <div class="card"><h3>Your collection</h3><p id="stickerCount" class="small"></p><div class="stickers" id="stickerBook"></div></div>
+  <h2>📒 Sticker Book</h2>
+  <p>Collect stickers while you explore!</p>
+  <div class="grid" id="stickerBook"></div>
 </section>
 
-<section class="page" id="achievements">
-  <h2>🏆 Panda awards</h2><p>Little badges to celebrate your adventures.</p><div class="grid" id="achievementGrid"></div>
-</section>
-
-<section class="page" id="game">
-  <h2>🕹️ Panda arcade</h2><p>Play little games to earn stars, bamboo coins and collection surprises.</p>
-  <div class="grid game-select">
-    <button class="game-tile selected" data-game="treat" onclick="chooseGame('treat')"><span>🧁</span><b>Treat catcher</b><small>Tap five treats · +8 ⭐</small></button>
-    <button class="game-tile" data-game="memory" onclick="chooseGame('memory')"><span>🀄</span><b>Panda pairs</b><small>Find matching pairs · +10 🎋</small></button>
-    <button class="game-tile" data-game="garden" onclick="chooseGame('garden')"><span>🌷</span><b>Garden match</b><small>Match the flower · +6 ⭐</small></button>
+<section class="page" id="birthday">
+  <h2>🎂 Panda Birthday</h2>
+  <div class="card">
+    <h3>When is your panda's birthday?</h3>
+    <input type="date" id="birthdayInput">
+    <button class="btn" onclick="saveBirthday()">Save Birthday 🎀</button>
+    <p id="birthdayMessage"></p>
   </div>
-  <div class="card arcade-board" style="text-align:center"><div class="stat" id="gameScore">0 / 5</div><h3 id="gameTitle">🧁 Treat catcher</h3><p id="gameMessage">Pick five yummy treats!</p><div id="gameArea"></div><button class="btn" id="startGame" onclick="startGame()">Start a round 🌸</button></div>
 </section>
+
+<section class="page" id="awards">
+  <h2>🏆 Panda Awards</h2>
+  <p>Unlock achievements as you play!</p>
+  <div class="grid" id="awardList"></div>
+</section>
+
 </main>
 
 <footer>
-  Panda Friends 🐼🌸 · Your little cosy world
+  🐼 Panda Friends 🌸
+  <p>Your little offline world · Saved in this browser</p>
 </footer>
 
-<div class="modal" id="modal">
-  <div class="modalbox">
-    <div class="feature" id="modalIcon">🎁</div>
-    <h2 id="modalTitle">A little surprise!</h2>
-    <p id="modalText"></p>
-    <div id="modalActions"></div>
-    <button class="btn" onclick="closeModal()">Okay! 💗</button>
-  </div>
-</div>
-
-<div id="toast" role="status" aria-live="polite"></div>
+<div id="toast"></div>
 
 <script>
 "use strict";
 
 const $ = id => document.getElementById(id);
 
-const defaultState = {
+const KEY = "pandaFriendsOfflineSave";
+
+const defaults = {
+  stars:30,
   name:"Mochi",
-  mood:"Sweet & gentle",
-  accessory:"",
-  outfit:"Everyday outfit",
-  colour:"🐼",
-  stars:0,
-  bamboo:0,
+  style:"🐼",
+  pandas:[{name:"Mochi",style:"🐼"}],
+  bedroom:["🧸","🪴"],
+  garden:["🌷"],
   inventory:[],
-  currentMood:"Cosy",
-  activities:0,
-  birthday:"",
   lastGift:"",
-  claimed:[],
-  stickers:["🐼","🌸","💗"],
-  bed:["🛏️","🧸","🌙"],
-  garden:["🌷","🌼","🦋"],
-  owned:[],
-  luxe:false,
-  pandas:[
-    {
-      id:1,
-      name:"Mochi",
-      mood:"Sweet & gentle",
-      accessory:"",
-      outfit:"Everyday outfit",
-      colour:"🐼"
-    }
-  ],
-  activePanda:1,
   visits:0,
-  quests:{},
-  questDate:"",
   gameWins:0,
-  gameMode:"treat",
-  moodChanges:0,
-  friendCode:"",
-  friends:[],
-  chats:{},
-  activeChat:"",
-  groups:[]
+  birthday:"",
+  photoIndex:0,
+  quests:{},
+  questDate:""
 };
 
-let state={...defaultState};
+let state;
 
 try{
-  const saved=JSON.parse(
-    localStorage.getItem("pandaFriendsSave")||"null"
-  );
-  if(saved) state={...defaultState,...saved};
+  const saved=JSON.parse(localStorage.getItem(KEY)||"null");
+  state={...defaults,...(saved||{})};
 }catch(e){
-  console.warn("Save data could not be loaded.",e);
+  state={...defaults};
 }
 
-if(!Array.isArray(state.friends))state.friends=[];
+if(!Array.isArray(state.pandas))state.pandas=[{name:"Mochi",style:"🐼"}];
+if(!Array.isArray(state.bedroom))state.bedroom=[];
+if(!Array.isArray(state.garden))state.garden=[];
 if(!Array.isArray(state.inventory))state.inventory=[];
-if(typeof state.bamboo!=="number")state.bamboo=0;
-if(!state.currentMood)state.currentMood="Cosy";
-if(!Array.isArray(state.groups))state.groups=[];
-if(!state.chats||typeof state.chats!=="object")state.chats={};
+if(!state.quests||typeof state.quests!=="object")state.quests={};
 
-if(!state.friendCode){
-  const alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let code="";
-  do{
-    code="PF-"+Array.from(
-      {length:6},
-      ()=>alphabet[Math.floor(Math.random()*alphabet.length)]
-    ).join("");
-  }while(state.friends.some(f=>f.code===code));
-
-  state.friendCode=code;
-
-  try{
-    localStorage.setItem(
-      "pandaFriendsSave",
-      JSON.stringify(state)
-    );
-  }catch(e){}
-}
-
-if(!Array.isArray(state.pandas)||!state.pandas.length){
-  state.pandas=[{...defaultState.pandas[0]}];
-}
-
-if(!state.pandas.some(p=>p.id===state.activePanda)){
-  state.activePanda=state.pandas[0].id;
-}
-
-function currentPanda(){
-  return state.pandas.find(
-    p=>p.id===state.activePanda
-  )||state.pandas[0];
-}
-
-function syncCurrent(){
-  const p=currentPanda();
-  state.name=p.name;
-  state.mood=p.mood;
-  state.accessory=p.accessory;
-  state.outfit=p.outfit;
-  state.colour=p.colour||"🐼";
+function today(){
+  const d=new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 }
 
 function save(){
-  syncCurrent();
-
   try{
-    localStorage.setItem(
-      "pandaFriendsSave",
-      JSON.stringify(state)
-    );
+    localStorage.setItem(KEY,JSON.stringify(state));
   }catch(e){
-    toast("Your browser could not save this change.");
+    toast("Your browser could not save progress.");
   }
-
   updateAll();
 }
 
@@ -768,2223 +477,480 @@ function toast(message){
   const el=$("toast");
   el.textContent=message;
   el.style.display="block";
-
   clearTimeout(window.toastTimer);
-
-  window.toastTimer=setTimeout(
-    ()=>el.style.display="none",
-    2400
-  );
+  window.toastTimer=setTimeout(()=>el.style.display="none",2800);
 }
 
-function modal(title,message,icon="💗",action=null){
-  $("modalTitle").textContent=title;
-  $("modalText").textContent=message;
-  $("modalIcon").textContent=icon;
-  $("modalActions").innerHTML="";
-
-  if(action){
-    const b=document.createElement("button");
-    b.className="btn";
-    b.textContent=action.label;
-    b.onclick=action.run;
-    $("modalActions").appendChild(b);
-  }
-
-  $("modal").classList.add("show");
-}
-
-function closeModal(){
-  $("modal").classList.remove("show");
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,c=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[c]));
 }
 
 function changePage(page){
-  document.querySelectorAll(".page").forEach(
-    p=>p.classList.remove("active")
-  );
-
-  if(!$(page))return;
-
-  $(page).classList.add("active");
-
-  document.querySelectorAll("nav button").forEach(
-    b=>b.classList.toggle(
-      "active",
-      b.dataset.page===page
-    )
-  );
-
-  const renderers={
-    mood:renderMoods,
-    gifts:renderCalendar,
-    store:renderStore,
-    stickers:renderStickers,
-    bedroom:renderBedroom,
-    garden:renderGarden,
-    studio:renderFamily,
-    quests:renderQuests,
-    achievements:renderAchievements,
-    locations:renderLocations,
-    friends:renderFriends
-  };
-
-  if(renderers[page])renderers[page]();
-
+  document.querySelectorAll(".page").forEach(el=>{
+    el.classList.toggle("active",el.id===page);
+  });
+  document.querySelectorAll("nav button").forEach(el=>{
+    el.classList.toggle("active",el.dataset.page===page);
+  });
   window.scrollTo({top:0,behavior:"smooth"});
+  renderPage(page);
 }
 
-$("nav").addEventListener("click",e=>{
-  const b=e.target.closest("button[data-page]");
-  if(b)changePage(b.dataset.page);
+document.querySelectorAll("nav button").forEach(button=>{
+  button.addEventListener("click",()=>changePage(button.dataset.page));
 });
 
-const messages=[
-  "You're my favourite human! 💗",
-  "Can we have a little tea party? 🫖",
-  "I think today needs extra sprinkles!",
-  "Today is a lovely day to be happy! 🌸",
-  "I found a flower and thought of you! 🌷",
-  "You're doing such a good job! ✨",
-  "Can we play together? 🎀",
-  "I love our little home! 🏡",
-  "I hope you have the sweetest day! ☁️",
-  "You're the best panda parent ever! 💕",
-  "I have a tiny secret... I love snacks! 🍓"
-];
-
-function newMessage(){
-  const msg=messages[
-    Math.floor(Math.random()*messages.length)
-  ];
-
-  $("speech").textContent=msg;
-  $("homeMessage").textContent=msg;
-}
-
-function pandaTalk(){
-  newMessage();
-
-  modal(
-    currentPanda().name+" says...",
-    messages[Math.floor(Math.random()*messages.length)],
-    currentPanda().colour
-  );
-}
-
-function addStars(n){
-  state.stars+=n;
+function addStars(amount){
+  state.stars+=amount;
   save();
-  checkAchievements();
-}
-
-function activity(name,points){
-  state.stars+=points;
-  state.activities++;
-  state.currentMood="Happy";
-
-  if(state.activities%2===0){
-    addStickerRandom();
-  }
-
-  progressQuest("activity",1);
-
-  if(state.activities%3===0){
-    state.bamboo+=2;
-  }
-
-  save();
-
-  modal(
-    "That was fun! ✨",
-    currentPanda().name+" enjoyed "+name+
-    ". You earned "+points+" stars!",
-    "⭐"
-  );
-}
-
-function addStickerRandom(){
-  const options=[
-    "🍓","🎀","🌈","🧁",
-    "🦋","🌻","🍄","🐾",
-    "☁️","🧸","🍰","💐",
-    "🪻","🧋","🐣","🍡"
-  ];
-
-  const available=options.filter(
-    x=>!state.stickers.includes(x)
-  );
-
-  if(available.length){
-    state.stickers.push(
-      available[Math.floor(Math.random()*available.length)]
-    );
-  }
-}
-
-const moodData=[
-  {
-    name:"Cosy",
-    icon:"☁️",
-    desc:"A peaceful little day."
-  },
-  {
-    name:"Happy",
-    icon:"🌞",
-    desc:"Your panda is full of sunshine."
-  },
-  {
-    name:"Sleepy",
-    icon:"🌙",
-    desc:"Time for a soft blanket and a rest."
-  },
-  {
-    name:"Playful",
-    icon:"🎈",
-    desc:"Ready for games and silly adventures."
-  },
-  {
-    name:"Calm",
-    icon:"🍵",
-    desc:"Taking things slowly and gently."
-  },
-  {
-    name:"Adventurous",
-    icon:"🧭",
-    desc:"Curious paws want to explore."
-  }
-];
-
-function renderMoods(){
-  $("moodChoices").innerHTML=moodData.map(m=>`
-    <button
-      class="mood-choice ${state.currentMood===m.name?"selected":""}"
-      onclick="setMood('${m.name}')"
-    >
-      <span>${m.icon}</span>
-      <b>${m.name}</b>
-      <small>${m.desc}</small>
-    </button>
-  `).join("");
-
-  const m=moodData.find(
-    x=>x.name===state.currentMood
-  )||moodData[0];
-
-  $("moodFace").textContent=m.icon;
-  $("moodName").textContent=m.name;
-  $("moodDescription").textContent=m.desc;
-
-  const homeMoodLabel=$("homeMoodLabel");
-  if(homeMoodLabel){
-    homeMoodLabel.textContent=
-      "Feeling "+m.name.toLowerCase()+" "+m.icon;
-  }
-}
-
-function setMood(name){
-  state.currentMood=name;
-  state.moodChanges++;
-
-  save();
-  renderMoods();
-
-  toast(
-    "Panda mood changed to "+name+"! "+
-    (moodData.find(m=>m.name===name)?.icon||"💗")
-  );
-}
-
-let audioContext=null;
-let musicTimer=null;
-let musicStep=0;
-
-const melodies={
-  morning:[523,659,784,659,587,659,784,880],
-  rain:[392,440,523,440,392,349,392,440],
-  garden:[659,784,880,784,659,587,659,784],
-  sleep:[330,392,440,392,330,294,330,392]
-};
-
-function selectTrack(){
-  if(musicTimer){
-    stopMusic();
-    toggleMusic();
-  }
-}
-
-function toggleMusic(){
-  if(musicTimer){
-    stopMusic();
-    return;
-  }
-
-  try{
-    const AC=window.AudioContext||window.webkitAudioContext;
-
-    if(!AC){
-      toast("Audio isn't supported in this browser.");
-      return;
-    }
-
-    audioContext=audioContext||new AC();
-    audioContext.resume();
-    musicStep=0;
-
-    const track=()=>{
-      const notes=melodies[$("musicTrack").value]||
-        melodies.morning;
-
-      const osc=audioContext.createOscillator();
-      const gain=audioContext.createGain();
-
-      osc.type="sine";
-      osc.frequency.value=notes[musicStep%notes.length];
-
-      gain.gain.setValueAtTime(
-        .0001,audioContext.currentTime
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        .055,audioContext.currentTime+.04
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        .0001,audioContext.currentTime+.42
-      );
-
-      osc.connect(gain);
-      gain.connect(audioContext.destination);
-
-      osc.start();
-      osc.stop(audioContext.currentTime+.44);
-
-      musicStep++;
-    };
-
-    track();
-    musicTimer=setInterval(track,520);
-
-    $("musicToggle").textContent="Ⅱ Pause music";
-    $("musicStatus").textContent="Now playing · original tune";
-
-  }catch(e){
-    toast("Couldn't start audio. Please try again.");
-  }
-}
-
-function stopMusic(){
-  if(musicTimer){
-    clearInterval(musicTimer);
-    musicTimer=null;
-  }
-
-  $("musicToggle").textContent="▶ Play music";
-  $("musicStatus").textContent="Music paused";
-}
-
-function rewardBamboo(n){
-  state.bamboo+=n;
-  save();
+  toast("You earned "+amount+" stars! ⭐");
 }
 
 function updateAll(){
-  syncCurrent();
-
-  $("stars").textContent=state.stars;
-  $("stars2").textContent=state.stars;
-  $("storeStars").textContent=state.stars;
-
-  $("pandaNameTop").textContent=state.name;
-  $("level").textContent=
-    "Level "+(1+Math.floor(state.stars/30));
-
-  $("progress").style.width=
-    (state.stars%30/30*100)+"%";
-
-  $("levelProgress").textContent=
-    (30-state.stars%30)+" stars until your next level.";
-
-  $("studioPanda").textContent=
-    state.colour+(state.accessory.split(" ")[0]||"");
-
-  $("studioName").textContent=state.name;
-  $("studioMood").textContent=state.mood;
-
-  $("pandaName").value=state.name;
-  $("pandaMood").value=state.mood;
-  $("pandaAccessory").value=state.accessory;
-  $("pandaOutfit").value=state.outfit;
-  $("pandaColour").value=state.colour;
-
+  const level=1+Math.floor(Math.max(0,state.stars)/30);
+  $("starsTop").textContent=state.stars;
+  $("nameTop").textContent=state.name;
+  $("levelTop").textContent=level;
+  $("homeName").textContent=state.name;
+  $("homePanda").textContent=state.style;
+  $("progressText").textContent=(Math.max(0,state.stars)%30)+" / 30 stars";
+  $("progressBar").style.width=((Math.max(0,state.stars)%30)/30*100)+"%";
+  $("homeDecor").textContent=state.bedroom.join(" ")||"🌸";
+  $("badgesTop").textContent=awards.filter(a=>a.done()).length;
+  $("photoPanda").textContent=state.style;
   $("photoName").textContent=state.name;
-  $("photoEmoji").textContent=state.colour;
-
-  $("luxeStatus").textContent=state.luxe
-    ?"💎 PandaLuxe preview activated!":"";
-
-  $("stickerCount").textContent=
-    state.stickers.length+" stickers collected";
-
-  $("badgeCount").textContent=achievementCount();
-  $("familyCount").textContent=state.pandas.length;
-
-  $("homePanda").textContent=state.colour;
-  $("homeAvatar").textContent=state.colour;
-  $("homeProfileName").textContent=state.name;
-
-  $("homeLevel").textContent=
-    1+Math.floor(state.stars/30);
-
-  $("homeStars").textContent=state.stars;
-
-  $("bambooCoins").textContent=state.bamboo;
-
-  const homeCoins=$("homeCoins");
-  if(homeCoins)homeCoins.textContent=state.bamboo;
-
-  $("giftCoins").textContent=state.bamboo;
-  $("storeCoins").textContent=state.bamboo;
-
-  renderMoods();
 }
 
-function savePanda(){
-  const p=currentPanda();
+const messages=[
+  "You're a little star! ⭐",
+  "Every day can be a cosy day. 🌸",
+  "Your panda thinks you're wonderful! 🐼",
+  "A cup of cocoa makes everything cosy. ☕",
+  "Little adventures make lovely memories. 💗",
+  "Today is full of tiny surprises! 🎁"
+];
 
-  p.name=$("pandaName").value.trim()||"Mochi";
-  p.mood=$("pandaMood").value;
-  p.accessory=$("pandaAccessory").value;
-  p.outfit=$("pandaOutfit").value;
-  p.colour=$("pandaColour").value;
-
-  save();
-  renderFamily();
-
-  toast("Your panda has been updated! 🐼");
+function newMessage(){
+  $("dailyMessage").textContent=messages[Math.floor(Math.random()*messages.length)];
 }
 
-function renderFamily(){
-  $("pandaFamily").innerHTML=state.pandas.map(p=>`
-    <div
-      class="panda-choice ${p.id===state.activePanda?"selected":""}"
-      onclick="selectPanda(${p.id})"
-    >
-      <div style="font-size:48px">
-        ${escapeHTML(p.colour||"🐼")}
-      </div>
-      <b>${escapeHTML(p.name)}</b>
-      <p class="small">${escapeHTML(p.mood)}</p>
-      ${p.id===state.activePanda
-        ?'<span class="badge">Selected</span>':''}
-    </div>
-  `).join("");
-}
-
-function selectPanda(id){
-  state.activePanda=id;
-  save();
-  renderFamily();
-
-  toast(
-    "Now spending time with "+currentPanda().name+"! 💗"
-  );
-}
-
-function saveBirthday(){
-  state.birthday=$("birthdayDate").value;
-  save();
-  birthdayCheck();
-}
-
-function birthdayCheck(){
-  if(!state.birthday){
-    $("birthdayMessage").textContent="No birthday set yet.";
-    return;
-  }
-
-  const date=new Date(state.birthday+"T12:00:00");
-  const today=new Date();
-
-  const isToday=
-    date.getDate()===today.getDate()&&
-    date.getMonth()===today.getMonth();
-
-  $("birthdayMessage").textContent=isToday
-    ?"It's your panda's birthday! Happy birthday! 🎂"
-    :"Birthday saved for "+date.toLocaleDateString();
-
-  if(isToday){
-    const key="birthday-"+today.getFullYear()+"-"+
-      today.getMonth()+"-"+today.getDate();
-
-    if(localStorage.getItem(key)!=="yes"){
-      localStorage.setItem(key,"yes");
-      state.stars+=10;
-      save();
-
-      modal(
-        "HAPPY BIRTHDAY! 🎂",
-        "It's "+state.name+
-        "'s special day! You received 10 birthday stars!",
-        "🎈"
-      );
-    }
-  }
-}
-
-function renderCalendar(){
-  const now=new Date();
-  const year=now.getFullYear();
-  const month=now.getMonth();
-
-  $("giftMonth").textContent=now.toLocaleDateString(
-    undefined,{month:"long",year:"numeric"}
-  );
-
-  const first=new Date(year,month,1).getDay();
-  const count=new Date(year,month+1,0).getDate();
-
-  let html="";
-
-  for(let i=0;i<first;i++)html+="<div></div>";
-
-  for(let day=1;day<=count;day++){
-    const key=year+"-"+month+"-"+day;
-    const claimed=state.claimed.includes(key);
-    const today=day===now.getDate();
-
-    html+=`
-      <div class="day ${claimed?"claimed":""} ${today?"today":""}">
-        <b>${day}</b><br>
-        ${claimed?"✓":"🎁"}
-        ${today&&!claimed
-          ?`<br><button onclick="claimGift('${key}')">Claim</button>`
-          :""}
-      </div>
-    `;
-  }
-
-  $("calendar").innerHTML=html;
-}
-
-function claimGift(key){
-  const today=new Date();
-  const expected=today.getFullYear()+"-"+
-    today.getMonth()+"-"+today.getDate();
-
-  if(key!==expected){
-    toast("Come back on that day for your gift! 💗");
-    return;
-  }
-
-  if(state.claimed.includes(key))return;
-
-  state.claimed.push(key);
-
-  const rewards=[
-    {kind:"bamboo",amount:12,label:"12 bamboo coins 🎋"},
-    {kind:"stars",amount:8,label:"8 stars ⭐"},
-    {kind:"item",item:"🌸 Sakura lamp",
-      label:"Sakura lamp decoration 🌸"},
-    {kind:"bamboo",amount:20,label:"20 bamboo coins 🎋"},
-    {kind:"item",item:"🎀 Pink bow",
-      label:"Pink bow accessory 🎀"},
-    {kind:"sticker",label:"A surprise sticker 📒"}
+function pandaTalk(){
+  const lines=[
+    "I love our little home! 💗",
+    "Can we visit the garden? 🌷",
+    "You're my favourite panda pal! 🐼",
+    "Let's go on an adventure! ✨",
+    "I could eat some bamboo! 🎋"
   ];
-
-  const reward=rewards[
-    Math.floor(Math.random()*rewards.length)
-  ];
-
-  if(reward.kind==="bamboo"){
-    state.bamboo+=reward.amount;
-  }else if(reward.kind==="stars"){
-    state.stars+=reward.amount;
-  }else if(reward.kind==="item"){
-    if(!state.inventory.includes(reward.item)){
-      state.inventory.push(reward.item);
-    }else{
-      state.bamboo+=8;
-    }
-  }else{
-    addStickerRandom();
-  }
-
-  progressQuest("gift",1);
-  save();
-  renderCalendar();
-
-  modal(
-    "Your daily gift! 🎁",
-    "You unlocked "+reward.label+
-    ". Your reward has been added to your game!",
-    "🎋"
-  );
+  $("speech").textContent=lines[Math.floor(Math.random()*lines.length)];
 }
 
 const bedItems=[
-  {icon:"🛏️",name:"Cosy bed"},
-  {icon:"🧸",name:"Teddy bear"},
-  {icon:"🌙",name:"Moon lamp"},
-  {icon:"🪟",name:"Pretty window"},
-  {icon:"🪴",name:"Little plant"},
-  {icon:"🎀",name:"Pink rug"},
-  {icon:"📚",name:"Book shelf"},
-  {icon:"🕯️",name:"Cosy candle"},
-  {icon:"🧺",name:"Blanket basket"},
-  {icon:"🪞",name:"Flower mirror"},
-  {icon:"🧁",name:"Cupcake cushion"},
-  {icon:"⭐",name:"Star lights"}
+  {emoji:"🧸",name:"Teddy"},
+  {emoji:"🪴",name:"Plant"},
+  {emoji:"🛋️",name:"Sofa"},
+  {emoji:"🛏️",name:"Bed"},
+  {emoji:"🪞",name:"Mirror"},
+  {emoji:"🕯️",name:"Candle"},
+  {emoji:"🌸",name:"Flowers"},
+  {emoji:"🎀",name:"Bow"}
 ];
-
-const gardenOptions=[
-  {icon:"🌷",name:"Tulips"},
-  {icon:"🌻",name:"Sunflowers"},
-  {icon:"🌼",name:"Daisies"},
-  {icon:"🍓",name:"Strawberries"},
-  {icon:"🦋",name:"Butterflies"},
-  {icon:"🍄",name:"Mushrooms"},
-  {icon:"🌳",name:"Tree"},
-  {icon:"🐝",name:"Little bee"},
-  {icon:"🌹",name:"Rose bush"},
-  {icon:"🐌",name:"Tiny snail"},
-  {icon:"🪻",name:"Bluebells"},
-  {icon:"⛲",name:"Little fountain"}
-];
-
-function renderOptions(items,container,key){
-  $(container).innerHTML=items.map(item=>{
-    const owned=state[key].includes(item.icon);
-
-    return `
-      <div class="card item-card">
-        <div class="feature">${item.icon}</div>
-        <b>${item.name}</b>
-        <p class="small">
-          ${owned?"Already placed":"Add to your space"}
-        </p>
-        <button class="btn soft"
-          onclick="placeItem('${key}','${item.icon}')">
-          ${owned?"Add again":"Place"}
-        </button>
-      </div>
-    `;
-  }).join("");
-}
-
-function placeItem(key,icon){
-  state[key].push(icon);
-  progressQuest("decorate",1);
-  save();
-
-  if(key==="bed")renderBedroom();
-  else renderGarden();
-
-  toast("Added to your space! 🌸");
-}
 
 function renderBedroom(){
-  renderOptions(bedItems,"bedOptions","bed");
-
-  $("bedDisplay").innerHTML=state.bed.slice(-8)
-    .map(x=>`<span>${x}</span>`).join("");
-}
-
-function renderGarden(){
-  renderOptions(gardenOptions,"gardenOptions","garden");
-
-  $("gardenItems").innerHTML=state.garden.slice(-12)
-    .map(x=>`<span>${x}</span>`).join("");
-}
-
-const locations=[
-  {
-    id:"cafe",icon:"☕",name:"Panda Café",
-    desc:"Order a pretend strawberry milkshake and share a cupcake with your panda.",
-    scene:"☕ 🧁 🍓 🪑",
-    speech:"One strawberry milkshake, please!"
-  },
-  {
-    id:"school",icon:"🏫",name:"Panda School",
-    desc:"Learn something new, draw pictures and meet friendly classmates.",
-    scene:"📚 ✏️ 🎒 🍎",
-    speech:"I brought my favourite pencil!"
-  },
-  {
-    id:"beach",icon:"🏖️",name:"Sunny Beach",
-    desc:"Build a sandcastle, collect shells and enjoy the sunshine.",
-    scene:"🏖️ 🐚 🏝️ 🦀",
-    speech:"Look at that lovely shell!"
-  },
-  {
-    id:"market",icon:"🛒",name:"Flower Market",
-    desc:"Browse flowers, fruit and little gifts for your panda home.",
-    scene:"🌷 🍓 🌻 🧺",
-    speech:"These flowers are beautiful!"
-  },
-  {
-    id:"playground",icon:"🎠",name:"Playground",
-    desc:"Have a fun afternoon on the swings and slides.",
-    scene:"🎠 🛝 🧸 🌈",
-    speech:"Race you to the swings!"
-  },
-  {
-    id:"forest",icon:"🌳",name:"Magic Forest",
-    desc:"Explore a peaceful forest full of mushrooms, butterflies and surprises.",
-    scene:"🌳 🍄 🦋 ✨",
-    speech:"I think I spotted a fairy light!"
-  },
-  {
-    id:"home",icon:"🏡",name:"Cosy Home",
-    desc:"Your home is the perfect place to rest after an adventure.",
-    scene:"🪴 🧸 🛋️ 🌸",
-    speech:"Welcome home! 💗"
-  },
-  {
-    id:"onsen",icon:"♨️",name:"Cloudspring Bathhouse",
-    desc:"A quiet warm-water retreat with lanterns, soft towels and a garden view.",
-    scene:"♨️ 🧺 🪷 🕯️",
-    speech:"What a relaxing little place!"
-  },
-  {
-    id:"library",icon:"📚",name:"Moonbeam Library",
-    desc:"Browse picture books, find a cosy reading nook and discover a new story.",
-    scene:"📚 🪟 🫖 🌙",
-    speech:"Read one more chapter!"
-  },
-  {
-    id:"bakery",icon:"🥐",name:"Little Bun Bakery",
-    desc:"Decorate cupcakes, choose a pastry and learn the baker's secret recipe.",
-    scene:"🥐 🧁 🍞 🍓",
-    speech:"Fresh buns, straight from the oven!"
-  },
-  {
-    id:"station",icon:"🚉",name:"Panda Train Station",
-    desc:"Plan a tiny day trip and watch the flower fields roll by.",
-    scene:"🚉 🚃 🌷 ☁️",
-    speech:"All aboard the flower express!"
-  }
-];
-
-function renderLocations(){
-  $("locationGrid").innerHTML=locations.map(l=>`
-    <div class="card location-card">
-      <div>
-        <div class="feature">${l.icon}</div>
-        <h3>${l.name}</h3>
-        <p class="small">${l.desc}</p>
-      </div>
-      <button class="btn soft"
-        onclick="visitLocation('${l.id}')">
-        Visit ${l.name}
+  $("bedDecor").textContent=state.bedroom.join(" ")||"☁️";
+  $("bedOptions").innerHTML=bedItems.map(item=>`
+    <div class="item">
+      <div class="emoji">${item.emoji}</div>
+      <h3>${item.name}</h3>
+      <button class="btn soft" onclick="toggleBedroom('${item.emoji}')">
+        ${state.bedroom.includes(item.emoji)?"Remove":"Place"}
       </button>
     </div>
   `).join("");
 }
 
-function visitLocation(id){
-  const l=locations.find(x=>x.id===id);
-  if(!l)return;
+function toggleBedroom(emoji){
+  if(state.bedroom.includes(emoji)){
+    state.bedroom=state.bedroom.filter(x=>x!==emoji);
+  }else{
+    state.bedroom.push(emoji);
+  }
+  save();
+  renderBedroom();
+  progressQuest("decorate");
+}
 
+const flowers=[
+  {emoji:"🌷",name:"Tulip"},
+  {emoji:"🌻",name:"Sunflower"},
+  {emoji:"🌹",name:"Rose"},
+  {emoji:"🌼",name:"Daisy"},
+  {emoji:"🍄",name:"Mushroom"},
+  {emoji:"🌳",name:"Tree"},
+  {emoji:"🪻",name:"Lavender"},
+  {emoji:"🌸",name:"Blossom"}
+];
+
+function renderGarden(){
+  $("gardenDecor").textContent=state.garden.join(" ")||"🌱";
+  $("gardenOptions").innerHTML=flowers.map(item=>`
+    <div class="item">
+      <div class="emoji">${item.emoji}</div>
+      <h3>${item.name}</h3>
+      <button class="btn green" onclick="plantFlower('${item.emoji}')">
+        Plant 🌱
+      </button>
+    </div>
+  `).join("");
+}
+
+function plantFlower(emoji){
+  if(state.garden.length>=12){
+    toast("Your garden is full! 🌷");
+    return;
+  }
+  state.garden.push(emoji);
+  save();
+  renderGarden();
+  progressQuest("garden");
+  toast("A new flower has grown! 🌸");
+}
+
+const places=[
+  {emoji:"🏫",name:"Panda School",message:"Time to learn something new! 📚"},
+  {emoji:"☕",name:"Cosy Café",message:"A warm drink and a sweet treat! 🧁"},
+  {emoji:"🌳",name:"Flower Park",message:"Look at all the flowers! 🌷"},
+  {emoji:"🏖️",name:"Sunny Beach",message:"Let's build a sandcastle! 🐚"},
+  {emoji:"🎡",name:"Fun Fair",message:"So many colourful rides! 🎠"},
+  {emoji:"📚",name:"Library",message:"Let's read a bedtime story! 📖"}
+];
+
+function renderTown(){
+  $("townPlaces").innerHTML=places.map((place,i)=>`
+    <div class="item">
+      <div class="emoji">${place.emoji}</div>
+      <h3>${place.name}</h3>
+      <button class="btn" onclick="visitPlace(${i})">Visit ✨</button>
+    </div>
+  `).join("");
+}
+
+function visitPlace(i){
+  const place=places[i];
   state.visits++;
-  state.currentMood="Adventurous";
-  state.bamboo+=2;
-
-  progressQuest("visit",1);
+  state.stars+=2;
+  progressQuest("explore");
   save();
-
-  $("locationTitle").textContent=l.icon+" "+l.name;
-  $("locationDescription").textContent=l.desc;
-  $("locationSpeech").textContent=l.speech;
-
-  $("locationScene").style.background=
-    id==="beach"
-      ?"linear-gradient(#dff4ff 0 60%,#f8e3b5 60%)"
-      :id==="forest"
-        ?"linear-gradient(#dff0dc 0 60%,#b9d9ad 60%)"
-        :"linear-gradient(#f4e7f7 0 60%,#e8d9ef 60%)";
-
-  $("locationScene").querySelector(".panda").textContent=
-    currentPanda().colour;
-
-  $("locationScene").querySelector(".speech").textContent=
-    l.scene;
-
-  toast("You visited "+l.name+"! 🗺️");
+  toast(place.message+" +2 stars ⭐");
 }
 
-const packs=[
-  {
-    id:"strawberry",icon:"🍓",
-    name:"Strawberry Collection",
-    desc:"Sweet strawberry outfits and accessories.",
-    price:"Free preview",cost:18
-  },
-  {
-    id:"princess",icon:"👑",
-    name:"Princess Cottage Pack",
-    desc:"Royal furniture and pretty decorations.",
-    price:"Free preview",cost:22
-  },
-  {
-    id:"flower",icon:"🌸",
-    name:"Flower Garden Pack",
-    desc:"Flowers, butterflies and garden extras.",
-    price:"Free preview",cost:18
-  },
-  {
-    id:"sleepy",icon:"☁️",
-    name:"Sleepy Panda Pack",
-    desc:"Cosy pyjamas and bedtime accessories.",
-    price:"Free preview",cost:15
-  },
-  {
-    id:"photo",icon:"📸",
-    name:"Dreamy Photo Pack",
-    desc:"Extra photo backgrounds and cute frames.",
-    price:"Free preview",cost:12
+function savePanda(){
+  const name=$("pandaNameInput").value.trim().slice(0,18)||"Mochi";
+  state.name=name;
+  state.style=$("pandaStyle").value;
+  state.pandas[0]={name,style:state.style};
+  save();
+  renderFamily();
+  toast("Your panda was saved! 💗");
+}
+
+function adoptPanda(){
+  if(state.stars<25){
+    toast("You need 25 stars to adopt a panda!");
+    return;
   }
+  state.stars-=25;
+  const names=["Boba","Lulu","Peach","Pudding","Coco","Mimi","Biscuit"];
+  const name=names[Math.floor(Math.random()*names.length)];
+  state.pandas.push({name,style:"🐼"});
+  save();
+  renderFamily();
+  toast(name+" joined your panda family! 🐼");
+}
+
+function renderFamily(){
+  $("pandaNameInput").value=state.name;
+  $("pandaStyle").value=state.style;
+  $("pandaFamily").innerHTML=state.pandas.map((p,i)=>`
+    <div class="item">
+      <div class="emoji">${escapeHTML(p.style)}</div>
+      <h3>${escapeHTML(p.name)}</h3>
+      <p class="small">${i===0?"Your main panda":"Panda family member"}</p>
+    </div>
+  `).join("");
+}
+
+const shopItems=[
+  {emoji:"🎀",name:"Pink Bow",price:10},
+  {emoji:"👑",name:"Tiny Crown",price:20},
+  {emoji:"🧸",name:"Cuddle Bear",price:12},
+  {emoji:"🍓",name:"Strawberry Treat",price:8},
+  {emoji:"🦋",name:"Butterfly",price:15},
+  {emoji:"🧁",name:"Cupcake",price:10},
+  {emoji:"💎",name:"Sparkly Gem",price:30},
+  {emoji:"🌈",name:"Rainbow",price:25}
 ];
 
-function renderStore(){
-  const packCards=packs.map(p=>{
-    const owned=state.owned.includes(p.id);
-
+function renderShop(){
+  $("shopItems").innerHTML=shopItems.map((item,i)=>{
+    const owned=state.inventory.includes(item.name);
     return `
-      <div class="card item-card">
-        <div class="feature">${p.icon}</div>
-        <h3>${p.name}</h3>
-        <p class="small">${p.desc}</p>
-        <div class="price">${p.cost} ⭐</div>
-        <button class="btn ${owned?"green":""}"
-          onclick="buyItem('${p.id}')">
-          ${owned?"✓ Owned":"Unlock pack"}
+      <div class="item">
+        <div class="emoji">${item.emoji}</div>
+        <h3>${item.name}</h3>
+        <p>${item.price} ⭐</p>
+        <button class="btn" onclick="buyItem(${i})" ${owned?"disabled":""}>
+          ${owned?"Owned 💗":"Buy"}
         </button>
-      </div>
-    `;
-  });
-
-  const coinItems=[
-    {id:"🌸 Sakura lamp",icon:"🏮",name:"Sakura lamp",cost:25},
-    {id:"🎀 Pink bow",icon:"🎀",name:"Pink bow",cost:18},
-    {id:"🪴 Bamboo plant",icon:"🪴",name:"Bamboo plant",cost:30},
-    {id:"☁️ Cloud cushion",icon:"☁️",name:"Cloud cushion",cost:22},
-    {id:"🦋 Butterfly charm",icon:"🦋",name:"Butterfly charm",cost:20}
-  ];
-
-  const coinCards=coinItems.map(x=>{
-    const owned=state.inventory.includes(x.id);
-
-    return `
-      <div class="card item-card">
-        <div class="feature">${x.icon}</div>
-        <h3>${x.name}</h3>
-        <p class="small">
-          A little extra something for your cosy world.
-        </p>
-        <div class="price">${x.cost} 🎋</div>
-        <button class="btn ${owned?"green":""}"
-          onclick="buyCoinItem('${x.id}',${x.cost})">
-          ${owned?"✓ Unlocked":"Unlock item"}
-        </button>
-      </div>
-    `;
-  });
-
-  $("storeItems").innerHTML=
-    '<div class="store-heading">🎋 Bamboo Boutique</div>'+
-    coinCards.join("")+
-    '<div class="store-heading">⭐ Star Packs</div>'+
-    packCards.join("");
-}
-
-function buyCoinItem(id,cost){
-  if(state.inventory.includes(id)){
-    toast("You already unlocked this item!");
-    return;
-  }
-
-  if(state.bamboo<cost){
-    modal(
-      "A few more bamboo coins! 🎋",
-      "You need "+cost+
-      " bamboo coins for this item. Daily gifts and games can earn more.",
-      "🎋"
-    );
-    return;
-  }
-
-  state.bamboo-=cost;
-  state.inventory.push(id);
-
-  save();
-  renderStore();
-
-  modal(
-    "Item unlocked! 🌸",
-    id+" has been added to your collection.",
-    "🎁"
-  );
-}
-
-function buyItem(id){
-  if(id==="PandaLuxe membership"){
-    state.luxe=true;
-    save();
-
-    modal(
-      "PandaLuxe preview 💎",
-      "Your premium preview is active! No money has been taken. Real subscriptions aren't connected.",
-      "💎"
-    );
-    return;
-  }
-
-  const pack=packs.find(p=>p.id===id);
-  if(!pack)return;
-
-  if(state.owned.includes(id)){
-    toast("You already own this pack! 💗");
-    return;
-  }
-
-  if(state.stars<pack.cost){
-    modal(
-      "Collect a few more stars! ⭐",
-      "You need "+pack.cost+
-      " stars to unlock "+pack.name+
-      ". Try an activity or daily quest!",
-      "🛍️"
-    );
-    return;
-  }
-
-  state.stars-=pack.cost;
-  state.owned.push(id);
-
-  if(id==="flower")state.garden.push("🌺","🪻");
-  if(id==="strawberry")state.stickers.push("🍓");
-  if(id==="sleepy")state.bed.push("🛌","☁️");
-  if(id==="princess")state.bed.push("👑","🏰");
-  if(id==="photo")state.stickers.push("📸");
-
-  save();
-  renderStore();
-
-  modal(
-    "Pack unlocked! 🎀",
-    pack.name+" has been added to your collection. Enjoy!",
-    "🎁"
-  );
-}
-
-function updatePhoto(){
-  $("photoPreview").style.background=$("photoTheme").value;
-  $("photoText").textContent=
-    $("photoCaption").value||"My little panda 💗";
-  $("photoName").textContent=state.name;
-  $("photoEmoji").textContent=state.colour;
-}
-
-function downloadPhoto(){
-  updatePhoto();
-
-  const canvas=document.createElement("canvas");
-  canvas.width=700;
-  canvas.height=700;
-
-  const ctx=canvas.getContext("2d");
-
-  ctx.fillStyle=$("photoTheme").value;
-  ctx.fillRect(0,0,700,700);
-  ctx.textAlign="center";
-
-  ctx.font="90px Arial";
-  ctx.fillText("🌸 ✨ 🌸",350,100);
-
-  ctx.font="180px Arial";
-  ctx.fillText(state.colour,350,350);
-
-  ctx.font="bold 42px Arial";
-  ctx.fillStyle="#9c6884";
-  ctx.fillText(state.name,350,440);
-
-  ctx.font="28px Arial";
-  ctx.fillText(
-    $("photoCaption").value||"My little panda 💗",
-    350,500
-  );
-
-  ctx.font="45px Arial";
-  ctx.fillText("🎀 💗 🌷",350,600);
-
-  const link=document.createElement("a");
-  link.download="my-panda-photo.png";
-  link.href=canvas.toDataURL("image/png");
-  link.click();
-}
-
-const allStickers=[
-  "🐼","🌸","💗","🍓","🎀","🌈","🧁",
-  "🦋","🌻","🍄","🐾","☁️","🧸",
-  "🍰","💐","🌺","🪻","🧋","🐣",
-  "🍡","📸"
-];
-
-function renderStickers(){
-  $("stickerBook").innerHTML=allStickers.map(s=>{
-    const got=state.stickers.includes(s);
-
-    return `
-      <div class="sticker" style="${got?"":"opacity:.22"}">
-        ${got?s:"🔒"}
-        <div class="small">
-          ${got?"Collected":"Not found yet"}
-        </div>
       </div>
     `;
   }).join("");
-
-  $("stickerCount").textContent=
-    state.stickers.length+" stickers collected";
 }
 
-const questTemplates=[
-  {
-    id:"activity",
-    icon:"🎨",
-    name:"Play two activities",
-    target:2,
-    reward:8
-  },
-  {
-    id:"visit",
-    icon:"🗺️",
-    name:"Visit two places",
-    target:2,
-    reward:8
-  },
-  {
-    id:"decorate",
-    icon:"🌷",
-    name:"Place two decorations",
-    target:2,
-    reward:8
-  },
-  {
-    id:"gift",
-    icon:"🎁",
-    name:"Collect today's gift",
-    target:1,
-    reward:6
+function buyItem(i){
+  const item=shopItems[i];
+  if(state.inventory.includes(item.name))return;
+  if(state.stars<item.price){
+    toast("Not enough stars! ⭐");
+    return;
   }
+  state.stars-=item.price;
+  state.inventory.push(item.name);
+  save();
+  renderShop();
+  toast("You bought "+item.name+"! 🎀");
+}
+
+function claimGift(){
+  if(state.lastGift===today()){
+    toast("You've already opened today's gift! 🎁");
+    return;
+  }
+  state.lastGift=today();
+  state.stars+=15;
+  save();
+  renderGift();
+  toast("Surprise! You got 15 stars! ⭐");
+}
+
+function renderGift(){
+  const claimed=state.lastGift===today();
+  $("giftButton").disabled=claimed;
+  $("giftButton").textContent=claimed?"Come back tomorrow 💗":"Open gift 💗";
+  $("giftStatus").textContent=claimed?"Today's gift has been collected!":"Your daily gift is waiting!";
+}
+
+function resetQuests(){
+  if(state.questDate!==today()){
+    state.questDate=today();
+    state.quests={};
+    save();
+  }
+}
+
+const questData=[
+  {id:"decorate",name:"Decorate your room",emoji:"🛏️",reward:5},
+  {id:"garden",name:"Plant a flower",emoji:"🌷",reward:5},
+  {id:"explore",name:"Explore the town",emoji:"🗺️",reward:5},
+  {id:"play",name:"Win a minigame",emoji:"🧁",reward:8}
 ];
 
-function ensureQuests(){
-  const today=new Date().toDateString();
-
-  if(state.questDate!==today){
-    state.questDate=today;
-    state.quests={};
+function progressQuest(id){
+  resetQuests();
+  if(state.quests[id])return;
+  state.quests[id]=true;
+  const quest=questData.find(q=>q.id===id);
+  if(quest){
+    state.stars+=quest.reward;
+    save();
+    toast("Quest complete! +"+quest.reward+" stars ⭐");
   }
-}
-
-function progressQuest(id,n){
-  ensureQuests();
-  state.quests[id]=(state.quests[id]||0)+n;
+  renderQuests();
 }
 
 function renderQuests(){
-  ensureQuests();
-
-  $("questList").innerHTML=questTemplates.map(q=>{
-    const progress=Math.min(
-      state.quests[q.id]||0,
-      q.target
-    );
-
-    const done=progress>=q.target;
-    const claimed=!!state.quests[q.id+"_claimed"];
-
-    return `
-      <div class="quest ${claimed?"done":""}">
-        <div class="qicon">${q.icon}</div>
-        <div class="quest-info">
-          <b>${q.name}</b>
-          <div class="progress">
-            <span style="width:${progress/q.target*100}%"></span>
-          </div>
-          <span class="small">
-            ${progress}/${q.target} · Reward ${q.reward} ⭐
-          </span>
-        </div>
-        <button
-          class="btn ${claimed?"green":"soft"}"
-          ${!done||claimed?"disabled":""}
-          onclick="claimQuest('${q.id}')"
-        >
-          ${claimed?"Claimed":done?"Claim":"In progress"}
-        </button>
-      </div>
-    `;
-  }).join("");
+  resetQuests();
+  $("questList").innerHTML=questData.map(q=>`
+    <div class="item">
+      <div class="emoji">${q.emoji}</div>
+      <h3>${q.name}</h3>
+      <p>Reward: ${q.reward} ⭐</p>
+      <p>${state.quests[q.id]?"✅ Completed":"🌸 Not completed"}</p>
+    </div>
+  `).join("");
 }
 
-function claimQuest(id){
-  const q=questTemplates.find(x=>x.id===id);
-  if(!q)return;
-
-  ensureQuests();
-
-  if(
-    (state.quests[id]||0)<q.target||
-    state.quests[id+"_claimed"]
-  )return;
-
-  state.quests[id+"_claimed"]=true;
-  state.stars+=q.reward;
-
-  save();
-  renderQuests();
-
-  modal(
-    "Quest complete! 🌟",
-    "You earned "+q.reward+
-    " bonus stars. Well done!",
-    "🏅"
-  );
-}
-
-const achievements=[
-  {
-    id:"first",
-    icon:"🌸",
-    name:"First steps",
-    desc:"Play your first activity.",
-    test:()=>state.activities>=1
-  },
-  {
-    id:"busy",
-    icon:"🎨",
-    name:"Creative panda",
-    desc:"Play 10 activities.",
-    test:()=>state.activities>=10
-  },
-  {
-    id:"star",
-    icon:"⭐",
-    name:"Star collector",
-    desc:"Collect 50 stars.",
-    test:()=>state.stars>=50
-  },
-  {
-    id:"rich",
-    icon:"💫",
-    name:"Super star",
-    desc:"Collect 150 stars.",
-    test:()=>state.stars>=150
-  },
-  {
-    id:"mood",
-    icon:"🌈",
-    name:"Mood maker",
-    desc:"Try three different panda moods.",
-    test:()=>state.moodChanges>=3
-  },
-  {
-    id:"garden",
-    icon:"🌷",
-    name:"Green paws",
-    desc:"Place 8 garden items.",
-    test:()=>state.garden.length>=8
-  },
-  {
-    id:"home",
-    icon:"🏡",
-    name:"Home sweet home",
-    desc:"Place 8 bedroom items.",
-    test:()=>state.bed.length>=8
-  },
-  {
-    id:"explorer",
-    icon:"🗺️",
-    name:"Little explorer",
-    desc:"Visit 5 places.",
-    test:()=>state.visits>=5
-  },
-  {
-    id:"sticker",
-    icon:"📒",
-    name:"Sticker fan",
-    desc:"Collect 10 stickers.",
-    test:()=>state.stickers.length>=10
-  },
-  {
-    id:"game",
-    icon:"🧁",
-    name:"Treat champion",
-    desc:"Win 3 treat catcher rounds.",
-    test:()=>state.gameWins>=3
-  }
-];
-
-function achievementCount(){
-  return achievements.filter(a=>a.test()).length;
-}
-
-function checkAchievements(){
-  const before=state._achievementCount||0;
-  const now=achievementCount();
-
-  state._achievementCount=now;
-
-  if(now>before){
-    toast("A new panda award is ready! 🏅");
-  }
-}
-
-function renderAchievements(){
-  $("achievementGrid").innerHTML=achievements.map(a=>{
-    const won=a.test();
-
-    return `
-      <div class="achievement ${won?"":"locked"}">
-        <div class="feature">
-          ${won?a.icon:"🔒"}
-        </div>
-        <h3>${a.name}</h3>
-        <p class="small">${a.desc}</p>
-        <span class="badge">
-          ${won?"Unlocked":"Keep playing"}
-        </span>
-      </div>
-    `;
-  }).join("");
-}
-
-let gameCount=0;
 let gameHits=0;
-let memoryDeck=[];
-let memoryOpen=[];
-let memoryMatched=[];
-
-function chooseGame(mode){
-  state.gameMode=mode;
-
-  document.querySelectorAll(".game-tile").forEach(b=>{
-    b.classList.toggle(
-      "selected",
-      b.dataset.game===mode
-    );
-  });
-
-  const titles={
-    treat:"🧁 Treat catcher",
-    memory:"🀄 Panda pairs",
-    garden:"🌷 Garden match"
-  };
-
-  $("gameTitle").textContent=titles[mode];
-  $("gameScore").textContent="Ready!";
-
-  $("gameMessage").textContent=
-    mode==="treat"
-      ?"Pick five yummy treats!"
-      :mode==="memory"
-        ?"Find all three matching pairs!"
-        :"Tap the flower that matches the target!";
-
-  $("gameArea").innerHTML="";
-  $("startGame").disabled=false;
-  $("startGame").textContent="Start a round 🌸";
-}
+let gameRunning=false;
 
 function startGame(){
-  if(state.gameMode==="memory"){
-    return startMemory();
-  }
-
-  if(state.gameMode==="garden"){
-    return startGardenMatch();
-  }
-
-  gameCount=0;
   gameHits=0;
-
-  $("gameScore").textContent="0 / 5";
-  $("gameMessage").textContent="Tap five yummy treats!";
+  gameRunning=true;
   $("startGame").disabled=true;
-
+  $("gameScore").textContent="0 / 5";
+  $("gameMessage").textContent="Tap the treats!";
   nextTreat();
-}
-
-function finishMiniGame(kind){
-  if(kind==="treat"){
-    state.gameWins++;
-    state.stars+=8;
-    progressQuest("activity",1);
-
-    modal(
-      "Treat champion! 🧁",
-      "You earned 8 stars!",
-      "⭐"
-    );
-
-  }else if(kind==="memory"){
-    state.gameWins++;
-    state.bamboo+=10;
-
-    modal(
-      "Lovely memory! 🐼",
-      "You matched every pair and earned 10 bamboo coins!",
-      "🎋"
-    );
-
-  }else{
-    state.stars+=6;
-    state.bamboo+=3;
-
-    modal(
-      "Garden genius! 🌷",
-      "You earned 6 stars and 3 bamboo coins!",
-      "🌸"
-    );
-  }
-
-  save();
-  checkAchievements();
-
-  $("startGame").disabled=false;
-  $("startGame").textContent="Play again 🌸";
 }
 
 function nextTreat(){
   const area=$("gameArea");
   area.innerHTML="";
-
-  const treats=[
-    "🧁","🍓","🍡","🍰",
-    "🍪","🍩","🍓","🧋"
-  ];
-
+  const treats=["🧁","🍓","🍡","🍰","🍪","🍩","🍒","🧋"];
   for(let i=0;i<3;i++){
-    const b=document.createElement("button");
-
-    b.textContent=treats[
-      Math.floor(Math.random()*treats.length)
-    ];
-
-    b.setAttribute("aria-label","Pick this treat");
-
-    b.onclick=()=>{
-      if(b.disabled)return;
-
-      b.disabled=true;
-      gameCount++;
+    const button=document.createElement("button");
+    button.textContent=treats[Math.floor(Math.random()*treats.length)];
+    button.setAttribute("aria-label","Catch treat");
+    button.onclick=()=>{
+      if(!gameRunning)return;
       gameHits++;
-
       $("gameScore").textContent=gameHits+" / 5";
-
       if(gameHits>=5){
-        $("gameMessage").textContent="You did it!";
-        area.innerHTML="🎉 🐼 🎉";
-        finishMiniGame("treat");
+        gameRunning=false;
+        state.gameWins++;
+        state.stars+=8;
+        save();
+        progressQuest("play");
+        area.textContent="🎉 🐼 🎉";
+        $("gameMessage").textContent="You won 8 stars!";
+        $("startGame").disabled=false;
+        $("startGame").textContent="Play again 🌸";
       }else{
         nextTreat();
       }
     };
-
-    area.appendChild(b);
+    area.appendChild(button);
   }
 }
 
-function startMemory(){
-  const icons=[
-    "🐼","🎋","🌸",
-    "🐼","🎋","🌸"
-  ];
+const photoBackgrounds=[
+  ["#e8f4ff","#dce5ff","🌸 ✨ 🌷"],
+  ["#fff0c9","#ffd9e6","☀️ 🌻 🦋"],
+  ["#e7ffe7","#d3f2dc","🍄 🌿 🌼"],
+  ["#f6e7ff","#e6d8ff","🌙 ⭐ ☁️"]
+];
 
-  memoryDeck=icons.sort(()=>Math.random()-.5);
-  memoryOpen=[];
-  memoryMatched=[];
-  gameCount=0;
-
-  $("gameScore").textContent="0 / 3 pairs";
-  $("gameMessage").textContent=
-    "Tap two cards to find a pair.";
-
-  $("startGame").disabled=true;
-
-  renderMemory();
+function changePhoto(){
+  state.photoIndex=(state.photoIndex+1)%photoBackgrounds.length;
+  save();
+  renderPhoto();
 }
 
-function renderMemory(){
-  const area=$("gameArea");
-  area.className="memory-grid";
+function renderPhoto(){
+  const bg=photoBackgrounds[state.photoIndex%photoBackgrounds.length];
+  $("photoScene").style.background="linear-gradient("+bg[0]+","+bg[1]+")";
+  $("photoDecor").textContent=bg[2];
+  $("photoPanda").textContent=state.style;
+  $("photoName").textContent=state.name;
+}
 
-  area.innerHTML=memoryDeck.map((v,i)=>`
-    <button
-      class="memory-card"
-      onclick="flipMemory(${i})"
-    >
-      ${
-        memoryMatched.includes(i)||
-        memoryOpen.includes(i)
-          ?v
-          :"❔"
-      }
-    </button>
+function takePhoto(){
+  toast("Say cheese! 📸 Your panda looks adorable!");
+}
+
+const stickers=[
+  {emoji:"🐼",name:"Panda",done:()=>true},
+  {emoji:"🌷",name:"Gardener",done:()=>state.garden.length>=3},
+  {emoji:"🧸",name:"Collector",done:()=>state.inventory.length>=1},
+  {emoji:"⭐",name:"Star",done:()=>state.stars>=50},
+  {emoji:"🎮",name:"Gamer",done:()=>state.gameWins>=1},
+  {emoji:"🗺️",name:"Explorer",done:()=>state.visits>=3}
+];
+
+function renderStickers(){
+  $("stickerBook").innerHTML=stickers.map(s=>`
+    <div class="item">
+      <div class="emoji">${s.done()?s.emoji:"🔒"}</div>
+      <h3>${s.name}</h3>
+      <p class="small">${s.done()?"Collected! 💗":"Keep playing to unlock"}</p>
+    </div>
   `).join("");
 }
 
-function flipMemory(i){
-  if(
-    memoryMatched.includes(i)||
-    memoryOpen.includes(i)||
-    memoryOpen.length===2
-  )return;
-
-  memoryOpen.push(i);
-  renderMemory();
-
-  if(memoryOpen.length===2){
-    if(
-      memoryDeck[memoryOpen[0]]===
-      memoryDeck[memoryOpen[1]]
-    ){
-      memoryMatched.push(...memoryOpen);
-      memoryOpen=[];
-      gameCount++;
-
-      $("gameScore").textContent=
-        gameCount+" / 3 pairs";
-
-      renderMemory();
-
-      if(gameCount===3){
-        $("gameMessage").textContent=
-          "All pairs found!";
-
-        finishMiniGame("memory");
-      }
-    }else{
-      setTimeout(()=>{
-        memoryOpen=[];
-        renderMemory();
-      },650);
-    }
-  }
+function saveBirthday(){
+  state.birthday=$("birthdayInput").value;
+  save();
+  renderBirthday();
+  toast("Birthday saved! 🎂");
 }
 
-function startGardenMatch(){
-  const flowers=["🌷","🌻","🌼","🌸"];
-
-  const target=flowers[
-    Math.floor(Math.random()*flowers.length)
-  ];
-
-  $("gameScore").textContent="Find: "+target;
-  $("gameMessage").textContent=
-    "Tap the matching flower.";
-
-  $("gameArea").className="garden-match";
-
-  $("gameArea").innerHTML=
-    flowers.sort(()=>Math.random()-.5).map(f=>`
-      <button onclick="pickFlower('${f}','${target}')">
-        ${f}
-      </button>
-    `).join("");
-
-  $("startGame").disabled=true;
-}
-
-function pickFlower(pick,target){
-  if(pick!==target){
-    toast("Not quite! Try another flower.");
+function renderBirthday(){
+  $("birthdayInput").value=state.birthday||"";
+  if(!state.birthday){
+    $("birthdayMessage").textContent="Choose a special birthday!";
     return;
   }
-
-  $("gameMessage").textContent="You found it!";
-  $("gameArea").innerHTML="🌷 ✨ 🐼";
-
-  finishMiniGame("garden");
+  const parts=state.birthday.split("-");
+  const current=new Date();
+  const birthdayToday=Number(parts[1])===current.getMonth()+1
+    && Number(parts[2])===current.getDate();
+  $("birthdayMessage").textContent=birthdayToday
+    ?"🎉 Happy Panda Birthday! 🎂"
+    :"Your panda's special day is saved! 💗";
 }
 
-// These temporary functions are replaced by
-// the real Firebase functions in the next part.
+const awards=[
+  {emoji:"🐼",name:"Panda Parent",done:()=>state.pandas.length>=1},
+  {emoji:"🌷",name:"Flower Lover",done:()=>state.garden.length>=5},
+  {emoji:"🏡",name:"Home Decorator",done:()=>state.bedroom.length>=4},
+  {emoji:"🧁",name:"Treat Champion",done:()=>state.gameWins>=3},
+  {emoji:"🗺️",name:"Town Explorer",done:()=>state.visits>=5},
+  {emoji:"⭐",name:"Star Collector",done:()=>state.stars>=100},
+  {emoji:"🎁",name:"Gift Opener",done:()=>!!state.lastGift},
+  {emoji:"🐾",name:"Big Panda Family",done:()=>state.pandas.length>=3}
+];
 
-function copyFriendCode(){
-  toast("Sign in to see your online code.");
+function renderAwards(){
+  $("awardList").innerHTML=awards.map(a=>`
+    <div class="item">
+      <div class="emoji">${a.done()?a.emoji:"🔒"}</div>
+      <h3>${a.name}</h3>
+      <p class="small">${a.done()?"Award unlocked! 🏆":"Not unlocked yet"}</p>
+    </div>
+  `).join("");
 }
 
-function addFriendByCode(){
-  toast("Please sign in first.");
-}
-
-function renderFriends(){}
-
-function sendChatMessage(e){
-  e.preventDefault();
-}
-
-function onlineSignUp(){}
-function onlineSignIn(){}
-function onlineSignOut(){}
-function onlineBlockFriend(){}
-
-function dailyBirthday(){
-  if(state.birthday){
-    $("birthdayDate").value=state.birthday;
-    birthdayCheck();
-  }
-}
-
-function escapeHTML(value){
-  return String(value).replace(
-    /[&<>"']/g,
-    c=>({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-    }[c])
-  );
+function renderPage(page){
+  const renderers={
+    bedroom:renderBedroom,
+    garden:renderGarden,
+    town:renderTown,
+    studio:renderFamily,
+    shop:renderShop,
+    gifts:renderGift,
+    quests:renderQuests,
+    photo:renderPhoto,
+    stickers:renderStickers,
+    birthday:renderBirthday,
+    awards:renderAwards
+  };
+  if(renderers[page])renderers[page]();
+  updateAll();
 }
 
 function init(){
-  syncCurrent();
+  resetQuests();
   updateAll();
+  newMessage();
   renderBedroom();
   renderGarden();
-  renderStore();
-  renderStickers();
-  renderCalendar();
+  renderTown();
   renderFamily();
-  renderLocations();
+  renderShop();
+  renderGift();
   renderQuests();
-  renderAchievements();
-  renderMoods();
-  chooseGame(state.gameMode||"treat");
-  dailyBirthday();
-  updatePhoto();
-
-  state._achievementCount=achievementCount();
+  renderPhoto();
+  renderStickers();
+  renderBirthday();
+  renderAwards();
 }
 
 init();
-
-window.addEventListener("beforeunload",stopMusic);
-
-setInterval(()=>{
-  if(Math.random()<.7)newMessage();
-},45000);
-
-</script>
-
-<!-- The real online multiplayer code begins here. -->
-<script type="module">
-
-import {initializeApp} from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
-import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut} from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
-import {getFirestore,doc,getDoc,setDoc,runTransaction,collection,query,where,onSnapshot,addDoc,serverTimestamp,orderBy,limit,updateDoc,writeBatch} from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
-
-// Replace these placeholders with your Firebase web app config.
-// Do not paste a Firebase service-account private key here.
-const firebaseConfig = {
-  apiKey: "AIzaSyB2dHiu3PeazHCcCEVYV98eVMEuCGO3aBM",
-  authDomain: "panda-friend-5f569.firebaseapp.com",
-  projectId: "panda-friend-5f569",
-  storageBucket: "panda-friend-5f569.firebasestorage.app",
-  messagingSenderId: "1047377674751",
-  appId: "1:1047377674751:web:c390972dcb78657295e7ca",
-  measurementId: "G-PEX8BYMFX3"
-};
-
-const configured = !Object.values(firebaseConfig)
-  .some(x=>String(x).includes("PASTE_"));
-
-const status = text=>{
-  $("onlineStatus").textContent=text;
-};
-
-let auth;
-let db;
-let user=null;
-let profile=null;
-let activeRequest=null;
-let stopMessages=null;
-let stopRequests=[];
-let requestMap=new Map();
-let saveTimer=null;
-let loadingCloud=false;
-
-const friendlyError=e=>{
-  console.warn(e);
-  toast(
-    (e.code||"Error")+": "+
-    (e.message||"Please try again.").slice(0,120)
-  );
-};
-
-const cleanText=s=>String(s||"")
-  .replace(/[\u0000-\u001f]/g,"")
-  .trim()
-  .slice(0,240);
-
-const gameFields=[
-  "name","mood","accessory","outfit","colour",
-  "stars","bamboo","inventory","currentMood",
-  "activities","birthday","lastGift","claimed",
-  "stickers","bed","garden","owned","luxe",
-  "pandas","activePanda","visits","quests",
-  "questDate","gameWins","gameMode","moodChanges"
-];
-
-const gameSnapshot=()=>Object.fromEntries(
-  gameFields.map(k=>[k,state[k]])
-);
-
-async function uploadProgress(){
-  if(!user||loadingCloud)return;
-
-  try{
-    await setDoc(
-      doc(db,"progress",user.uid),
-      {
-        game:gameSnapshot(),
-        updatedAt:serverTimestamp()
-      },
-      {merge:true}
-    );
-  }catch(e){
-    console.warn("Cloud save failed",e);
-  }
-}
-
-const originalSave=save;
-
-save=function(){
-  originalSave();
-
-  if(user&&!loadingCloud){
-    clearTimeout(saveTimer);
-    saveTimer=setTimeout(uploadProgress,1200);
-  }
-};
-
-function randomCode(){
-  const abc="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  const bytes=crypto.getRandomValues(new Uint8Array(10));
-
-  return "PF-"+Array.from(
-    bytes,b=>abc[b%abc.length]
-  ).join("");
-}
-
-async function createProfile(u){
-  const profileRef=doc(db,"profiles",u.uid);
-  const existing=await getDoc(profileRef);
-
-  if(existing.exists())return existing.data();
-
-  for(let attempt=0;attempt<8;attempt++){
-    const code=randomCode();
-    const codeRef=doc(db,"codes",code);
-
-    try{
-      await runTransaction(db,async tx=>{
-        const [p,c]=await Promise.all([
-          tx.get(profileRef),
-          tx.get(codeRef)
-        ]);
-
-        if(p.exists())return;
-        if(c.exists())throw Error("Code collision");
-
-        tx.set(codeRef,{uid:u.uid});
-
-        tx.set(profileRef,{
-          code,
-          displayName:cleanText(state.name).slice(0,18)
-            ||"Panda Pal",
-          createdAt:serverTimestamp(),
-          blocked:[]
-        });
-      });
-
-      const result=await getDoc(profileRef);
-      if(result.exists())return result.data();
-
-    }catch(e){
-      if(e.message!=="Code collision")throw e;
-    }
-  }
-
-  throw Error(
-    "Could not reserve a unique player code. Please retry."
-  );
-}
-
-async function loadProgress(u){
-  const snap=await getDoc(doc(db,"progress",u.uid));
-
-  if(snap.exists()&&snap.data().game){
-    loadingCloud=true;
-
-    const data=snap.data().game;
-
-    for(const key of gameFields){
-      if(Object.prototype.hasOwnProperty.call(data,key)){
-        state[key]=data[key];
-      }
-    }
-
-    if(!Array.isArray(state.pandas)||!state.pandas.length){
-      state.pandas=[{...defaultState.pandas[0]}];
-    }
-
-    if(!state.pandas.some(p=>p.id===state.activePanda)){
-      state.activePanda=state.pandas[0].id;
-    }
-
-    originalSave();
-
-    renderBedroom();
-    renderGarden();
-    renderStore();
-    renderStickers();
-    renderFamily();
-    renderQuests();
-    renderAchievements();
-    renderMoods();
-
-    loadingCloud=false;
-
-  }else{
-    await uploadProgress();
-  }
-}
-
-function clearListeners(){
-  stopRequests.forEach(fn=>fn());
-  stopRequests=[];
-
-  if(stopMessages)stopMessages();
-
-  stopMessages=null;
-  activeRequest=null;
-  requestMap.clear();
-}
-
-async function setAccount(u){
-  clearListeners();
-
-  user=u;
-  profile=null;
-
-  $("authPanel").hidden=!!u;
-  $("onlinePanel").hidden=!u;
-
-  if(!u){
-    status("🔒 Sign in to use online friends and live chat.");
-    $("myFriendCode").textContent="Sign in first";
-    return;
-  }
-
-  try{
-    status("🌸 Signing into Panda Town…");
-
-    profile=await createProfile(u);
-
-    $("myFriendCode").textContent=profile.code;
-
-    await loadProgress(u);
-
-    status("🟢 Online · Signed in as "+u.email);
-
-    watchRequests();
-
-  }catch(e){
-    status(
-      "⚠️ Online setup error. Check your Firebase config and security rules."
-    );
-    friendlyError(e);
-  }
-}
-
-function watchRequests(){
-  const col=collection(db,"requests");
-
-  const incoming=query(
-    col,where("to","==",user.uid)
-  );
-
-  const outgoing=query(
-    col,where("from","==",user.uid)
-  );
-
-  const refresh=()=>{
-    renderRequestList();
-  };
-
-  for(const q of [incoming,outgoing]){
-    stopRequests.push(
-      onSnapshot(q,snap=>{
-        for(const change of snap.docChanges()){
-          if(change.type==="removed"){
-            requestMap.delete(change.doc.id);
-          }else{
-            requestMap.set(
-              change.doc.id,
-              {
-                id:change.doc.id,
-                ...change.doc.data()
-              }
-            );
-          }
-        }
-
-        refresh();
-      },friendlyError)
-    );
-  }
-}
-
-function pairId(a,b){
-  return [a,b].sort().join("_");
-}
-
-window.onlineSignUp=async()=>{
-  if(!configured){
-    return toast("First add your Firebase project config.");
-  }
-
-  const email=$("authEmail").value.trim();
-  const password=$("authPassword").value;
-
-  if(password.length<6){
-    return toast(
-      "Choose a password with at least 6 characters."
-    );
-  }
-
-  try{
-    await createUserWithEmailAndPassword(
-      auth,email,password
-    );
-  }catch(e){
-    friendlyError(e);
-  }
-};
-
-window.onlineSignIn=async()=>{
-  if(!configured){
-    return toast("First add your Firebase project config.");
-  }
-
-  try{
-    await signInWithEmailAndPassword(
-      auth,
-      $("authEmail").value.trim(),
-      $("authPassword").value
-    );
-  }catch(e){
-    friendlyError(e);
-  }
-};
-
-window.onlineSignOut=async()=>{
-  clearTimeout(saveTimer);
-  await uploadProgress();
-  await signOut(auth);
-};
-
-window.copyFriendCode=async()=>{
-  if(!profile)return toast("Sign in first.");
-
-  try{
-    await navigator.clipboard.writeText(profile.code);
-    toast("Your code was copied!");
-  }catch(e){
-    toast("Your code is "+profile.code);
-  }
-};
-
-window.addFriendByCode=async()=>{
-  if(!user||!profile){
-    return toast("Sign in first.");
-  }
-
-  const code=$("friendCodeInput")
-    .value.trim().toUpperCase();
-
-  if(!/^PF-[A-Z2-9]{10}$/.test(code)){
-    return toast(
-      "Enter a valid code, like PF-XXXXXXXXXX."
-    );
-  }
-
-  try{
-    const snap=await getDoc(
-      doc(db,"codes",code)
-    );
-
-    if(!snap.exists()){
-      return toast("No player found with that code.");
-    }
-
-    const to=snap.data().uid;
-
-    if(to===user.uid){
-      return toast("That is your own code.");
-    }
-
-    const id=pairId(user.uid,to);
-    const ref=doc(db,"requests",id);
-    const previous=await getDoc(ref);
-
-    if(previous.exists()){
-      return toast(
-        "A friend request already exists between you."
-      );
-    }
-
-    await setDoc(ref,{
-      from:user.uid,
-      to,
-      status:"pending",
-      createdAt:serverTimestamp()
-    });
-
-    $("friendCodeInput").value="";
-    toast("Friend request sent! 💌");
-
-  }catch(e){
-    friendlyError(e);
-  }
-};
-
-window.acceptOnlineRequest=async(id)=>{
-  const r=requestMap.get(id);
-
-  if(
-    !r||
-    r.to!==user.uid||
-    r.status!=="pending"
-  )return;
-
-  try{
-    await updateDoc(
-      doc(db,"requests",id),
-      {status:"accepted"}
-    );
-
-    toast("Friend request accepted! 💗");
-
-  }catch(e){
-    friendlyError(e);
-  }
-};
-
-window.declineOnlineRequest=async(id)=>{
-  const r=requestMap.get(id);
-
-  if(
-    !r||
-    r.to!==user.uid||
-    r.status!=="pending"
-  )return;
-
-  try{
-    await updateDoc(
-      doc(db,"requests",id),
-      {status:"declined"}
-    );
-
-    toast("Request declined.");
-
-  }catch(e){
-    friendlyError(e);
-  }
-};
-
-async function displayName(uid){
-  try{
-    const s=await getDoc(
-      doc(db,"profiles",uid)
-    );
-
-    return s.exists()
-      ?s.data().displayName||"Panda pal"
-      :"Panda pal";
-
-  }catch(e){
-    return "Panda pal";
-  }
-}
-
-let renderToken=0;
-
-async function renderRequestList(){
-  if(!user)return;
-
-  const token=++renderToken;
-  const all=[...requestMap.values()];
-
-  const incoming=all.filter(
-    r=>r.to===user.uid&&r.status==="pending"
-  );
-
-  const outgoing=all.filter(
-    r=>r.from===user.uid&&r.status==="pending"
-  );
-
-  const accepted=all.filter(
-    r=>r.status==="accepted"
-  );
-
-  const entries=await Promise.all(
-    [...incoming,...outgoing,...accepted].map(
-      async r=>({
-        r,
-        name:await displayName(
-          r.from===user.uid?r.to:r.from
-        )
-      })
-    )
-  );
-
-  if(token!==renderToken)return;
-
-  $("pendingRequests").innerHTML=entries
-    .filter(x=>x.r.status==="pending")
-    .map(({r,name})=>`
-      <div class="quest">
-        <div class="quest-info">
-          <b>${escapeHTML(name)}</b>
-          <p class="small">
-            ${
-              r.to===user.uid
-                ?"Wants to be your friend"
-                :"Request sent · awaiting acceptance"
-            }
-          </p>
-        </div>
-        ${
-          r.to===user.uid
-            ?`
-              <button class="btn"
-                onclick="acceptOnlineRequest('${r.id}')">
-                Accept
-              </button>
-              <button class="btn soft"
-                onclick="declineOnlineRequest('${r.id}')">
-                Decline
-              </button>
-            `
-            :""
-        }
-      </div>
-    `).join("")
-    ||'<p class="small">No pending requests.</p>';
-
-  $("friendList").innerHTML=entries
-    .filter(x=>x.r.status==="accepted")
-    .map(({r,name})=>`
-      <button class="friend-entry"
-        onclick="openOnlineChat('${r.id}')">
-        <span class="friend-avatar">🐼</span>
-        <span class="friend-meta">
-          <b>${escapeHTML(name)}</b>
-          <small>
-            Accepted friend · Tap to chat
-          </small>
-        </span>
-      </button>
-    `).join("")
-    ||'<p class="small">No accepted friends yet.</p>';
-}
-
-window.openOnlineChat=async(id)=>{
-  const r=requestMap.get(id);
-
-  if(!r||r.status!=="accepted")return;
-
-  activeRequest=id;
-
-  if(stopMessages)stopMessages();
-
-  const other=r.from===user.uid
-    ?r.to
-    :r.from;
-
-  $("chatTitle").textContent=
-    await displayName(other);
-
-  $("chatSubtitle").textContent=
-    "Private live chat · only accepted friends";
-
-  $("chatAvatar").textContent="🐼";
-  $("chatInput").disabled=false;
-  $("sendChatButton").disabled=false;
-  $("blockFriendButton").hidden=false;
-
-  const messages=query(
-    collection(db,"requests",id,"messages"),
-    orderBy("createdAt","asc"),
-    limit(100)
-  );
-
-  stopMessages=onSnapshot(
-    messages,
-    snap=>{
-      $("chatMessages").innerHTML="";
-
-      snap.forEach(d=>{
-        const m=d.data();
-
-        const bubble=document.createElement("div");
-
-        bubble.className="bubble"+
-          (m.sender===user.uid?" mine":"");
-
-        bubble.textContent=m.text;
-
-        const small=document.createElement("small");
-
-        small.textContent=
-          (m.sender===user.uid?"You":"Friend")+
-          " · "+
-          (
-            m.createdAt?.toDate?.()
-              .toLocaleTimeString([],{
-                hour:"2-digit",
-                minute:"2-digit"
-              })||"Just now"
-          );
-
-        bubble.appendChild(small);
-        $("chatMessages").appendChild(bubble);
-      });
-
-      $("chatMessages").scrollTop=
-        $("chatMessages").scrollHeight;
-
-    },
-    friendlyError
-  );
-};
-
-window.sendChatMessage=async e=>{
-  e.preventDefault();
-
-  const message=cleanText(
-    $("chatInput").value
-  );
-
-  if(!user||!activeRequest||!message)return;
-
-  const r=requestMap.get(activeRequest);
-
-  if(!r||r.status!=="accepted")return;
-
-  try{
-    await addDoc(
-      collection(
-        db,"requests",activeRequest,"messages"
-      ),
-      {
-        sender:user.uid,
-        text:message,
-        createdAt:serverTimestamp()
-      }
-    );
-
-    $("chatInput").value="";
-
-  }catch(e){
-    friendlyError(e);
-  }
-};
-
-window.onlineBlockFriend=async()=>{
-  if(!user||!profile||!activeRequest)return;
-
-  const r=requestMap.get(activeRequest);
-  if(!r)return;
-
-  const other=r.from===user.uid
-    ?r.to
-    :r.from;
-
-  if(!confirm(
-    "Block this player? You will no longer be able to exchange messages."
-  ))return;
-
-  try{
-    await updateDoc(
-      doc(db,"profiles",user.uid),
-      {
-        blocked:[
-          ...new Set([
-            ...(profile.blocked||[]),
-            other
-          ])
-        ]
-      }
-    );
-
-    profile.blocked=[
-      ...new Set([
-        ...(profile.blocked||[]),
-        other
-      ])
-    ];
-
-    if(stopMessages)stopMessages();
-
-    $("chatMessages").textContent=
-      "This player is blocked.";
-
-    $("chatInput").disabled=true;
-    $("sendChatButton").disabled=true;
-
-    toast("Player blocked.");
-
-  }catch(e){
-    friendlyError(e);
-  }
-};
-
-
-if(configured){
-  try{
-    const app=initializeApp(firebaseConfig);
-
-    auth=getAuth(app);
-    db=getFirestore(app);
-
-    onAuthStateChanged(
-      auth,
-      setAccount,
-      friendlyError
-    );
-
-  }catch(e){
-  friendlyError(e);
-  status("⚠️ Could not connect to Firebase.");
- }
-} else {
-  
-  status(
-    "🛠️ Online mode needs your Firebase project config before it can connect."
-  );
-
-  $("authPanel").hidden=false;
-  $("onlinePanel").hidden=true;
-}
 </script>
 
 </body>
