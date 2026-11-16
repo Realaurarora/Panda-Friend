@@ -18,13 +18,25 @@
   --shadow:0 12px 35px #84667a17;
 }
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Quicksand,Arial,sans-serif;color:var(--ink)}
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:Quicksand,Arial,sans-serif;
+  color:var(--ink);
+}
 button,input,select{font:inherit}
-button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+button{
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
 body{
-  background:radial-gradient(circle at 15% 20%,#ffe8f1,transparent 35%),
-             radial-gradient(circle at 85% 75%,#e8dcff,transparent 40%),#f9f1f4;
-  display:flex;justify-content:center;align-items:center;
+  background:
+    radial-gradient(circle at 15% 20%,#ffe8f1,transparent 35%),
+    radial-gradient(circle at 85% 75%,#e8dcff,transparent 40%),
+    #f9f1f4;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   min-height:100dvh;
 }
 .phone{
@@ -33,32 +45,59 @@ body{
   height:min(900px,96dvh);
   background:var(--cream);
   overflow:hidden;
-  display:flex;flex-direction:column;
+  display:flex;
+  flex-direction:column;
   border-radius:37px;
   border:7px solid #fff;
   box-shadow:0 24px 90px #71546835,0 0 0 1px #dfcbd4;
 }
 .app-header{
   flex-shrink:0;
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   padding:18px 18px 12px;
   background:#fffaf9;
   z-index:3;
 }
-.brand{font-weight:800;font-size:21px;letter-spacing:-1px}
-.brand small{display:block;font-size:10px;font-weight:600;letter-spacing:2px;color:#bd97a8}
-.header-actions{display:flex;gap:8px;align-items:center}
+.brand{
+  font-weight:800;
+  font-size:21px;
+  letter-spacing:-1px;
+}
+.brand small{
+  display:block;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:2px;
+  color:#bd97a8;
+}
+.header-actions{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
 .currency{
-  background:#fff1d9;border:1px solid #f5e2c4;
-  padding:9px 12px;border-radius:20px;
-  font-size:13px;font-weight:800;
+  background:#fff1d9;
+  border:1px solid #f5e2c4;
+  padding:9px 12px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:800;
 }
 .round-btn{
-  width:36px;height:36px;border:0;border-radius:50%;
-  background:#f8eaf0;color:#806576;font-size:18px;
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  background:#f8eaf0;
+  color:#806576;
+  font-size:18px;
 }
 .content{
-  flex:1;min-height:0;overflow:auto;
+  flex:1;
+  min-height:0;
+  overflow:auto;
   scrollbar-width:none;
   background:#fffaf9;
 }
@@ -67,35 +106,59 @@ body{
 .screen.active{display:block}
 .bottom-nav{
   flex-shrink:0;
-  display:grid;grid-template-columns:repeat(4,1fr);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
   background:#fff;
   border-top:1px solid #f3e6eb;
   padding:10px 5px max(10px,env(safe-area-inset-bottom));
   z-index:5;
 }
 .tab{
-  border:0;background:none;color:#b8a4ae;
-  display:flex;flex-direction:column;align-items:center;gap:3px;
-  font-size:10px;font-weight:800;
+  border:0;
+  background:none;
+  color:#b8a4ae;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  font-size:10px;
+  font-weight:800;
 }
 .tab .tab-icon{font-size:24px}
 .tab.active{color:#c983a0}
 .tab.active .tab-icon{transform:translateY(-2px)}
 .section-pad{padding:18px}
-.section-title{font-size:23px;letter-spacing:-.8px;margin:0 0 5px}
-.section-sub{font-size:12px;color:var(--muted);margin:0 0 18px}
+.section-title{
+  font-size:23px;
+  letter-spacing:-.8px;
+  margin:0 0 5px;
+}
+.section-sub{
+  font-size:12px;
+  color:var(--muted);
+  margin:0 0 18px;
+}
 .card{
-  background:white;border:1px solid var(--line);
-  border-radius:22px;padding:17px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:17px;
   box-shadow:0 5px 16px #98788c0a;
   margin-bottom:13px;
 }
 .card h3{font-size:15px;margin:0 0 9px}
-.small{font-size:12px;color:var(--muted);line-height:1.6}
+.small{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.6;
+}
 .btn{
-  border:0;border-radius:16px;
-  padding:12px 16px;font-weight:800;
-  background:#f2bfd0;color:#775b69;
+  border:0;
+  border-radius:16px;
+  padding:12px 16px;
+  font-weight:800;
+  background:#f2bfd0;
+  color:#775b69;
 }
 .btn.secondary{background:#f7eef3}
 .btn.cream{background:#fff4df}
@@ -103,20 +166,33 @@ body{
 .btn.full{width:100%}
 .btn-row{display:flex;gap:8px;flex-wrap:wrap}
 input,select{
-  width:100%;border:1px solid #eadde2;
-  background:#fffbfc;color:var(--ink);
-  padding:12px;border-radius:13px;outline:none;
+  width:100%;
+  border:1px solid #eadde2;
+  background:#fffbfc;
+  color:var(--ink);
+  padding:12px;
+  border-radius:13px;
+  outline:none;
   margin:6px 0 12px;
 }
 label{font-size:12px;font-weight:800}
-.divider{height:1px;background:#f1e7ea;margin:16px 0}
+.divider{
+  height:1px;
+  background:#f1e7ea;
+  margin:16px 0;
+}
 .tag{
-  display:inline-block;background:#fff0f5;
-  border-radius:20px;padding:5px 10px;
-  font-size:10px;font-weight:800;color:#b47b94;
+  display:inline-block;
+  background:#fff0f5;
+  border-radius:20px;
+  padding:5px 10px;
+  font-size:10px;
+  font-weight:800;
+  color:#b47b94;
 }
 
-/* MAIN ROOM */
+/* MAIN BEDROOM */
+
 .room-wrap{position:relative}
 .room{
   position:relative;
@@ -127,87 +203,184 @@ label{font-size:12px;font-weight:800}
   background:linear-gradient(#f7e8e6 0 66%,#dec6b9 66% 100%);
   transition:background .35s;
 }
-.room.wall-lilac{background:linear-gradient(#eee5f8 0 66%,#d9c7bf 66% 100%)}
-.room.wall-sage{background:linear-gradient(#e4ede2 0 66%,#d8c7b7 66% 100%)}
-.room.wall-cream{background:linear-gradient(#f7eddd 0 66%,#dfc8b7 66% 100%)}
+.room.wall-lilac{
+  background:linear-gradient(#eee5f8 0 66%,#d9c7bf 66% 100%);
+}
+.room.wall-sage{
+  background:linear-gradient(#e4ede2 0 66%,#d8c7b7 66% 100%);
+}
+.room.wall-cream{
+  background:linear-gradient(#f7eddd 0 66%,#dfc8b7 66% 100%);
+}
 .room:before{
-  content:"";position:absolute;top:66%;left:0;width:100%;height:2px;
-  background:#c7ac9e;z-index:0;
+  content:"";
+  position:absolute;
+  top:66%;
+  left:0;
+  width:100%;
+  height:2px;
+  background:#c7ac9e;
+  z-index:0;
 }
 .room:after{
-  content:"";position:absolute;bottom:0;left:0;width:100%;height:33%;
-  background:repeating-linear-gradient(90deg,transparent 0 64px,#b8998822 65px 67px);
-  pointer-events:none;z-index:0;
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:33%;
+  background:repeating-linear-gradient(
+    90deg,
+    transparent 0 64px,
+    #b8998822 65px 67px
+  );
+  pointer-events:none;
+  z-index:0;
 }
 .wall-pattern{
-  position:absolute;inset:0 0 34%;
+  position:absolute;
+  inset:0 0 34%;
   background-image:radial-gradient(#fff9 1.4px,transparent 1.4px);
   background-size:26px 26px;
   pointer-events:none;
 }
 .window{
-  position:absolute;left:8%;top:10%;width:38%;height:32%;
+  position:absolute;
+  left:8%;
+  top:10%;
+  width:38%;
+  height:32%;
   background:linear-gradient(#c5dbea,#e8f4ee);
-  border:10px solid #fff9f2;border-radius:75px 75px 12px 12px;
+  border:10px solid #fff9f2;
+  border-radius:75px 75px 12px 12px;
   box-shadow:0 5px 0 #bfa9a4,0 9px 25px #9d7f8620;
   overflow:hidden;
 }
 .window:after{
-  content:"";position:absolute;left:48%;top:0;height:100%;width:6px;background:#fff9f2;
+  content:"";
+  position:absolute;
+  left:48%;
+  top:0;
+  height:100%;
+  width:6px;
+  background:#fff9f2;
 }
 .window:before{
-  content:"☁️";position:absolute;top:30%;left:8%;font-size:30px;
+  content:"☁️";
+  position:absolute;
+  top:30%;
+  left:8%;
+  font-size:30px;
 }
 .window-curtain{
-  position:absolute;top:9%;left:5%;width:44%;height:29%;
+  position:absolute;
+  top:9%;
+  left:5%;
+  width:44%;
+  height:29%;
   border-left:18px solid #f7d6dd99;
   border-right:18px solid #f7d6dd99;
   border-radius:0 0 20px 20px;
   pointer-events:none;
 }
 .wall-art{
-  position:absolute;top:14%;right:10%;width:27%;height:20%;
-  background:#fff9f3;border:7px solid #e4c3b6;
-  border-radius:10px;display:grid;place-items:center;
-  font-size:39px;box-shadow:0 4px 10px #81616a15;
+  position:absolute;
+  top:14%;
+  right:10%;
+  width:27%;
+  height:20%;
+  background:#fff9f3;
+  border:7px solid #e4c3b6;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  font-size:39px;
+  box-shadow:0 4px 10px #81616a15;
 }
 .shelf{
-  position:absolute;right:8%;top:43%;width:30%;height:10px;
-  background:#d0ab99;border-radius:10px;
+  position:absolute;
+  right:8%;
+  top:43%;
+  width:30%;
+  height:10px;
+  background:#d0ab99;
+  border-radius:10px;
   box-shadow:0 5px 0 #ba9688;
 }
-.shelf:before{content:"🪴 🕯️";position:absolute;bottom:6px;left:5px;font-size:27px;white-space:nowrap}
+.shelf:before{
+  content:"🪴 🕯️";
+  position:absolute;
+  bottom:6px;
+  left:5px;
+  font-size:27px;
+  white-space:nowrap;
+}
 .rug{
-  position:absolute;bottom:9%;left:9%;width:82%;height:21%;
-  background:#f4dfdc;border:7px solid #fff3e9;
-  border-radius:50%;box-shadow:0 8px 0 #af8f8b20;
+  position:absolute;
+  bottom:9%;
+  left:9%;
+  width:82%;
+  height:21%;
+  background:#f4dfdc;
+  border:7px solid #fff3e9;
+  border-radius:50%;
+  box-shadow:0 8px 0 #af8f8b20;
 }
 .bed{
-  position:absolute;right:2%;bottom:20%;width:57%;height:25%;
+  position:absolute;
+  right:2%;
+  bottom:20%;
+  width:57%;
+  height:25%;
   border-radius:26px 26px 15px 15px;
-  background:#e6b9c9;border:9px solid #cda0ad;
+  background:#e6b9c9;
+  border:9px solid #cda0ad;
   box-shadow:0 13px 0 #b99196,0 20px 16px #7e5b5c26;
 }
 .bed:before{
-  content:"";position:absolute;inset:10px 8px 22%;
-  background:#fff2f4;border-radius:20px;
+  content:"";
+  position:absolute;
+  inset:10px 8px 22%;
+  background:#fff2f4;
+  border-radius:20px;
 }
 .bed:after{
-  content:"☁️";position:absolute;top:12%;right:14%;font-size:34px;
+  content:"☁️";
+  position:absolute;
+  top:12%;
+  right:14%;
+  font-size:34px;
 }
 .lamp{
-  position:absolute;left:7%;bottom:30%;
-  font-size:52px;filter:drop-shadow(0 8px 5px #8b6c6b25);
+  position:absolute;
+  left:7%;
+  bottom:30%;
+  font-size:52px;
+  filter:drop-shadow(0 8px 5px #8b6c6b25);
 }
 .plant{
-  position:absolute;right:3%;bottom:34%;
-  font-size:49px;filter:drop-shadow(0 7px 4px #8b6c6b25);
+  position:absolute;
+  right:3%;
+  bottom:34%;
+  font-size:49px;
+  filter:drop-shadow(0 7px 4px #8b6c6b25);
 }
-.room-item{position:absolute;z-index:2;cursor:pointer}
+.room-item{
+  position:absolute;
+  z-index:2;
+  cursor:pointer;
+}
 .room-item:active{transform:scale(.94)}
+
+/* PANDA CHARACTER */
+
 .panda-character{
-  position:absolute;left:19%;bottom:15%;z-index:3;
-  width:125px;height:145px;
+  position:absolute;
+  left:19%;
+  bottom:15%;
+  z-index:3;
+  width:125px;
+  height:145px;
   cursor:pointer;
   filter:drop-shadow(0 12px 8px #725b6430);
   animation:breathe 3s ease-in-out infinite;
@@ -217,245 +390,539 @@ label{font-size:12px;font-weight:800}
   50%{transform:translateY(-5px) scale(1.025)}
 }
 .panda-head{
-  position:absolute;top:14px;left:15px;width:95px;height:85px;
-  border-radius:48%;background:#fffdfa;
+  position:absolute;
+  top:14px;
+  left:15px;
+  width:95px;
+  height:85px;
+  border-radius:48%;
+  background:#fffdfa;
   border:3px solid #655c60;
   z-index:2;
 }
 .ear{
-  position:absolute;width:32px;height:34px;
-  background:#625a60;border-radius:50%;top:-15px;z-index:-1;
+  position:absolute;
+  width:32px;
+  height:34px;
+  background:#625a60;
+  border-radius:50%;
+  top:-15px;
+  z-index:-1;
 }
 .ear.left{left:0}
 .ear.right{right:0}
 .eye-patch{
-  position:absolute;top:28px;width:27px;height:33px;
-  background:#696168;border-radius:50%;
+  position:absolute;
+  top:28px;
+  width:27px;
+  height:33px;
+  background:#696168;
+  border-radius:50%;
 }
-.eye-patch.left{left:15px;transform:rotate(20deg)}
-.eye-patch.right{right:15px;transform:rotate(-20deg)}
+.eye-patch.left{
+  left:15px;
+  transform:rotate(20deg);
+}
+.eye-patch.right{
+  right:15px;
+  transform:rotate(-20deg);
+}
 .eye{
-  position:absolute;top:11px;left:10px;
-  width:8px;height:11px;background:white;border-radius:50%;
+  position:absolute;
+  top:11px;
+  left:10px;
+  width:8px;
+  height:11px;
+  background:white;
+  border-radius:50%;
 }
 .blush{
-  position:absolute;top:54px;width:17px;height:9px;
-  border-radius:50%;background:#f3aebc88;
+  position:absolute;
+  top:54px;
+  width:17px;
+  height:9px;
+  border-radius:50%;
+  background:#f3aebc88;
 }
-.blush.left{left:5px}.blush.right{right:5px}
+.blush.left{left:5px}
+.blush.right{right:5px}
 .nose{
-  position:absolute;top:55px;left:42px;
-  width:11px;height:8px;background:#695e65;border-radius:50%;
+  position:absolute;
+  top:55px;
+  left:42px;
+  width:11px;
+  height:8px;
+  background:#695e65;
+  border-radius:50%;
 }
 .mouth{
-  position:absolute;top:63px;left:43px;
-  width:10px;height:7px;
-  border-bottom:2px solid #6d5c65;border-radius:50%;
+  position:absolute;
+  top:63px;
+  left:43px;
+  width:10px;
+  height:7px;
+  border-bottom:2px solid #6d5c65;
+  border-radius:50%;
 }
 .panda-body{
-  position:absolute;bottom:0;left:27px;
-  width:74px;height:75px;background:#fffdfa;
-  border:3px solid #655c60;border-radius:45% 45% 40% 40%;
+  position:absolute;
+  bottom:0;
+  left:27px;
+  width:74px;
+  height:75px;
+  background:#fffdfa;
+  border:3px solid #655c60;
+  border-radius:45% 45% 40% 40%;
 }
 .panda-body:before{
-  content:"";position:absolute;top:8px;left:20px;
-  width:30px;height:49px;border-radius:50%;background:#e9e4e5;
+  content:"";
+  position:absolute;
+  top:8px;
+  left:20px;
+  width:30px;
+  height:49px;
+  border-radius:50%;
+  background:#e9e4e5;
 }
 .arm{
-  position:absolute;top:15px;width:28px;height:48px;
-  background:#655d63;border-radius:22px;
+  position:absolute;
+  top:15px;
+  width:28px;
+  height:48px;
+  background:#655d63;
+  border-radius:22px;
 }
-.arm.left{left:-15px;transform:rotate(20deg)}
-.arm.right{right:-15px;transform:rotate(-20deg)}
+.arm.left{
+  left:-15px;
+  transform:rotate(20deg);
+}
+.arm.right{
+  right:-15px;
+  transform:rotate(-20deg);
+}
 .foot{
-  position:absolute;bottom:-5px;width:31px;height:21px;
-  border-radius:50%;background:#655d63;
+  position:absolute;
+  bottom:-5px;
+  width:31px;
+  height:21px;
+  border-radius:50%;
+  background:#655d63;
 }
-.foot.left{left:1px}.foot.right{right:1px}
+.foot.left{left:1px}
+.foot.right{right:1px}
 .accessory{
-  position:absolute;z-index:5;top:0;left:38px;font-size:36px;
+  position:absolute;
+  z-index:5;
+  top:0;
+  left:38px;
+  font-size:36px;
   pointer-events:none;
 }
 .panda-shadow{
-  position:absolute;bottom:13%;left:18%;
-  width:130px;height:23px;border-radius:50%;
-  background:#82666a33;filter:blur(5px);
+  position:absolute;
+  bottom:13%;
+  left:18%;
+  width:130px;
+  height:23px;
+  border-radius:50%;
+  background:#82666a33;
+  filter:blur(5px);
 }
 .bubble{
-  position:absolute;z-index:5;left:10%;bottom:57%;
-  max-width:185px;background:#fffdfa;
-  padding:10px 13px;border-radius:17px 17px 17px 3px;
-  box-shadow:var(--shadow);font-size:12px;font-weight:700;
+  position:absolute;
+  z-index:5;
+  left:10%;
+  bottom:57%;
+  max-width:185px;
+  background:#fffdfa;
+  padding:10px 13px;
+  border-radius:17px 17px 17px 3px;
+  box-shadow:var(--shadow);
+  font-size:12px;
+  font-weight:700;
   text-align:center;
   animation:pop .25s ease-out;
 }
-@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes pop{
+  from{opacity:0;transform:scale(.85)}
+  to{opacity:1;transform:scale(1)}
+}
 .room-top{
-  position:absolute;z-index:6;top:13px;left:13px;right:13px;
-  display:flex;justify-content:space-between;align-items:flex-start;
+  position:absolute;
+  z-index:6;
+  top:13px;
+  left:13px;
+  right:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
   pointer-events:none;
 }
 .room-top>*{pointer-events:auto}
 .room-label{
-  background:#fffaf4e8;border:1px solid white;
-  padding:10px 13px;border-radius:17px;
-  font-size:12px;font-weight:800;
+  background:#fffaf4e8;
+  border:1px solid white;
+  padding:10px 13px;
+  border-radius:17px;
+  font-size:12px;
+  font-weight:800;
   box-shadow:0 4px 15px #826a7020;
 }
-.room-buttons{display:flex;gap:6px}
+.room-buttons{
+  display:flex;
+  gap:6px;
+}
 .room-buttons button{
-  border:1px solid white;background:#fffaf4e8;
-  width:38px;height:38px;border-radius:14px;font-size:18px;
+  border:1px solid white;
+  background:#fffaf4e8;
+  width:38px;
+  height:38px;
+  border-radius:14px;
+  font-size:18px;
 }
 .room-bottom{
-  position:absolute;z-index:6;bottom:13px;left:12px;right:12px;
-  display:flex;gap:8px;
+  position:absolute;
+  z-index:6;
+  bottom:13px;
+  left:12px;
+  right:12px;
+  display:flex;
+  gap:8px;
 }
 .action{
-  flex:1;background:#fffaf5ed;border:1px solid #fff;
-  border-radius:16px;padding:10px 4px;
-  font-size:11px;font-weight:800;color:#8d6b78;
+  flex:1;
+  background:#fffaf5ed;
+  border:1px solid #fff;
+  border-radius:16px;
+  padding:10px 4px;
+  font-size:11px;
+  font-weight:800;
+  color:#8d6b78;
   box-shadow:0 4px 12px #8e707026;
 }
-.action span{display:block;font-size:22px;margin-bottom:3px}
+.action span{
+  display:block;
+  font-size:22px;
+  margin-bottom:3px;
+}
 .home-info{
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   padding:15px 17px 5px;
 }
 .home-info strong{font-size:15px}
-.home-info p{margin:4px 0;font-size:11px;color:var(--muted)}
-.mood-pill{background:#f8e9ef;border:0;border-radius:20px;padding:9px 12px;font-size:12px;font-weight:800;color:#aa758a}
+.home-info p{
+  margin:4px 0;
+  font-size:11px;
+  color:var(--muted);
+}
+.mood-pill{
+  background:#f8e9ef;
+  border:0;
+  border-radius:20px;
+  padding:9px 12px;
+  font-size:12px;
+  font-weight:800;
+  color:#aa758a;
+}
 
-/* PROFILE */
+/* MY PANDA */
+
 .profile-banner{
   background:linear-gradient(145deg,#f8dfe8,#eee4fa);
-  border-radius:24px;padding:20px;text-align:center;
+  border-radius:24px;
+  padding:20px;
+  text-align:center;
   margin-bottom:15px;
 }
-.profile-avatar{font-size:75px;line-height:1.3}
+.profile-avatar{
+  font-size:75px;
+  line-height:1.3;
+}
 .profile-banner h2{margin:3px 0}
-.mood-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mood-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
 .mood-option{
-  border:1px solid #f0e0e6;background:#fff9fb;
-  padding:12px 4px;border-radius:15px;
-  font-size:12px;font-weight:800;color:var(--ink);
+  border:1px solid #f0e0e6;
+  background:#fff9fb;
+  padding:12px 4px;
+  border-radius:15px;
+  font-size:12px;
+  font-weight:800;
+  color:var(--ink);
 }
-.mood-option span{display:block;font-size:26px;margin-bottom:5px}
-.mood-option.selected{background:#fce5ef;border-color:#e7adc2}
-.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.mood-option span{
+  display:block;
+  font-size:26px;
+  margin-bottom:5px;
+}
+.mood-option.selected{
+  background:#fce5ef;
+  border-color:#e7adc2;
+}
+.mini-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
 .mini-item{
-  border:1px solid var(--line);border-radius:17px;
-  background:#fffafc;padding:14px;text-align:center;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:#fffafc;
+  padding:14px;
+  text-align:center;
 }
-.mini-item .emoji{font-size:34px;margin-bottom:7px}
-.mini-item h4{font-size:12px;margin:5px 0}
-.mini-item p{font-size:11px;color:var(--muted);margin:5px 0 10px}
-.mini-item button{font-size:11px;padding:9px 12px}
+.mini-item .emoji{
+  font-size:34px;
+  margin-bottom:7px;
+}
+.mini-item h4{
+  font-size:12px;
+  margin:5px 0;
+}
+.mini-item p{
+  font-size:11px;
+  color:var(--muted);
+  margin:5px 0 10px;
+}
+.mini-item button{
+  font-size:11px;
+  padding:9px 12px;
+}
 
 /* REWARDS */
+
 .gift-hero{
   text-align:center;
   background:linear-gradient(145deg,#f9e3ee,#f1e9ff);
-  border-radius:25px;padding:23px;margin-bottom:15px;
+  border-radius:25px;
+  padding:23px;
+  margin-bottom:15px;
 }
-.gift-hero .gift{font-size:80px;display:block;margin:8px}
+.gift-hero .gift{
+  font-size:80px;
+  display:block;
+  margin:8px;
+}
 .quest{
-  display:flex;align-items:center;gap:12px;
-  border:1px solid var(--line);border-radius:18px;
-  padding:13px;margin-bottom:9px;background:#fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:13px;
+  margin-bottom:9px;
+  background:#fff;
 }
 .quest-icon{
-  width:48px;height:48px;border-radius:15px;
-  background:#fff1f6;display:grid;place-items:center;font-size:25px;
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  background:#fff1f6;
+  display:grid;
+  place-items:center;
+  font-size:25px;
 }
-.quest-main{flex:1;min-width:0}
+.quest-main{
+  flex:1;
+  min-width:0;
+}
 .quest-main strong{font-size:12px}
-.quest-main p{font-size:10px;color:var(--muted);margin:4px 0}
-.quest-done{font-size:11px;font-weight:800;color:#b789a0}
+.quest-main p{
+  font-size:10px;
+  color:var(--muted);
+  margin:4px 0;
+}
+.quest-done{
+  font-size:11px;
+  font-weight:800;
+  color:#b789a0;
+}
 
-/* SHOP */
+/* BOUTIQUE */
+
 .shop-banner{
   background:linear-gradient(130deg,#e7d6f4,#fce2ec);
-  border-radius:24px;padding:23px;margin-bottom:14px;
+  border-radius:24px;
+  padding:23px;
+  margin-bottom:14px;
 }
-.shop-banner h2{font-size:25px;margin:0 0 5px}
-.shop-banner p{font-size:12px;line-height:1.6}
-.shop-tabs{display:flex;gap:7px;margin-bottom:15px}
+.shop-banner h2{
+  font-size:25px;
+  margin:0 0 5px;
+}
+.shop-banner p{
+  font-size:12px;
+  line-height:1.6;
+}
+.shop-tabs{
+  display:flex;
+  gap:7px;
+  margin-bottom:15px;
+}
 .shop-tabs button{
-  flex:1;border:0;border-radius:14px;padding:12px 5px;
-  background:#f8eef2;color:#a78b98;font-size:12px;font-weight:800;
+  flex:1;
+  border:0;
+  border-radius:14px;
+  padding:12px 5px;
+  background:#f8eef2;
+  color:#a78b98;
+  font-size:12px;
+  font-weight:800;
 }
-.shop-tabs button.active{background:#eec5d6;color:#7d5b6c}
+.shop-tabs button.active{
+  background:#eec5d6;
+  color:#7d5b6c;
+}
 .premium-card{
-  display:flex;align-items:center;gap:12px;
-  border:1px solid #f1e2e9;border-radius:20px;
-  padding:15px;background:white;margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid #f1e2e9;
+  border-radius:20px;
+  padding:15px;
+  background:white;
+  margin-bottom:10px;
 }
 .premium-art{
-  width:76px;height:83px;border-radius:17px;
+  width:76px;
+  height:83px;
+  border-radius:17px;
   background:linear-gradient(145deg,#fce5ee,#eee4ff);
-  display:grid;place-items:center;font-size:42px;flex-shrink:0;
+  display:grid;
+  place-items:center;
+  font-size:42px;
+  flex-shrink:0;
 }
 .premium-info{flex:1}
-.premium-info h3{margin:0 0 4px;font-size:14px}
-.premium-info p{margin:0 0 8px;font-size:11px;color:var(--muted);line-height:1.5}
-.premium-info button{padding:8px 12px;font-size:11px}
+.premium-info h3{
+  margin:0 0 4px;
+  font-size:14px;
+}
+.premium-info p{
+  margin:0 0 8px;
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.premium-info button{
+  padding:8px 12px;
+  font-size:11px;
+}
 
-/* DRAWERS */
+/* POP-UP SHEETS */
+
 .overlay{
-  position:absolute;inset:0;z-index:20;
+  position:absolute;
+  inset:0;
+  z-index:20;
   background:#48313f66;
-  display:none;align-items:flex-end;
+  display:none;
+  align-items:flex-end;
 }
 .overlay.open{display:flex}
 .sheet{
-  width:100%;max-height:85%;overflow:auto;
-  background:#fffbfa;border-radius:28px 28px 0 0;
+  width:100%;
+  max-height:85%;
+  overflow:auto;
+  background:#fffbfa;
+  border-radius:28px 28px 0 0;
   padding:18px 19px 25px;
   animation:slide .25s ease;
 }
-@keyframes slide{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+@keyframes slide{
+  from{transform:translateY(100%)}
+  to{transform:translateY(0)}
+}
+.sheet-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+}
 .sheet-head h3{margin:0}
 .close{
-  border:0;background:#f7edf1;border-radius:50%;
-  width:33px;height:33px;font-size:18px;color:#9d7b8b;
+  border:0;
+  background:#f7edf1;
+  border-radius:50%;
+  width:33px;
+  height:33px;
+  font-size:18px;
+  color:#9d7b8b;
 }
-.color-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.color-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
 .color-option{
-  border:2px solid white;border-radius:16px;height:70px;
+  border:2px solid white;
+  border-radius:16px;
+  height:70px;
   box-shadow:0 0 0 1px #e6d7dc;
 }
 .toast{
-  position:absolute;z-index:30;bottom:87px;left:50%;
-  transform:translateX(-50%);width:max-content;max-width:85%;
-  padding:12px 16px;border-radius:18px;
-  background:#785e70;color:white;font-size:12px;font-weight:700;
-  text-align:center;box-shadow:var(--shadow);
+  position:absolute;
+  z-index:30;
+  bottom:87px;
+  left:50%;
+  transform:translateX(-50%);
+  width:max-content;
+  max-width:85%;
+  padding:12px 16px;
+  border-radius:18px;
+  background:#785e70;
+  color:white;
+  font-size:12px;
+  font-weight:700;
+  text-align:center;
+  box-shadow:var(--shadow);
   display:none;
 }
 .settings-note{
-  background:#fff5e8;border-radius:16px;
-  padding:13px;font-size:11px;line-height:1.6;
+  background:#fff5e8;
+  border-radius:16px;
+  padding:13px;
+  font-size:11px;
+  line-height:1.6;
 }
+
 @media(max-width:500px){
-  body{display:block;background:#fffaf9}
-  .phone{
-    width:100%;height:100dvh;max-height:none;
-    border:0;border-radius:0;box-shadow:none;
+  body{
+    display:block;
+    background:#fffaf9;
   }
-  .app-header{padding-top:max(16px,env(safe-area-inset-top))}
+  .phone{
+    width:100%;
+    height:100dvh;
+    max-height:none;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+  }
+  .app-header{
+    padding-top:max(16px,env(safe-area-inset-top));
+  }
 }
 @media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation:none!important;transition:none!important}
+  *,*:before,*:after{
+    animation:none!important;
+    transition:none!important;
+  }
 }
 </style>
 </head>
+
 <body>
 <div class="phone" id="app">
 
 <header class="app-header">
-  <div class="brand">panda friends <span style="color:#dfa0b7">♡</span>
+  <div class="brand">
+    panda friends <span style="color:#dfa0b7">♡</span>
     <small>YOUR LITTLE WORLD</small>
   </div>
   <div class="header-actions">
@@ -467,6 +934,7 @@ label{font-size:12px;font-weight:800}
 <div class="content" id="content">
 
 <!-- HOME -->
+
 <section class="screen active" id="home">
   <div class="room-wrap">
     <div class="room" id="room">
@@ -477,6 +945,7 @@ label{font-size:12px;font-weight:800}
       <div class="shelf"></div>
       <div class="rug"></div>
       <div class="bed"></div>
+
       <div class="lamp room-item" onclick="roomInteract('lamp')">🛋️</div>
       <div class="plant room-item" onclick="roomInteract('plant')">🪴</div>
       <div class="panda-shadow"></div>
@@ -543,7 +1012,8 @@ label{font-size:12px;font-weight:800}
   </div>
 </section>
 
-<!-- PANDA PROFILE -->
+<!-- MY PANDA -->
+
 <section class="screen" id="panda">
   <div class="section-pad">
     <h2 class="section-title">My panda ♡</h2>
@@ -558,12 +1028,15 @@ label{font-size:12px;font-weight:800}
 
     <div class="card">
       <h3>✏️ About me</h3>
-      <label>My name</label>
+      <label for="nameInput">My name</label>
       <input id="nameInput" maxlength="18" placeholder="Your panda's name">
-      <label>My birthday</label>
+
+      <label for="birthdayInput">My birthday</label>
       <input type="date" id="birthdayInput">
-      <label>A little about me</label>
+
+      <label for="bioInput">A little about me</label>
       <input id="bioInput" maxlength="80" placeholder="I love cosy naps and strawberries...">
+
       <button class="btn full" onclick="saveProfile()">Save my profile ♡</button>
     </div>
 
@@ -587,6 +1060,7 @@ label{font-size:12px;font-weight:800}
 </section>
 
 <!-- REWARDS -->
+
 <section class="screen" id="rewards">
   <div class="section-pad">
     <h2 class="section-title">Little rewards ♡</h2>
@@ -607,7 +1081,8 @@ label{font-size:12px;font-weight:800}
   </div>
 </section>
 
-<!-- SHOP -->
+<!-- BOUTIQUE -->
+
 <section class="screen" id="shop">
   <div class="section-pad">
     <h2 class="section-title">The boutique ♡</h2>
@@ -631,11 +1106,21 @@ label{font-size:12px;font-weight:800}
 
 </div>
 
+<!-- BOTTOM NAVIGATION -->
+
 <nav class="bottom-nav">
-  <button class="tab active" data-screen="home" onclick="navigate('home')"><span class="tab-icon">🏡</span>Home</button>
-  <button class="tab" data-screen="panda" onclick="navigate('panda')"><span class="tab-icon">🐼</span>My Panda</button>
-  <button class="tab" data-screen="rewards" onclick="navigate('rewards')"><span class="tab-icon">🎁</span>Rewards</button>
-  <button class="tab" data-screen="shop" onclick="navigate('shop')"><span class="tab-icon">🛍️</span>Boutique</button>
+  <button class="tab active" data-screen="home" onclick="navigate('home')">
+    <span class="tab-icon">🏡</span>Home
+  </button>
+  <button class="tab" data-screen="panda" onclick="navigate('panda')">
+    <span class="tab-icon">🐼</span>My Panda
+  </button>
+  <button class="tab" data-screen="rewards" onclick="navigate('rewards')">
+    <span class="tab-icon">🎁</span>Rewards
+  </button>
+  <button class="tab" data-screen="shop" onclick="navigate('shop')">
+    <span class="tab-icon">🛍️</span>Boutique
+  </button>
 </nav>
 
 <div class="overlay" id="overlay" onclick="overlayClick(event)">
@@ -643,15 +1128,18 @@ label{font-size:12px;font-weight:800}
 </div>
 
 <div class="toast" id="toast"></div>
+
 </div>
+
+<!-- GAME JAVASCRIPT -->
 
 <script>
 "use strict";
 
-const $=id=>document.getElementById(id);
-const SAVE_KEY="pandaFriendsCosyV1";
+const $ = id => document.getElementById(id);
+const SAVE_KEY = "pandaFriendsCosyV1";
 
-const defaults={
+const defaults = {
   name:"Mochi",
   birthday:"",
   bio:"I love cosy naps and strawberries!",
@@ -672,21 +1160,25 @@ const defaults={
   visits:0
 };
 
-let state={...defaults};
+let state = {...defaults};
 
-try{
-  const stored=JSON.parse(localStorage.getItem(SAVE_KEY)||"null");
-  if(stored&&typeof stored==="object"){
-    state={...defaults,...stored};
+try {
+  const stored = JSON.parse(localStorage.getItem(SAVE_KEY) || "null");
+  if(stored && typeof stored === "object"){
+    state = {...defaults,...stored};
   }
-}catch(e){
+} catch(e){
   console.warn("Could not load save",e);
 }
 
-if(!Array.isArray(state.inventory))state.inventory=["none"];
-if(!state.quests||typeof state.quests!=="object")state.quests={};
+if(!Array.isArray(state.inventory)){
+  state.inventory = ["none"];
+}
+if(!state.quests || typeof state.quests !== "object"){
+  state.quests = {};
+}
 
-const moods=[
+const moods = [
   {id:"cosy",emoji:"☁️",name:"Cosy"},
   {id:"happy",emoji:"🥰",name:"Happy"},
   {id:"sleepy",emoji:"😴",name:"Sleepy"},
@@ -695,7 +1187,7 @@ const moods=[
   {id:"calm",emoji:"🍵",name:"Calm"}
 ];
 
-const accessories=[
+const accessories = [
   {id:"none",emoji:"🐼",name:"Natural",price:0},
   {id:"bow",emoji:"🎀",name:"Pink Bow",price:15},
   {id:"crown",emoji:"👑",name:"Tiny Crown",price:30},
@@ -704,7 +1196,7 @@ const accessories=[
   {id:"star",emoji:"⭐",name:"Star",price:20}
 ];
 
-const starItems=[
+const starItems = [
   {id:"bow",emoji:"🎀",name:"Pink Bow",price:15},
   {id:"flower",emoji:"🌸",name:"Flower",price:12},
   {id:"heart",emoji:"💗",name:"Heart",price:18},
@@ -712,96 +1204,158 @@ const starItems=[
   {id:"crown",emoji:"👑",name:"Tiny Crown",price:30}
 ];
 
-const luxeItems=[
-  {emoji:"💎",name:"PandaLuxe Membership",description:"A future premium collection for your panda world."},
-  {emoji:"✨",name:"Luxe Style Collection",description:"Special outfits and accessories, coming later."}
+const luxeItems = [
+  {
+    emoji:"💎",
+    name:"PandaLuxe Membership",
+    description:"A future premium collection for your panda world."
+  },
+  {
+    emoji:"✨",
+    name:"Luxe Style Collection",
+    description:"Special outfits and accessories, coming later."
+  }
 ];
 
-const packs=[
-  {emoji:"🛏️",name:"Dreamy Bedroom Pack",description:"A soft pastel bedroom collection."},
-  {emoji:"🍓",name:"Strawberry Cottage Pack",description:"Sweet pink details and cottage-inspired décor."},
-  {emoji:"🌙",name:"Moonlight Cosy Pack",description:"A dreamy nighttime room theme."},
-  {emoji:"🧸",name:"Teddy Bear Pack",description:"Warm, cuddly decorations for your home."}
+const packs = [
+  {
+    emoji:"🛏️",
+    name:"Dreamy Bedroom Pack",
+    description:"A soft pastel bedroom collection."
+  },
+  {
+    emoji:"🍓",
+    name:"Strawberry Cottage Pack",
+    description:"Sweet pink details and cottage-inspired décor."
+  },
+  {
+    emoji:"🌙",
+    name:"Moonlight Cosy Pack",
+    description:"A dreamy nighttime room theme."
+  },
+  {
+    emoji:"🧸",
+    name:"Teddy Bear Pack",
+    description:"Warm, cuddly decorations for your home."
+  }
 ];
 
-const quests=[
-  {id:"pet",emoji:"🐼",name:"Give your panda some love",detail:"Pet your panda",reward:5},
-  {id:"feed",emoji:"🍓",name:"A yummy little snack",detail:"Feed your panda",reward:8},
-  {id:"play",emoji:"🧸",name:"Playtime together",detail:"Play with your panda",reward:8},
-  {id:"decorate",emoji:"🎨",name:"Make home prettier",detail:"Change your room style",reward:10}
+const quests = [
+  {
+    id:"pet",
+    emoji:"🐼",
+    name:"Give your panda some love",
+    detail:"Pet your panda",
+    reward:5
+  },
+  {
+    id:"feed",
+    emoji:"🍓",
+    name:"A yummy little snack",
+    detail:"Feed your panda",
+    reward:8
+  },
+  {
+    id:"play",
+    emoji:"🧸",
+    name:"Playtime together",
+    detail:"Play with your panda",
+    reward:8
+  },
+  {
+    id:"decorate",
+    emoji:"🎨",
+    name:"Make home prettier",
+    detail:"Change your room style",
+    reward:10
+  }
 ];
 
 function localDay(){
-  const d=new Date();
-  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  const d = new Date();
+  return d.getFullYear() + "-" +
+    String(d.getMonth()+1).padStart(2,"0") + "-" +
+    String(d.getDate()).padStart(2,"0");
+}
+
+let toastTimer;
+
+function showToast(message){
+  const el = $("toast");
+  el.textContent = message;
+  el.style.display = "block";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>{
+    el.style.display = "none";
+  },2600);
 }
 
 function save(){
-  try{
+  try {
     localStorage.setItem(SAVE_KEY,JSON.stringify(state));
-  }catch(e){
+  } catch(e){
     console.warn("Could not save progress",e);
     showToast("Your browser couldn't save progress.");
   }
   refresh();
 }
 
-let toastTimer;
-function showToast(message){
-  const el=$("toast");
-  el.textContent=message;
-  el.style.display="block";
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>el.style.display="none",2600);
-}
-
-function escapeHTML(value){
-  return String(value).replace(/[&<>"']/g,ch=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",
-    '"':"&quot;","'":"&#39;"
-  }[ch]));
-}
-
 function navigate(screen){
   document.querySelectorAll(".screen").forEach(el=>{
-    el.classList.toggle("active",el.id===screen);
+    el.classList.toggle("active",el.id === screen);
   });
+
   document.querySelectorAll(".tab").forEach(el=>{
-    el.classList.toggle("active",el.dataset.screen===screen);
+    el.classList.toggle("active",el.dataset.screen === screen);
   });
-  $("content").scrollTop=0;
-  if(screen==="panda")renderProfile();
-  if(screen==="rewards")renderRewards();
-  if(screen==="shop")renderShop();
+
+  $("content").scrollTop = 0;
+
+  if(screen === "panda") renderProfile();
+  if(screen === "rewards") renderRewards();
+  if(screen === "shop") renderShop();
 }
 
 function getMood(){
-  return moods.find(m=>m.id===state.mood)||moods[0];
+  return moods.find(m=>m.id === state.mood) || moods[0];
 }
 
 function refresh(){
-  $("stars").textContent=state.stars;
-  $("roomName").textContent=state.name+"'s room";
-  $("homePandaName").textContent=state.name+" ♡";
-  $("profileName").textContent=state.name;
-  const mood=getMood();
-  $("homeMood").textContent=mood.emoji+" "+mood.name;
-  $("profileMood").textContent=mood.emoji+" "+mood.name;
-  $("homeStatus").textContent="Feeling "+mood.name.toLowerCase()+" today";
-  $("pandaAccessory").textContent={
-    none:"",bow:"🎀",crown:"👑",flower:"🌸",heart:"💗",star:"⭐"
-  }[state.accessory]||"";
-  $("room").className="room wall-"+state.wall;
-  $("wallArt").textContent=state.art;
+  $("stars").textContent = state.stars;
+  $("roomName").textContent = state.name + "'s room";
+  $("homePandaName").textContent = state.name + " ♡";
+  $("profileName").textContent = state.name;
+
+  const mood = getMood();
+
+  $("homeMood").textContent = mood.emoji + " " + mood.name;
+  $("profileMood").textContent = mood.emoji + " " + mood.name;
+  $("homeStatus").textContent =
+    "Feeling " + mood.name.toLowerCase() + " today";
+
+  $("pandaAccessory").textContent = {
+    none:"",
+    bow:"🎀",
+    crown:"👑",
+    flower:"🌸",
+    heart:"💗",
+    star:"⭐"
+  }[state.accessory] || "";
+
+  $("room").className = "room wall-" + state.wall;
+  $("wallArt").textContent = state.art;
 }
 
 let speechTimer;
+
 function say(message){
-  $("speech").textContent=message;
-  $("speech").style.display="block";
+  const speech = $("speech");
+  speech.textContent = message;
+  speech.style.display = "block";
+
   clearTimeout(speechTimer);
-  speechTimer=setTimeout(()=>{
-    $("speech").style.display="none";
+  speechTimer = setTimeout(()=>{
+    speech.style.display = "none";
   },4200);
 }
 
@@ -813,6 +1367,7 @@ function petPanda(){
   state.totalPets++;
   save();
   completeQuest("pet");
+
   say(pick([
     "Hehe! That tickles! ♡",
     "You're so sweet! 💗",
@@ -821,15 +1376,8 @@ function petPanda(){
   ]));
 }
 
-$("pandaCharacter").addEventListener("keydown",e=>{
-  if(e.key==="Enter"||e.key===" "){
-    e.preventDefault();
-    petPanda();
-  }
-});
-
 function doAction(type){
-  const actions={
+  const actions = {
     feed:{
       field:"totalFeeds",
       quest:"feed",
@@ -865,35 +1413,55 @@ function doAction(type){
       ]
     }
   };
-  const action=actions[type];
-  if(!action)return;
+
+  const action = actions[type];
+  if(!action) return;
+
   state[action.field]++;
   save();
-  if(action.quest)completeQuest(action.quest);
+
+  if(action.quest){
+    completeQuest(action.quest);
+  }
+
   say(pick(action.messages));
 }
 
 function roomInteract(object){
-  if(object==="lamp")say("Let's get extra cosy! 🕯️");
-  if(object==="plant")say("Our little plant looks lovely! 🌿");
+  if(object === "lamp"){
+    say("Let's get extra cosy! 🕯️");
+  }
+  if(object === "plant"){
+    say("Our little plant looks lovely! 🌿");
+  }
 }
 
+/* PANDA PROFILE */
+
 function saveProfile(){
-  state.name=$("nameInput").value.trim().slice(0,18)||"Mochi";
-  state.birthday=$("birthdayInput").value;
-  state.bio=$("bioInput").value.trim().slice(0,80);
+  state.name =
+    $("nameInput").value.trim().slice(0,18) || "Mochi";
+
+  state.birthday = $("birthdayInput").value;
+  state.bio = $("bioInput").value.trim().slice(0,80);
+
   save();
   renderProfile();
   showToast("Panda profile saved! ♡");
 }
 
 function setMood(id){
-  if(!moods.some(m=>m.id===id))return;
-  state.mood=id;
+  if(!moods.some(m=>m.id === id)) return;
+
+  state.mood = id;
   save();
   renderProfile();
-  const mood=getMood();
-  say("Today I'm feeling "+mood.name.toLowerCase()+"! "+mood.emoji);
+
+  const mood = getMood();
+
+  say("Today I'm feeling " +
+    mood.name.toLowerCase() + "! " + mood.emoji);
+
   showToast("Mood updated ♡");
 }
 
@@ -902,81 +1470,112 @@ function equipAccessory(id){
     showToast("Find this accessory in the Star Shop ♡");
     return;
   }
-  state.accessory=id;
+
+  state.accessory = id;
   save();
   renderProfile();
   showToast("Looking adorable! 🎀");
 }
 
 function renderProfile(){
-  $("nameInput").value=state.name;
-  $("birthdayInput").value=state.birthday;
-  $("bioInput").value=state.bio;
+  $("nameInput").value = state.name;
+  $("birthdayInput").value = state.birthday;
+  $("bioInput").value = state.bio;
 
-  $("moodOptions").innerHTML=moods.map(m=>`
-    <button class="mood-option ${state.mood===m.id?"selected":""}"
+  $("moodOptions").innerHTML = moods.map(m=>`
+    <button
+      class="mood-option ${state.mood === m.id ? "selected" : ""}"
       onclick="setMood('${m.id}')">
-      <span>${m.emoji}</span>${m.name}
+      <span>${m.emoji}</span>
+      ${m.name}
     </button>
   `).join("");
 
-  $("accessoryOptions").innerHTML=accessories.map(a=>{
-    const owned=state.inventory.includes(a.id);
+  $("accessoryOptions").innerHTML = accessories.map(a=>{
+    const owned = state.inventory.includes(a.id);
+
     return `
       <div class="mini-item">
         <div class="emoji">${a.emoji}</div>
         <h4>${a.name}</h4>
-        <p>${owned?"Owned ♡":a.price+" stars"}</p>
-        <button class="btn ${owned?"":"secondary"}"
+        <p>${owned ? "Owned ♡" : a.price + " stars"}</p>
+        <button
+          class="btn ${owned ? "" : "secondary"}"
           onclick="equipAccessory('${a.id}')">
-          ${state.accessory===a.id?"Wearing ♡":owned?"Wear":"Locked"}
+          ${
+            state.accessory === a.id
+              ? "Wearing ♡"
+              : owned
+                ? "Wear"
+                : "Locked"
+          }
         </button>
       </div>
     `;
   }).join("");
 
   if(state.birthday){
-    const parts=state.birthday.split("-");
-    const month=Number(parts[1]);
-    const day=Number(parts[2]);
-    const now=new Date();
-    const birthdayToday=month===now.getMonth()+1&&day===now.getDate();
-    $("birthdayText").textContent=birthdayToday
-      ?"🎉 Happy birthday, "+state.name+"! 🎂"
-      :"🎀 "+state.name+"'s birthday is "+new Date(2000,month-1,day)
-          .toLocaleDateString(undefined,{month:"long",day:"numeric"})+".";
-  }else{
-    $("birthdayText").textContent="Your panda's birthday hasn't been chosen yet. 🎂";
+    const parts = state.birthday.split("-");
+    const month = Number(parts[1]);
+    const day = Number(parts[2]);
+    const now = new Date();
+
+    const birthdayToday =
+      month === now.getMonth()+1 &&
+      day === now.getDate();
+
+    $("birthdayText").textContent = birthdayToday
+      ? "🎉 Happy birthday, " + state.name + "! 🎂"
+      : "🎀 " + state.name + "'s birthday is " +
+        new Date(2000,month-1,day).toLocaleDateString(
+          undefined,
+          {month:"long",day:"numeric"}
+        ) + ".";
+  } else {
+    $("birthdayText").textContent =
+      "Your panda's birthday hasn't been chosen yet. 🎂";
   }
 }
 
+/* DAILY QUESTS */
+
 function resetQuests(){
-  if(state.questDate!==localDay()){
-    state.questDate=localDay();
-    state.quests={};
+  if(state.questDate !== localDay()){
+    state.questDate = localDay();
+    state.quests = {};
     save();
   }
 }
 
 function completeQuest(id){
   resetQuests();
-  if(state.quests[id])return;
-  const q=quests.find(q=>q.id===id);
-  if(!q)return;
-  state.quests[id]=true;
-  state.stars+=q.reward;
+
+  if(state.quests[id]) return;
+
+  const q = quests.find(q=>q.id === id);
+  if(!q) return;
+
+  state.quests[id] = true;
+  state.stars += q.reward;
+
   save();
-  showToast("Quest complete! +"+q.reward+" ⭐");
-  if($("rewards").classList.contains("active"))renderRewards();
+
+  showToast("Quest complete! +" + q.reward + " ⭐");
+
+  if($("rewards").classList.contains("active")){
+    renderRewards();
+  }
 }
 
 function claimGift(){
-  if(state.lastGift===localDay()){
+  if(state.lastGift === localDay()){
     showToast("Come back tomorrow for another gift! ♡");
     return;
   }
-  state.lastGift=localDay();
-  state.stars+=20;
+
+  state.lastGift = localDay();
+  state.stars += 20;
+
   save();
   renderRewards();
   showToast("You got 20 stars! 🎁");
@@ -984,88 +1583,121 @@ function claimGift(){
 
 function renderRewards(){
   resetQuests();
-  const claimed=state.lastGift===localDay();
-  $("giftButton").disabled=claimed;
-  $("giftButton").textContent=claimed?"Gift collected ♡":"Open my gift ♡";
-  $("giftMessage").textContent=claimed
-    ?"A new gift will be waiting tomorrow!"
-    ?"Today's surprise contains 20 stars!";
 
-  $("questList").innerHTML=quests.map(q=>`
+  const claimed = state.lastGift === localDay();
+
+  $("giftButton").disabled = claimed;
+  $("giftButton").textContent = claimed
+    ? "Gift collected ♡"
+    : "Open my gift ♡";
+
+  // FIXED: The colon below was missing in the old code.
+  $("giftMessage").textContent = claimed
+    ? "A new gift will be waiting tomorrow!"
+    : "Today's surprise contains 20 stars!";
+
+  $("questList").innerHTML = quests.map(q=>`
     <div class="quest">
       <div class="quest-icon">${q.emoji}</div>
       <div class="quest-main">
         <strong>${q.name}</strong>
         <p>${q.detail} · +${q.reward} ⭐</p>
       </div>
-      <div class="quest-done">${state.quests[q.id]?"✓ Done":"○"}</div>
+      <div class="quest-done">
+        ${state.quests[q.id] ? "✓ Done" : "○"}
+      </div>
     </div>
   `).join("");
 }
 
-let shopTab="stars";
+/* BOUTIQUE */
+
+let shopTab = "stars";
 
 function setShopTab(tab){
-  shopTab=tab;
+  shopTab = tab;
   renderShop();
 }
 
 function buyAccessory(id){
-  const item=starItems.find(x=>x.id===id);
-  if(!item)return;
+  const item = starItems.find(x=>x.id === id);
+  if(!item) return;
+
   if(state.inventory.includes(id)){
     showToast("You already own this! ♡");
     return;
   }
-  if(state.stars<item.price){
+
+  if(state.stars < item.price){
     showToast("Not enough stars yet! ⭐");
     return;
   }
-  state.stars-=item.price;
+
+  state.stars -= item.price;
   state.inventory.push(id);
+
   save();
   renderShop();
-  showToast(item.name+" is yours! 🎀");
+
+  showToast(item.name + " is yours! 🎀");
 }
 
 function renderShop(){
   ["stars","luxe","packs"].forEach(tab=>{
-    $("shopTab"+tab.charAt(0).toUpperCase()+tab.slice(1))
-      .classList.toggle("active",shopTab===tab);
+    const id =
+      "shopTab" +
+      tab.charAt(0).toUpperCase() +
+      tab.slice(1);
+
+    $(id).classList.toggle("active",shopTab === tab);
   });
 
-  if(shopTab==="stars"){
-    $("shopContent").innerHTML=`
-      <p class="small">Spend the stars you earn by caring for your panda.</p>
+  if(shopTab === "stars"){
+    $("shopContent").innerHTML = `
+      <p class="small">
+        Spend the stars you earn by caring for your panda.
+      </p>
       <div class="mini-grid">
-      ${starItems.map(item=>`
-        <div class="mini-item">
-          <div class="emoji">${item.emoji}</div>
-          <h4>${item.name}</h4>
-          <p>${item.price} ⭐</p>
-          <button class="btn" onclick="buyAccessory('${item.id}')"
-            ${state.inventory.includes(item.id)?"disabled":""}>
-            ${state.inventory.includes(item.id)?"Owned ♡":"Buy"}
-          </button>
-        </div>
-      `).join("")}
+        ${starItems.map(item=>`
+          <div class="mini-item">
+            <div class="emoji">${item.emoji}</div>
+            <h4>${item.name}</h4>
+            <p>${item.price} ⭐</p>
+            <button
+              class="btn"
+              onclick="buyAccessory('${item.id}')"
+              ${state.inventory.includes(item.id) ? "disabled" : ""}>
+              ${
+                state.inventory.includes(item.id)
+                  ? "Owned ♡"
+                  : "Buy"
+              }
+            </button>
+          </div>
+        `).join("")}
       </div>
     `;
     return;
   }
 
-  const collection=shopTab==="luxe"?luxeItems:packs;
-  $("shopContent").innerHTML=`
+  const collection =
+    shopTab === "luxe" ? luxeItems : packs;
+
+  $("shopContent").innerHTML = `
     <div class="settings-note" style="margin-bottom:13px">
-      ✨ Premium items are previews only. No real-money purchases are available in this offline edition.
+      ✨ Premium items are previews only.
+      No real-money purchases are available in this offline edition.
     </div>
+
     ${collection.map(item=>`
       <div class="premium-card">
         <div class="premium-art">${item.emoji}</div>
         <div class="premium-info">
           <h3>${item.name}</h3>
           <p>${item.description}</p>
-          <button class="btn secondary" onclick="showToast('Coming soon! ♡')">
+          <button
+            class="btn secondary"
+            onclick="showToast('Coming soon! ♡')">
             Coming soon
           </button>
         </div>
@@ -1074,72 +1706,127 @@ function renderShop(){
   `;
 }
 
-function openSheet(type){
-  const sheet=$("sheet");
+/* POP-UP SHEETS */
 
-  if(type==="decorate"){
-    sheet.innerHTML=`
+function openSheet(type){
+  const sheet = $("sheet");
+
+  if(type === "decorate"){
+    sheet.innerHTML = `
       <div class="sheet-head">
         <h3>🎨 Make it yours</h3>
         <button class="close" onclick="closeSheet()">×</button>
       </div>
-      <p class="small">Choose a soft colour for your cosy room.</p>
+
+      <p class="small">
+        Choose a soft colour for your cosy room.
+      </p>
+
       <div class="color-grid">
-        <button class="color-option" style="background:#f7e8e6" onclick="setWall('pink')" aria-label="Pink room"></button>
-        <button class="color-option" style="background:#eee5f8" onclick="setWall('lilac')" aria-label="Lilac room"></button>
-        <button class="color-option" style="background:#e4ede2" onclick="setWall('sage')" aria-label="Sage room"></button>
-        <button class="color-option" style="background:#f7eddd" onclick="setWall('cream')" aria-label="Cream room"></button>
+        <button class="color-option"
+          style="background:#f7e8e6"
+          onclick="setWall('pink')"
+          aria-label="Pink room"></button>
+
+        <button class="color-option"
+          style="background:#eee5f8"
+          onclick="setWall('lilac')"
+          aria-label="Lilac room"></button>
+
+        <button class="color-option"
+          style="background:#e4ede2"
+          onclick="setWall('sage')"
+          aria-label="Sage room"></button>
+
+        <button class="color-option"
+          style="background:#f7eddd"
+          onclick="setWall('cream')"
+          aria-label="Cream room"></button>
       </div>
+
       <div class="divider"></div>
+
       <h3>🖼️ Wall picture</h3>
+
       <div class="btn-row">
         ${["🌷","🎀","🌙","🧸","🍓","☁️"].map(art=>`
-          <button class="btn secondary" onclick="setArt('${art}')">${art}</button>
+          <button
+            class="btn secondary"
+            onclick="setArt('${art}')">
+            ${art}
+          </button>
         `).join("")}
       </div>
-      <p class="small">Your room changes are saved automatically. ♡</p>
+
+      <p class="small">
+        Your room changes are saved automatically. ♡
+      </p>
     `;
   }
 
-  if(type==="activities"){
-    sheet.innerHTML=`
+  if(type === "activities"){
+    sheet.innerHTML = `
       <div class="sheet-head">
         <h3>✨ Cosy moments</h3>
         <button class="close" onclick="closeSheet()">×</button>
       </div>
-      <p class="small">Spend a little time with your panda.</p>
+
+      <p class="small">
+        Spend a little time with your panda.
+      </p>
+
       <div class="mini-grid">
         <div class="mini-item">
-          <div class="emoji">🍓</div><h4>Snack time</h4>
-          <button class="btn" onclick="sheetAction('feed')">Feed</button>
+          <div class="emoji">🍓</div>
+          <h4>Snack time</h4>
+          <button class="btn" onclick="sheetAction('feed')">
+            Feed
+          </button>
         </div>
+
         <div class="mini-item">
-          <div class="emoji">☁️</div><h4>Nap time</h4>
-          <button class="btn" onclick="sheetAction('rest')">Rest</button>
+          <div class="emoji">☁️</div>
+          <h4>Nap time</h4>
+          <button class="btn" onclick="sheetAction('rest')">
+            Rest
+          </button>
         </div>
+
         <div class="mini-item">
-          <div class="emoji">🧸</div><h4>Play together</h4>
-          <button class="btn" onclick="sheetAction('play')">Play</button>
+          <div class="emoji">🧸</div>
+          <h4>Play together</h4>
+          <button class="btn" onclick="sheetAction('play')">
+            Play
+          </button>
         </div>
+
         <div class="mini-item">
-          <div class="emoji">💗</div><h4>Little cuddles</h4>
-          <button class="btn" onclick="sheetAction('care')">Care</button>
+          <div class="emoji">💗</div>
+          <h4>Little cuddles</h4>
+          <button class="btn" onclick="sheetAction('care')">
+            Care
+          </button>
         </div>
       </div>
     `;
   }
 
-  if(type==="settings"){
-    sheet.innerHTML=`
+  if(type === "settings"){
+    sheet.innerHTML = `
       <div class="sheet-head">
         <h3>⚙️ Settings</h3>
         <button class="close" onclick="closeSheet()">×</button>
       </div>
+
       <div class="card">
         <h3>🐼 Panda Friends</h3>
         <p class="small">Cosy Mobile Edition ♡</p>
-        <p class="small">Your game is completely offline and saves automatically in this browser.</p>
+        <p class="small">
+          Your game saves automatically in this browser.
+          No account is needed.
+        </p>
       </div>
+
       <div class="settings-note">
         💗 Clearing your browser's site data may erase your saved progress.
         This game doesn't require an account.
@@ -1155,12 +1842,17 @@ function closeSheet(){
 }
 
 function overlayClick(e){
-  if(e.target===$("overlay"))closeSheet();
+  if(e.target === $("overlay")){
+    closeSheet();
+  }
 }
 
 function setWall(wall){
-  if(!["pink","lilac","sage","cream"].includes(wall))return;
-  state.wall=wall;
+  if(!["pink","lilac","sage","cream"].includes(wall)){
+    return;
+  }
+
+  state.wall = wall;
   save();
   completeQuest("decorate");
   closeSheet();
@@ -1168,8 +1860,11 @@ function setWall(wall){
 }
 
 function setArt(art){
-  if(!["🌷","🎀","🌙","🧸","🍓","☁️"].includes(art))return;
-  state.art=art;
+  if(!["🌷","🎀","🌙","🧸","🍓","☁️"].includes(art)){
+    return;
+  }
+
+  state.art = art;
   save();
   completeQuest("decorate");
   closeSheet();
@@ -1181,12 +1876,21 @@ function sheetAction(type){
   doAction(type);
 }
 
+/* START GAME */
+
 function init(){
-  resetQuests();
   refresh();
   renderProfile();
   renderRewards();
   renderShop();
+
+  $("pandaCharacter").addEventListener("keydown",e=>{
+    if(e.key === "Enter" || e.key === " "){
+      e.preventDefault();
+      petPanda();
+    }
+  });
+
   say("Welcome home, cutie! ♡");
 }
 
