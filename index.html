@@ -368,14 +368,6 @@ textarea {
 
 /* BED POSITIONING */
 
-/*
-  The illustrated bed occupies the lower-left part
-  of both background images.
-
-  The panda uses a dedicated sleeping position
-  rather than its standing position.
-*/
-
 .bed-zone {
   position:absolute;
   z-index:3;
@@ -969,7 +961,6 @@ textarea {
   height:45px;
   border-radius:14px;
   background:#fff1f6;
-  font-size:24px;
 }
 
 .quest-main {
@@ -1219,6 +1210,7 @@ textarea {
     transition:none!important;
   }
 }
+
 </style>
 </head>
 
@@ -2117,10 +2109,7 @@ function updateNeeds(){
       state.energy+seconds*3.4
     );
 
-    if(
-      state.energy>=98 &&
-      now >= (Number(state.sleepUntil)||0)
-    ){
+    if(now >= (Number(state.sleepUntil)||0)){
       state.sleeping = false;
       state.sleepUntil = 0;
 
@@ -2502,8 +2491,8 @@ function positionSleepingPanda(){
   const height = world.clientHeight;
 
   // Pillow and mattress area in the artwork.
-  const centreX = width*.30;
-  const centreY = height*.655;
+  const centreX = width*.285;
+  const centreY = height*.525;
 
   const pandaWidth = panda.offsetWidth || 126;
   const pandaHeight = panda.offsetHeight || 145;
@@ -2536,6 +2525,7 @@ function wakePanda(){
   placePanda("24%","56%");
 
   save();
+
   say("Good morning! ☀️");
 }
 
@@ -2550,7 +2540,9 @@ function putToBed(){
   const needed = state.energy<60;
 
   state.sleeping = true;
-  state.sleepUntil = Date.now()+12000;
+  state.sleepUntil = Date.now()+15000;
+  // The panda gets a short, complete nap instead of waiting indefinitely.
+  state.energy = clamp(state.energy+35);
   state.totalRests++;
 
   positionSleepingPanda();
@@ -2684,6 +2676,7 @@ function setupPandaDrag(){
   });
 
   panda.addEventListener("pointercancel",()=>{
+
     gesture = null;
   });
 }
@@ -2746,21 +2739,24 @@ function setupFoodDrag(){
 
     const rect = world.getBoundingClientRect();
 
-    food.style.left = Math.max(
+    const x = Math.max(
       0,
       Math.min(
         world.clientWidth-food.offsetWidth,
         event.clientX-rect.left-foodGesture.offX
       )
-    )+"px";
+    );
 
-    food.style.top = Math.max(
+    const y = Math.max(
       0,
       Math.min(
         world.clientHeight-food.offsetHeight,
         event.clientY-rect.top-foodGesture.offY
       )
-    )+"px";
+    );
+
+    food.style.left = x+"px";
+    food.style.top = y+"px";
   });
 
   food.addEventListener("pointerup",event=>{
@@ -2768,23 +2764,26 @@ function setupFoodDrag(){
 
     foodGesture = null;
 
-    const mouth = $("homePanda")
-      .querySelector(".mouth")
-      .getBoundingClientRect();
+    const panda = $("homePanda");
+    const pandaRect = panda.getBoundingClientRect();
+    const foodRect = food.getBoundingClientRect();
 
-    const x = mouth.left+mouth.width/2;
-    const y = mouth.top+mouth.height/2;
+    const foodX = foodRect.left+foodRect.width/2;
+    const foodY = foodRect.top+foodRect.height/2;
 
-    if(
-      Math.hypot(
-        event.clientX-x,
-        event.clientY-y
-      )<83
-    ){
+    const mouthX = pandaRect.left+pandaRect.width*.5;
+    const mouthY = pandaRect.top+pandaRect.height*.52;
+
+    const distance = Math.hypot(
+      foodX-mouthX,
+      foodY-mouthY
+    );
+
+    if(distance<95){
       feedPanda();
     }else{
       resetFood();
-      say("Oops! Try feeding me again! 🎋");
+      say("Try bringing the bamboo closer! 🎋");
     }
   });
 
@@ -3169,6 +3168,7 @@ function renderFriends(){
 
         </div>
       `
+
       : `
         <p class="small">
           No Partner preview saved yet. ♡
@@ -3519,6 +3519,7 @@ function openAccount(){
     </div>
 
     <div
+
       class="card"
       style="margin-top:12px">
 
